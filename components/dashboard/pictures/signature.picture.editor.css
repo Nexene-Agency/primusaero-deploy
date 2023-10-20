@@ -1,0 +1,18 @@
+.__preview-pictures {
+    border: 1px solid var(--color-black-100);
+    overflow-y: scroll;
+    height: 350px !important;
+    width: 100%;
+}
+
+.__preview-picture {
+    cursor: pointer;
+}
+
+.__preview-picture.selected {
+    border: 2px solid var(--color-primary-100);
+}
+
+.__preview-picture.not-selected {
+    border: 2px solid var(--white);
+}

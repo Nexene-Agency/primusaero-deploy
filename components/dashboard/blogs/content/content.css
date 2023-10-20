@@ -1,0 +1,32 @@
+.CodeMirror,
+.CodeMirror-scroll {
+    max-height: 400px;
+}
+
+.editor-toolbar > button {
+    margin-right: 8px;
+}
+
+.__blog-block.__in-editor:hover {
+    border: 1px solid var(--color-primary-200);
+    cursor: pointer;
+}
+
+.__blog-block.__in-editor {
+    border: 1px solid var(--white);
+}
+
+.__blog-editor-menu {
+    z-index: 1000;
+}
+
+.__blog-editor-drawer {
+    background-color: var(--white);
+}
+
+.__image-block-list {
+    border: 1px solid var(--color-gray-400);
+    overflow-y: scroll;
+    max-height: 500px;
+    height: 500px;
+}

@@ -1,0 +1,3 @@
+# Components
+
+Application-related components.

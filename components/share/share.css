@@ -1,0 +1,27 @@
+.__default-share-block {
+    font-family: "Aktiv Grotesk";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #645ADE;
+}
+
+.__default-share-icon {
+    width: 24px;
+    height: 24px;
+    fill: #645ADE;
+}
+
+.__default-share-text {
+    font-family: "Aktiv Grotesk";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #645ADE;
+    margin-top: 4px;
+}
+

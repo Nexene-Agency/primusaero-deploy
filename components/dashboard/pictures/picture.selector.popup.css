@@ -1,0 +1,30 @@
+.__preview-pictures {
+    border: 1px solid var(--color-black-100);
+    overflow-y: scroll;
+    height: 350px !important;
+    width: 100%;
+}
+
+.__preview-list {
+    display: flex;
+    border: 1px solid var(--color-black-100);
+    height: 200px;
+    overflow-x: scroll;
+}
+
+.__preview-close-icon {
+    cursor: pointer;
+    fill: var(--white);
+    height: 24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.__selected-preview-picture {
+    flex-shrink: 0;
+}
+
+.__preview-picture {
+    cursor: pointer;
+}

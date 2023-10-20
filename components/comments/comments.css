@@ -1,0 +1,144 @@
+.__default-comments-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: "Aktiv Grotesk";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #645ADE;
+}
+
+.__default-comments-icon {
+    width: 24px;
+    height: 24px;
+    fill: #645ADE;
+}
+
+.__default-comments-icon-text {
+    font-family: "Aktiv Grotesk";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0;
+    text-align: left;
+    margin-top: 4px;
+    color: #645ADE;
+}
+
+.__default-commenting-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.__default-commenting-title {
+    font-family: "Aktiv Grotesk";
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 0;
+    text-align: left;
+    color: var(--black);
+}
+
+.__default-commenting-share {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    padding: 12px 16px;
+    background-color: #F2EDE3;
+
+    font-family: "Aktiv Grotesk";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #8C877C;
+}
+
+.__default-commenting-icon {
+    width: 24px;
+    height: 24px;
+    fill: #8C877C;
+}
+
+.__default-commenting-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.__default-commenting-avatar-name {
+    font-family: "Aktiv Grotesk";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: left;
+    margin-left: 16px;
+    color: var(--black);
+}
+
+.__default-commenting-comment {
+    margin-bottom: 32px;
+    display: flex;
+}
+
+.__default-commenting-timestamp {
+    color: #8C877C;
+    font-family: "Aktiv Grotesk";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.__default-commenting-comment-text {
+    color: #33312D;
+    font-family: Aktiv Grotesk;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-top: 12px;
+}
+
+.__default-commenting-arrow {
+    width: 24px;
+    height: 24px;
+    fill: #8C877C;
+}
+
+.__default-commenting-arrow.up {
+    fill: #4AB20A;
+    /*stroke: #4AB20A;*/
+}
+
+.__default-commenting-arrow.down {
+    fill: #DD2500;
+    /*stroke: #DD2500;*/
+}
+
+.__default-commenting-likes {
+    color: #8C877C;
+    font-family: "Aktiv Grotesk";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+}
+
+.__default-commenting-likes.up {
+    color: #4AB20A;
+}
+
+.__default-commenting-likes.down {
+    color: #DD2500;
+}

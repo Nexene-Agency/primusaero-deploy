@@ -1,0 +1,6 @@
+.__cd-container {
+    @apply flex flex-col items-center min-h-screen p-8 gap-8;
+    @apply bg-gray-200;
+    @apply text-gray-700;
+    @apply font-bold;
+}

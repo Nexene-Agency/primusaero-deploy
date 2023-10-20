@@ -1,0 +1,172 @@
+{
+  "messages": {
+    "loading": "Loading...",
+    "coming_soon": "Coming soon"
+  },
+  "accounts": {
+    "register": "Register",
+    "login": "Login"
+  },
+  "languages": {
+    "en": "English",
+    "de": "German"
+  },
+  "fields": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me"
+  },
+  "actions": {
+    "login": "Login",
+    "logout": "Logout",
+    "firstPage": "Erste Seite",
+    "previousPage": "Vorherige Seite",
+    "nextPage": "Nächste Seite",
+    "lastPage": "Letzte Seite",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "search": "Suche"
+  },
+  "errors": {
+    "auth": {
+      "login": "Cannot login",
+      "not_logged_in": "You are not logged in"
+    },
+    "list": {
+      "empty": "No items found"
+    },
+    "item": {
+      "save": "Cannot save item",
+      "load": "Cannot load item"
+    },
+    "backend": {
+      "ERR_BAD_REQUEST": "Bad request",
+      "401": "Unauthorized",
+      "403": "Forbidden",
+      "404": "Not found",
+      "500": "Internal server error"
+    }
+  },
+  "info": {
+    "auth": {
+      "login": "Welcome"
+    }
+  },
+  "app": {
+    "name": "VanLifeZone (de)",
+    "blog": {
+      "blog_post": "Blog post",
+      "content_tab": "Content",
+      "new": "Create blog post",
+      "edit": "Edit blog post",
+      "plural": "Blogs",
+      "singular": "Blog"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "valid": "Valid",
+      "published": "Published",
+      "title": "Title",
+      "topic": "Topic"
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "show": "Show",
+      "back": "Back",
+      "upload": "Upload",
+      "close": "Close"
+    },
+    "tabs": {
+      "basic": "Basic",
+      "properties": "Properties"
+    },
+    "dashboard": {
+      "singular": "Dashboard",
+      "plural": "Dashboards"
+    },
+    "picture": {
+      "singular": "Picture",
+      "plural": "Pictures",
+      "new": "New picture",
+      "edit": "Edit picture",
+      "select": "Select picture",
+      "clear": "Clear picture",
+      "must_select": "You must select a picture",
+      "preview": "Preview",
+      "copy_reference": "Copy reference",
+      "reference_copied": "Reference copied"
+    },
+    "page": {
+      "singular": "Page",
+      "plural": "Pages"
+    },
+    "user": {
+      "singular": "User",
+      "plural": "Users"
+    },
+    "article": {
+      "singular": "Artikel",
+      "plural": "Artikel",
+      "new": "Neuer Artikel",
+      "edit": "Artikel bearbeiten",
+      "basic": "Grundinformationen",
+      "vehicle": "Fahrzeug",
+      "hotTopics": "Top-Themen:",
+      "hotDesc": "Top-Themen sind Themen oder Bereiche, die für unsere kommenden Magazine besonders interessant sind.",
+      "title": "Titel des Artikels",
+      "max60": "Max. 60 Zeichen",
+      "subTitle": "Untertitel",
+      "location": "Ort/Route",
+      "location-ph": "Beschreibt in Stichworten, wo die Geschichte stattfindet.",
+      "article": "Artikel",
+      "article-ph": "Wer seid ihr? Wie reist ihr? Was war euer schönster Moment unterwegs?\nErzählt uns etwas Einzigartiges! Ihr habt völlige kreative Freiheit!\nMax. 1200 Wörter",
+      "images": "Link zu 15-20 hochwertigen Bildern",
+      "images-ph": "Nur WeTransfer, Google Drive oder Dropbox links",
+      "firstName": "Vorname",
+      "firstName-ph": "Jane",
+      "lastName": "Nachname",
+      "lastName-ph": "Doe",
+      "social": "Benutzername in sozialen Medien",
+      "social-ph": "Nur ein Benutzername",
+      "web": "Website",
+      "web-ph": "Nur eine Webseite",
+      "email": "E-Mail",
+      "email-ph": "Jane.doe@gmail.com",
+      "vehicleBrand": "Marke und Typ des Fahrzeugs",
+      "vehicleBrand-ph": "z.B. VW T2",
+      "vehicleName": "Name eures Fahrzeugs",
+      "vehicleName-ph": "z.B. Bob",
+      "vehicleYear": "Baujahr",
+      "vehicleYear-ph": "z.B. 1960",
+      "disclaimerShort":  "Eure Geschichte im Vanlifezone Magazin einzureichen, ist eine wunderbare Gelegenheit, eure Abenteuer mit der Welt zu teilen. Wenn ihr das tut, gebt ihr uns das Recht, sowohl eure Geschichte als auch eure Bilder zu verwenden und alle notwendigen Änderungen vorzunehmen, um die bestmögliche Qualität zu gewährleisten. Wir versichern euch, dass es hierbei nicht um Zensur geht, sondern darum, sicherzustellen, dass eure Geschichte im besten Licht präsentiert und die höchstmögliche Qualität garantiert ist.",
+      "disclaimerLong": "Eure Geschichte im Vanlifezone Magazin einzureichen, ist eine wunderbare Gelegenheit, eure Abenteuer mit der Welt zu teilen. Wenn ihr das tut, gebt ihr uns das Recht, sowohl eure Geschichte als auch eure Bilder zu verwenden und alle notwendigen Änderungen vorzunehmen, um die bestmögliche Qualität zu gewährleisten. Wir versichern euch, dass es hierbei nicht um Zensur geht, sondern darum, sicherzustellen, dass eure Geschichte im besten Licht präsentiert und die höchstmögliche Qualität garantiert ist. Wir werden so wenig Änderungen an eurem Artikel vornehmen wie möglich, und keine Sorge, ihr erhaltet immer noch die volle Anerkennung für eure erstaunliche Erzählung! Indem ihr eure Geschichte einreicht, gebt ihr uns die Erlaubnis, euren Artikel und eure Bilder auf all unseren Plattformen zu drucken und zu veröffentlichen. Ihr bestätigt, dass ihr die Genehmigungen jeder erkennbaren Person auf euren bereitgestellten Bildern habt, diese Bilder von ihnen in jeder notwendigen Weise zu verwenden, zu verändern und zu verteilen und übertragt uns hiermit die Genehmigungen.",
+      "showMore": "Mehr anzeigen",
+      "acceptance": "Ich habe die Nutzungsbedingungen und die",
+      "privacy": " Datenschutzrichtlinie",
+      "acceptance2": " gelesen und stimme ihnen zu.",
+      "submit": "Artikel einreichen",
+      "errors": {
+        "errorInForm": "Es gibt einen Fehler im Formular",
+        "notAccepted": "Sie müssen die Nutzungsbedingungen und die Datenschutzrichtlinie akzeptieren",
+        "cannotSubmit": "Artikel kann nicht abgesendet werden"
+      },
+      "submitted": "Artikel eingereicht",
+      "contactSoon": "Wir werden uns bald bei Ihnen melden",
+      "moreInfo": "Weitere Informationen",
+      "author": "Autor",
+      "processed": "Verarbeitet",
+      "processedBy": "Verarbeitet von",
+      "markAsProcessed": "Als verarbeitet markieren",
+      "markAsProcessedQuestion": "Möchten Sie diesen Artikel wirklich als verarbeitet markieren?<br/><br/><b style=\"margin-left: 2em;\">{{title}}</b>",
+      "processedSet": "Artikel als verarbeitet markiert"
+    }
+
+  }
+}

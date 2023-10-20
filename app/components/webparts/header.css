@@ -1,0 +1,15 @@
+.__header {
+    @apply w-full flex items-center text-white font-bold h-12 p-2 bg-red-500 md:bg-green-500 lg:bg-blue-500;
+    @apply border-b-2 border-black;
+}
+
+@media (width <= 640px) {
+}
+
+/* md  ------------------------------------------------------------------------------------------------------------   */
+@media (640px < width <= 1040px) {
+}
+
+/* lg */
+@media (width > 1040px) {
+}

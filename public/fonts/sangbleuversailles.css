@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'sangbleu-versailles';
+    src: url('fonts/SangBleuVersailles-BoldItalic-WebXL.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'sangbleu-versailles';
+    src: url('fonts/SangBleuVersailles-Bold-WebXL.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'sangbleu-versailles';
+    src: url('fonts/SangBleuVersailles-Regular-WebXL.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'sangbleu-versailles';
+    src: url('fonts/SangBleuVersailles-RegularItalic-WebXL.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+.sangbleu-versailles {
+    font-family: 'sangbleu-versailles', sans-serif;
+}

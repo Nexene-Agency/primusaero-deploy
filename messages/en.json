@@ -1,0 +1,333 @@
+{
+  "messages": {
+    "loading": "Loading...",
+    "coming_soon": "Coming soon"
+  },
+  "accounts": {
+    "register": "Register",
+    "login": "Login"
+  },
+  "languages": {
+    "en": "English",
+    "de": "German"
+  },
+  "list": {
+    "values": "{{firstRow}} ... {{lastRow}} of {{totalRows}}"
+  },
+  "fields": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me"
+  },
+  "actions": {
+    "login": "Login",
+    "logout": "Logout",
+    "firstPage": "First page",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "lastPage": "Last page",
+    "next": "Next",
+    "previous": "Back",
+    "search": "Search"
+  },
+  "errors": {
+    "auth": {
+      "login": "Cannot login",
+      "not_logged_in": "You are not logged in"
+    },
+    "list": {
+      "empty": "No items found"
+    },
+    "item": {
+      "save": "Cannot save item",
+      "load": "Cannot load item",
+      "process": "Cannot process item",
+      "delete": "Cannot delete item"
+    },
+    "address": {
+      "incomplete": "Address is incomplete"
+    },
+    "backend": {
+      "ERR_BAD_REQUEST": "Bad request",
+      "401": "Unauthorized",
+      "403": "Forbidden",
+      "404": "Not found",
+      "500": "Internal server error"
+    }
+  },
+  "info": {
+    "auth": {
+      "login": "Welcome"
+    }
+  },
+  "app": {
+    "name": "VanLifeZone",
+    "comment": {
+      "singular": "Comment",
+      "plural": "Comments",
+      "add": "Share your thoughts",
+      "saved": "Comment saved",
+      "moderation": "Your comment will be visible after moderation",
+      "cannotSave": "Cannot save comment",
+      "tryAgain": "Please try again later",
+      "send": "Send",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "yourName": "Your name",
+      "when": "When",
+      "parentName": "Blog entry",
+      "text": "Comment text",
+      "approved": "Approved",
+      "edit": "Edit comment",
+      "content": "Content",
+      "postedBy": "Posted by",
+      "likes": "Number of likes",
+      "delete": "Delete",
+      "deleted": "Comment deleted",
+      "approve": "Approve",
+      "wasApproved": "Comment approved",
+      "cannotApprove": "Cannot approve comment",
+      "deleteQuestion": "Do you really want to delete this comment?",
+      "approveQuestion": "Do you really want to approve this comment?",
+      "block": "Block",
+      "blocked": "Comment blocked",
+      "cannotBlock": "Cannot block comment",
+      "blockQuestion": "Do you really want to block (remove approval) this comment?"
+    },
+    "blog": {
+      "blogPost": "Blog post",
+      "contentTab": "Content",
+      "styleTab": "Style",
+      "new": "Create blog post",
+      "edit": "Edit blog post",
+      "plural": "Blogs",
+      "singular": "Blog",
+      "published": "Published",
+      "publishedAt": "Published at",
+      "editContent": "Edit content",
+      "addBlock": "Add block",
+      "blockManager": "Block manager",
+      "saveBlock": "Save block",
+      "savePost": "Save blog post",
+      "saved": "Blog post saved",
+      "publishedBy": "by {{by}} @ {{at}}",
+      "coverPicture": "Cover picture",
+      "authorTab": "Original author",
+      "exit": "Exit",
+      "blockEditor": "Block editor: {{title}}",
+      "columns": "Columns",
+      "aboutAuthor": "About the author",
+      "publish": "Publish",
+      "publishedNow": "The blogpost is published now",
+      "publishQuestion": "Do you really want to publish the blogpost '{{title}}'?"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "valid": "Valid",
+      "published": "Published",
+      "title": "Title",
+      "topic": "Topic",
+      "expires": "Expires",
+      "address": "Address",
+      "postal_code": "Postal code",
+      "street": "Street",
+      "street_number": "Street number",
+      "city": "City",
+      "country": "Country",
+      "lat": "Latitude",
+      "lng": "Longitude",
+      "address_locator": "Search for address",
+      "location": "Location",
+      "imageTag": "Image tag",
+      "titleTag": "Title",
+      "imageURL": "Image URL",
+      "email": "Email",
+      "web": "Website",
+      "social": "Social",
+      "visible": "Visible",
+      "order": "Order",
+      "author": "Author",
+      "lastModifiedAt": "Last modified at",
+      "tags": "Tags",
+      "exit": "Exit",
+      "bio": "Bio",
+      "copyright": "Copyright",
+      "image": "Image"
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "show": "Show",
+      "back": "Back",
+      "upload": "Upload",
+      "close": "Close",
+      "yes": "Yes",
+      "no": "No",
+      "share": "Share"
+    },
+    "tabs": {
+      "basic": "Basic",
+      "properties": "Properties",
+      "text": "Text",
+      "history": "History"
+    },
+    "dashboard": {
+      "singular": "Dashboard",
+      "plural": "Dashboards"
+    },
+    "text": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "location": {
+      "singular": "Location",
+      "plural": "Locations",
+      "new": "New location",
+      "edit": "Edit location",
+      "route": "Route",
+      "leaveMap": "Leave map",
+      "addYourService": "Add your service",
+      "distributeMagazine": "Distribute magazine",
+      "shareThisMap": "Share this map",
+      "iNeedHelp": "I need help",
+      "signaturePicture": "Signature picture",
+      "errors": {
+        "cannotSearch": "Cannot search",
+        "notFound": "Nothing found for this search query"
+      },
+      "types": {
+        "singular": {
+          "text": "Location type",
+          "rental": "Rental",
+          "garage": "Garage",
+          "shop": "Shop",
+          "magazine_store": "Magazin store",
+          "campground": "Campground",
+          "other": "Other"
+        },
+        "plural": {
+          "text": "Location types",
+          "rental": "Rentals",
+          "garage": "Garages",
+          "shop": "Shops",
+          "magazine_store": "Magazin stores",
+          "campground": "Campgrounds",
+          "other": "Others"
+        }
+      }
+    },
+    "picture": {
+      "singular": "Picture",
+      "plural": "Pictures",
+      "new": "New picture",
+      "edit": "Edit picture",
+      "select": "Select picture",
+      "clear": "Clear picture",
+      "must_select": "You must select a picture",
+      "preview": "Preview",
+      "copy_reference": "Copy reference",
+      "reference_copied": "Reference copied",
+      "selectOne": "Select one picture",
+      "selectMultiple": "Select one or more pictures",
+      "selectCount": "Select {{count}} pictures",
+      "found": "Pictures found",
+      "selected": "Pictures selected",
+      "add": "Add picture"
+    },
+    "teamMember": {
+      "singular": "Team member",
+      "plural": "Team members",
+      "new": "New team member",
+      "edit": "Edit team member"
+    },
+    "page": {
+      "singular": "Page",
+      "plural": "Pages"
+    },
+    "user": {
+      "singular": "User",
+      "plural": "Users",
+      "edit": "Edit user",
+      "role": {
+        "singular": "Role",
+        "plural": "Roles",
+        "valid": "Valid",
+        "emailVerified": "Email verified",
+        "types": {
+          "admin": "Administrator",
+          "editor": "Editor",
+          "user": "User"
+        }
+      }
+    },
+    "article": {
+      "singular": "Article",
+      "plural": "Articles",
+      "new": "New article",
+      "edit": "Edit article",
+      "basic": "Basic information",
+      "vehicle": "Vehicle",
+      "hotTopics": "Hot topics:",
+      "hotDesc": "Hot topics are topics or areas we are particularly interested in for our upcoming magazines",
+      "title": "Title of Article",
+      "max60": "60 characters max.",
+      "subTitle": "Subtitle",
+      "location": "Location/Route",
+      "location-ph": "Describe in keywords where the story takes place",
+      "article": "Article",
+      "article-ph": "Who are you? How do you travel? What has been your favorite moment on the road?\nTell us something unique! You have total creative freedom!\n1200 words max.",
+      "images": "Link to 15-20 high quality images",
+      "images-ph": "WeTransfer, Google Drive or Dropbox only",
+      "firstName": "First name",
+      "firstName-ph": "Jane",
+      "lastName": "First name",
+      "lastName-ph": "Doe",
+      "social": "Username on social media",
+      "social-ph": "Only one username",
+      "web": "Website",
+      "web-ph": "Only one website",
+      "email": "E-Mail",
+      "email-ph": "Jane.doe@gmail.com",
+      "vehicleBrand": "Brand and type of vehicle",
+      "vehicleBrand-ph": "e.g. VW T2",
+      "vehicleName": "Name of your vehicle",
+      "vehicleName-ph": "e.g. Bob",
+      "vehicleYear": "Year of manufacture",
+      "vehicleYear-ph": "e.g. 1960",
+      "recommendVanlifeAcc": "Recommend your favorite vanlife accounts",
+      "recommendVanlifeAcc-ph": "@vanlifezone, @...",
+      "disclaimerShort": "Submitting your story to Vanlifezone Magazine is a wonderful opportunity to share your adventures with the world. By doing so, you grant us the right to use and make any necessary modifications to both your story and images to ensure the highest quality possible. We assure you, this is not about censorship, but rather about making sure your story shines in its best light and to guarantee the highest possible quality…",
+      "showMore": "show more",
+      "disclaimerLong": "Submitting your story to Vanlifezone Magazine is a wonderful opportunity to share your adventures with the world. By doing so, you grant us the right to use and make any necessary modifications to both your story and images to ensure the highest quality possible. We assure you, this is not about censorship, but rather about making sure your story shines in its best light and to guarantee the highest possible quality. We'll make as little changes to your article as possible, and don't worry, you'll still get the full credit for your amazing tale! By submitting your story, you are giving us permission to print and publish your article and images on all of our platforms. You confirm that you have the permissions of every recognisable person in your provided images to use, alter and distribute these images of them in any way necessary and hereby pass the permissions on to us.",
+      "acceptance": "I have read and agree to the Terms and Conditions and the ",
+      "privacy": "Privacy Policy",
+      "submit": "Submit article",
+      "errors": {
+        "errorInForm": "There is an error in the form",
+        "notAccepted": "You must accept the terms and conditions and the privacy policy",
+        "cannotSubmit": "Cannot submit article"
+      },
+      "submitted": "Article submitted",
+      "contactSoon": "We will contact you soon",
+      "moreInfo": "More information",
+      "author": "Author",
+      "processed": "Processed",
+      "processedBy": "Processed by",
+      "markAsProcessed": "Mark as processed",
+      "markAsProcessedQuestion": "Do you really want to mark this article as processed?<br/><br/><b style=\"margin-left: 2em;\">{{title}}</b>",
+      "processedSet": "Article marked as processed"
+    },
+    "setting": {
+      "singular": "Setting",
+      "plural": "Settings",
+      "hotTopics": "Hot topics",
+      "saved": "Settings saved"
+    }
+  }
+}
