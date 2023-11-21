@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./share.css";
-import AppShare from "@components/icons/AppShare";
+import AppShare from "@components/icons/obsolete/AppShare";
 
 const ShareFallback = (props: any) => {
   return (

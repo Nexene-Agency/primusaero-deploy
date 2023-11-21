@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./comments.css";
-import AppComments from "@components/icons/AppComments";
+import AppComments from "@components/icons/obsolete/AppComments";
 
 const CommentsFallback = (props: any) => {
   return (

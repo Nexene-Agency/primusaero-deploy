@@ -1,4 +1,0 @@
-.__footer {
-    @apply w-full flex items-center h-12 p-2 bg-red-500 md:bg-green-500 lg:bg-blue-500;
-    @apply border-t-2 border-black;
-}

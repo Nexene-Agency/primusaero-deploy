@@ -5,9 +5,11 @@ const LogOutIcon = (props: any) => {
   return React.createElement(
     "svg", Object.assign(
       {
-        "xmlns": "http://www.w3.org/2000/svg",
-        "id": "glyphicons-basic",
-        "viewBox": "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg",
+        id: "glyphicons-basic",
+        viewBox: "0 0 32 32",
+        width: "32",
+        height: "32",
       },
       props),
     React.createElement(

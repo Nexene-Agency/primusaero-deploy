@@ -155,7 +155,8 @@
       "exit": "Exit",
       "bio": "Bio",
       "copyright": "Copyright",
-      "image": "Image"
+      "image": "Image",
+      "text": "Text"
     },
     "actions": {
       "save": "Save",
@@ -323,11 +324,20 @@
       "markAsProcessedQuestion": "Do you really want to mark this article as processed?<br/><br/><b style=\"margin-left: 2em;\">{{title}}</b>",
       "processedSet": "Article marked as processed"
     },
+    "testimonial": {
+      "singular": "Testimonial",
+      "plural": "Testimonials",
+      "new": "New testimonial",
+      "edit": "Edit testimonial"
+    },
     "setting": {
       "singular": "Setting",
       "plural": "Settings",
       "hotTopics": "Hot topics",
       "saved": "Settings saved"
+    },
+    "locationMap": {
+      "click": "Click on any location"
     }
   }
 }

@@ -1,11 +1,8 @@
-import { HStack, Text } from "@chakra-ui/react";
-import {
-  ColumnGetterFunction,
-  ListColumnDefinition,
-} from "@framework/list/list.definition";
+import {Text} from "@chakra-ui/react";
+import {ColumnGetterFunction, ListColumnDefinition,} from "@framework/list/list.definition";
 import CircleCheckIcon from "@framework/icons/basic/CircleCheckIcon";
 import "moment/locale/de";
-import { getFormattedDate } from "@framework/i18n.client.utils";
+import {getFormattedDate} from "@framework/i18n.client.utils";
 
 export const loading = (t: Function) => {
   return <Text>{t("messages.loading")}</Text>;
@@ -13,26 +10,23 @@ export const loading = (t: Function) => {
 
 export const notAuthenticated = (t: Function) => {
   return (
-    <HStack gap={5}>
-      <Text>{t("errors.auth.not_logged_in")}</Text>
-      <a
-        className="__button __primary"
-        href="/protector"
-        // href="/api/auth/signin"
-        // onClick={(e) => {
-        //   e.preventDefault();
-        //   signIn()
-        //     .then(() => {
-        //       console.log("signed in");
-        //     })
-        //     .catch((error) => {
-        //       console.error("error signing in", error);
-        //     });
-        // }}
-      >
-        {t("actions.login")}
-      </a>
-    </HStack>
+    <a
+      className="__button __primary"
+      // href="/protector"
+      href="/api/auth/signin"
+      // onClick={(e) => {
+      //   e.preventDefault();
+      //   signIn()
+      //     .then(() => {
+      //       console.log("signed in");
+      //     })
+      //     .catch((error) => {
+      //       console.error("error signing in", error);
+      //     });
+      // }}
+    >
+      {t("actions.login")}
+    </a>
   );
 };
 
@@ -46,8 +40,8 @@ export const checkMarkColumnGetter = (
   // eslint-disable-next-line react/display-name
   return (column: ListColumnDefinition<any>, row: any) => {
     return Reflect.has(row.data, fieldName) &&
-      Reflect.get(row.data, fieldName) ? (
-      <CircleCheckIcon className="__menu-icon" />
+    Reflect.get(row.data, fieldName) ? (
+      <CircleCheckIcon className="__menu-icon"/>
     ) : null;
   };
 };
@@ -58,7 +52,7 @@ export const preColumnGetter = (
   // eslint-disable-next-line react/display-name
   return (column: ListColumnDefinition<any>, row: any) => {
     return Reflect.has(row.data, fieldName) &&
-      Reflect.get(row.data, fieldName) ? (
+    Reflect.get(row.data, fieldName) ? (
       <pre>{Reflect.get(row.data, fieldName)}</pre>
     ) : null;
   };

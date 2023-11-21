@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getCurrentSession, NULL_SESSION } from "@framework/client.utils";
 import "./comments.css";
-import AppComments from "@components/icons/AppComments";
+import AppComments from "@components/icons/obsolete/AppComments";
 import { Session } from "next-auth";
 import axios from "axios";
 import { DatabaseEntry } from "@framework/firebase.utils";

@@ -13,9 +13,9 @@ import CommentingPopup from "@components/comments/commenting.popup";
 import { Avatar, ChakraProvider } from "@chakra-ui/react";
 import { DatabaseEntry } from "@framework/firebase.utils";
 import axios from "axios";
-import AppUpArrow from "@components/icons/AppUpArrow";
-import AppDownArrow from "@components/icons/AppDownArrow";
-import AppPlus from "@components/icons/AppPlus";
+import AppUpArrow from "@components/icons/obsolete/AppUpArrow";
+import AppDownArrow from "@components/icons/obsolete/AppDownArrow";
+import AppPlus from "@components/icons/obsolete/AppPlus";
 import { Session } from "next-auth";
 import { ListContent } from "@/framework/list/list.definition";
 

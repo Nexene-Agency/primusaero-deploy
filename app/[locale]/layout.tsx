@@ -10,7 +10,7 @@ import CookieBanner from "@components/analytics/cookie.banner";
  */
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "de" }];
+  return [{locale: "en"}, {locale: "de"}];
 }
 
 export const metadata = {
@@ -23,19 +23,22 @@ const DefaultFallback = () => {
 };
 
 // @ts-ignore
-export default async function LocaleLayout({ children, params: { locale } }) {
+export default async function LocaleLayout({children, params: {locale}}) {
   return (
     <html lang={locale}>
-      <head/>
-      <Suspense fallback={<DefaultFallback />}>
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-P635B9R9WC" />
-      </Suspense>
-      <body>
-        <div className="__root-layout">{children}</div>
-        <Suspense fallback={<DefaultFallback />}>
-          <CookieBanner />
-        </Suspense>
-      </body>
+    <head/>
+    <Suspense fallback={<DefaultFallback/>}>
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-P635B9R9WC"/>
+    </Suspense>
+    <body>
+    <div className="__root-layout font-nimbus">{children}</div>
+    <Suspense fallback={<DefaultFallback/>}>
+      <CookieBanner/>
+    </Suspense>
+    <div id="overlay-1"></div>
+    <div id="overlay-2"></div>
+    <div id="overlay-3"></div>
+    </body>
     </html>
   );
 }

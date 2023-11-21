@@ -1,31 +1,13 @@
 "use client";
-import {
-  Button,
-  Flex,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import {Button, Flex, Menu, MenuButton, MenuItem, MenuList, Table, Tbody, Td, Th, Thead, Tr,} from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import { useMemo, useState } from "react";
-import {
-  ListColumnDefinition,
-  ListDefinition,
-  ListDefinitionProperty,
-} from "./list.definition";
-import { classNames, DatabaseEntryProperty } from "@framework/utils";
-import { Selectable } from "@framework/model";
-import { LIST_ITEM_DETAILS } from "@/framework/constants";
+import {useMemo, useState} from "react";
+import {ListColumnDefinition, ListDefinition, ListDefinitionProperty,} from "./list.definition";
+import {classNames, DatabaseEntryProperty} from "@framework/utils";
+import {Selectable} from "@framework/model";
+import {LIST_ITEM_DETAILS} from "@/framework/constants";
 import MoreVerticalIcon from "@framework/icons/basic/MoreVerticalIcon";
-import { getClientTranslator } from "@framework/i18n.client.utils";
+import {getClientTranslator} from "@framework/i18n.client.utils";
 
 const ListBody = (props: any) => {
   const t = getClientTranslator();
@@ -52,7 +34,7 @@ const ListBody = (props: any) => {
     return (
       <Menu preventOverflow={true}>
         <MenuButton>
-          <MoreVerticalIcon className="__menu-icon" />
+          <MoreVerticalIcon className="__menu-icon"/>
         </MenuButton>
         <MenuList>
           {definition.operations?.map((current: Selectable) =>
@@ -74,7 +56,7 @@ const ListBody = (props: any) => {
   };
 
   return (
-    <TableContainer width={"100%"}>
+    <div className="w-full">
       <Table>
         <Thead>
           <Tr className={classNames("__list-header", id)}>
@@ -104,7 +86,7 @@ const ListBody = (props: any) => {
             props.content.map((row: any) => (
               <Tr
                 key={`row-${row.id}`}
-                className={classNames("__list-data-row", id, row.id)}
+                className={classNames("__list-data-row align-top", id, row.id)}
               >
                 {definition.columns.map(
                   (current: ListColumnDefinition<any>) => (
@@ -130,7 +112,7 @@ const ListBody = (props: any) => {
           )}
         </Tbody>
       </Table>
-    </TableContainer>
+    </div>
   );
 };
 

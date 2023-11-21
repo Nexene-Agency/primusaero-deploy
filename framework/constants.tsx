@@ -3,8 +3,8 @@ import SquareEditIcon from "@/framework/icons/basic/SquareEditIcon";
 import BlackboardIcon from "@/framework/icons/basic/BlackboardIcon";
 import CopyDuplicateIcon from "@framework/icons/basic/CopyDuplicateIcon";
 import ChevronRightIcon from "@framework/icons/basic/ChevronRightIcon";
-import { Selectable } from "@framework/model";
-import { ListQuery } from "@framework/list/model";
+import {Selectable} from "@framework/model";
+import {ListQuery} from "@framework/list/model";
 
 export const ROLES = {
   ADMIN: "admins",
@@ -15,34 +15,34 @@ export const ROLES = {
 export const LIST_ADD_ITEM: Selectable = {
   id: "add_item",
   name: "operations.add_item",
-  icon: <PlusIcon className="__menu-icon" />,
+  icon: <PlusIcon className="__list-icon"/>,
   filter: ["*"],
 };
 
 export const LIST_ITEM_DETAILS: Selectable = {
   id: "item_details",
   name: "operations.item_details",
-  icon: <ChevronRightIcon className="__menu-icon" />,
+  icon: <ChevronRightIcon className="__menu-icon"/>,
   filter: ["*"],
 };
 
 export const LIST_DUPLICATE_ITEM: Selectable = {
   id: "duplicate_item",
   name: "operations.duplicate_item",
-  icon: <CopyDuplicateIcon className="__menu-icon" />,
+  icon: <CopyDuplicateIcon className="__menu-icon"/>,
   filter: ["*"],
 };
 
 export const LIST_EDIT_ITEM: Selectable = {
   id: "edit_item",
   name: "operations.edit_item",
-  icon: <SquareEditIcon className="__menu-icon" />,
+  icon: <SquareEditIcon className="__list-icon"/>,
   filter: ["*"],
 };
 export const LIST_EDIT_ITEM_CONTENT: Selectable = {
   id: "edit_item_content",
   name: "operations.edit_item_content",
-  icon: <BlackboardIcon className="__menu-icon" />,
+  icon: <BlackboardIcon className="__menu-icon"/>,
   filter: [ROLES.POWER_USER],
 };
 

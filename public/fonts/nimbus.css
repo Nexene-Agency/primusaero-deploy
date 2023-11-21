@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'nimbus';
+    src: url('files/NimbusSanL-Reg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'nimbus';
+    src: url('files/NimbusSanL-RegIta.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'nimbus';
+    src: url('files/NimbusSanL-Bol.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'nimbus';
+    src: url('files/NimbusSanL-BolIta.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'muller';
+    src: url('files/MullerLight.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'muller';
+    src: url('files/MullerBold.ttf') format('tff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+.font-nimbus {
+    font-family: 'nimbus', sans-serif;
+}
+
+.font-muller {
+    font-family: 'muller', sans-serif;
+}

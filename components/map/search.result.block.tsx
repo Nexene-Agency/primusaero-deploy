@@ -15,8 +15,8 @@ import { asMapMarker } from "@framework/googlemaps/model";
 import Gallery from "@components/gallery/gallery";
 import { ListContent } from "@framework/list/list.definition";
 import { DeviceType, useWindowSize } from "@framework/hooks/use.window.size";
-import AppShare from "@components/icons/AppShare";
-import AppInfo from "@components/icons/AppInfo";
+import AppShare from "@components/icons/obsolete/AppShare";
+import AppInfo from "@components/icons/obsolete/AppInfo";
 
 const SearchResultBlock = (props: any) => {
   const t = getClientTranslator();

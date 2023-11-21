@@ -2,16 +2,12 @@
 import PropTypes from "prop-types";
 import ListHeader from "@/framework/list/list.header";
 import ListBody from "@/framework/list/list.body";
-import {
-  ListDefinitionProperty,
-  ListHeaderDefinitionProperty,
-} from "@/framework/list/list.definition";
-import { VStack } from "@chakra-ui/react";
-import { DatabaseEntryProperty } from "@framework/utils";
+import {ListDefinitionProperty, ListHeaderDefinitionProperty,} from "@/framework/list/list.definition";
+import {DatabaseEntryProperty} from "@framework/utils";
 
 const FullList = (props: any) => {
   return (
-    <VStack className={`${props.id} __w-full`}>
+    <div className={`flex flex-col ${props.id} w-full`}>
       {props.headerVisible ? (
         <ListHeader
           id={`${props.id}.header`}
@@ -29,7 +25,7 @@ const FullList = (props: any) => {
         onAction={props.listAction}
         hasRoles={props.hasRoles}
       />
-    </VStack>
+    </div>
   );
 };
 

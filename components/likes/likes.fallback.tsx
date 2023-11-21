@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./likes.css";
-import AppHeart from "@components/icons/AppHeart";
+import AppHeart from "@components/icons/obsolete/AppHeart";
 
 const LikesFallback = (props: any) => {
   return (

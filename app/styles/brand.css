@@ -1,242 +1,31 @@
+@import "./../../public/fonts/nimbus.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/** this file is for the custom values. */
+
 :root {
-  /* colors */
-  --primary: #ff6445; /* primary 500 */
-  --primary-hover: #d55238;
-  --secondary: #645ade; /* secondary 500 */
-  --secondary-hover: #453daa;
-  /*--accent: #FFBE6E; !* highlight 500 *!*/
-  /*--accent2: #B5AEA5; !* highlight2 500 *!*/
-  --white: #fffdf7;
-  --white-hover: #ffe6dc;
-  --black: #302c2c;
-  --black-hover: #000000;
+    /* colors */
+    --white: #ffffff;
+    --black: #0F0F0F;
+    --primary-color: #0F0F0F;
+    --color-grey-1: #F7F5F5;
+    --color-grey-2: #A39F9F;
+    --color-grey-3: #838080;
+    --color-grey-4: #595757;
+    --primus-green: #86B32E;
 
-  background: var(--white);
-  color: var(--black);
-
-  --color-primary-50: #ffece9;
-  --color-primary-100: #ffd1c7;
-  --color-primary-200: #ffb2a2;
-  --color-primary-300: #ff937d;
-  --color-primary-400: #ff7b61;
-  --color-primary-500: #ff6445;
-  --color-primary-600: #ff5c3e;
-  --color-primary-700: #ff5236;
-  --color-primary-800: #ff482e;
-  --color-primary-900: #ff361f;
-
-  --color-secondary-50: #ecebfb;
-  --color-secondary-100: #d1cef5;
-  --color-secondary-200: #b2adef;
-  --color-secondary-300: #938ce8;
-  --color-secondary-400: #7b73e3;
-  --color-secondary-500: #645ade;
-  --color-secondary-600: #5c52da;
-  --color-secondary-700: #5248d5;
-  --color-secondary-800: #483fd1;
-  --color-secondary-900: #362ec8;
-
-  --color-white-50: #fffffe;
-  --color-white-100: #fffefd;
-  --color-white-200: #fffefb;
-  --color-white-300: #fffef9;
-  --color-white-400: #fffdf8;
-  --color-white-500: #fffdf7;
-  --color-white-600: #fffdf6;
-  --color-white-700: #fffcf5;
-  --color-white-800: #fffcf3;
-  --color-white-900: #fffcf1;
-
-  --color-black-50: #e6e6e6;
-  --color-black-100: #c1c0c0;
-  --color-black-200: #989696;
-  --color-black-300: #6e6b6b;
-  --color-black-400: #4f4c4c;
-  --color-black-500: #302c2c;
-  --color-black-600: #2b2727;
-  --color-black-700: #242121;
-  --color-black-800: #1e1b1b;
-  --color-black-900: #131010;
-
-  /* spaces */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-7: 1.75rem;
-  --space-8: 2rem;
-  --space-9: 2.25rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-14: 3.5rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-  --space-28: 7rem;
-  --space-32: 8rem;
-  --space-36: 9rem;
-  --space-40: 10rem;
-  --space-44: 11rem;
-  --space-48: 12rem;
-  --space-52: 13rem;
-  --space-56: 14rem;
-  --space-60: 15rem;
-  --space-64: 16rem;
-  --space-72: 18rem;
-  --space-80: 20rem;
-  --space-96: 24rem;
-
-  /** breakpoints */
-  --sm: 480px;
-  --md: 768px;
-  --lg: 992px;
-  --xl: 1280px;
-  --2xl: 1536px;
-
-  /* font sizes */
-  --fontSizes-3xs: 0.45rem;
-  --fontSizes-2xs: 0.625rem;
-  --fontSizes-xs: 0.75rem;
-  --fontSizes-sm: 0.875rem;
-  --fontSizes-md: 1rem;
-  --fontSizes-lg: 1.125rem;
-  --fontSizes-xl: 1.25rem;
-  --fontSizes-2xl: 1.5rem;
-  --fontSizes-3xl: 1.875rem;
-  --fontSizes-4xl: 2.25rem;
-  --fontSizes-5xl: 3rem;
-  --fontSizes-6xl: 3.75rem;
-  --fontSizes-7xl: 4.5rem;
-  --fontSizes-8xl: 6rem;
-  --fontSizes-9xl: 8rem;
-
-  /* border radius */
-  --radii-none: 0;
-  --radii-sm: 0.125rem;
-  --radii-base: 0.25rem;
-  --radii-md: 0.375rem;
-  --radii-lg: 0.5rem;
-  --radii-xl: 0.75rem;
-  --radii-2xl: 1rem;
-  --radii-3xl: 1.5rem;
-  --radii-full: 9999px;
-
-  /* shadows */
-  --shadows-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
-  --shadows-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadows-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadows-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadows-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadows-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadows-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadows-outline: 0 0 0 3px rgba(66, 153, 225, 0.6);
-  --shadows-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --shadows-none: none;
-  --shadows-dark-lg: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.4) 0px 15px 40px;
-
-  /** sizes */
-  --sizes-1: 0.25rem;
-  --sizes-2: 0.5rem;
-  --sizes-3: 0.75rem;
-  --sizes-4: 1rem;
-  --sizes-5: 1.25rem;
-  --sizes-6: 1.5rem;
-  --sizes-7: 1.75rem;
-  --sizes-8: 2rem;
-  --sizes-9: 2.25rem;
-  --sizes-10: 2.5rem;
-  --sizes-12: 3rem;
-  --sizes-14: 3.5rem;
-  --sizes-16: 4rem;
-  --sizes-20: 5rem;
-  --sizes-24: 6rem;
-  --sizes-28: 7rem;
-  --sizes-32: 8rem;
-  --sizes-36: 9rem;
-  --sizes-40: 10rem;
-  --sizes-44: 11rem;
-  --sizes-48: 12rem;
-  --sizes-52: 13rem;
-  --sizes-56: 14rem;
-  --sizes-60: 15rem;
-  --sizes-64: 16rem;
-  --sizes-72: 18rem;
-  --sizes-80: 20rem;
-  --sizes-96: 24rem;
-  --sizes-px: 1px;
-  --sizes-0-5: 0.125rem;
-  --sizes-1-5: 0.375rem;
-  --sizes-2-5: 0.625rem;
-  --sizes-3-5: 0.875rem;
-  --sizes-max: max-content;
-  --sizes-min: min-content;
-  --sizes-full: 100%;
-  --sizes-3xs: 14rem;
-  --sizes-2xs: 16rem;
-  --sizes-xs: 20rem;
-  --sizes-sm: 24rem;
-  --sizes-md: 28rem;
-  --sizes-lg: 32rem;
-  --sizes-xl: 36rem;
-  --sizes-2xl: 42rem;
-  --sizes-3xl: 48rem;
-  --sizes-4xl: 56rem;
-  --sizes-5xl: 64rem;
-  --sizes-6xl: 72rem;
-  --sizes-7xl: 80rem;
-  --sizes-8xl: 90rem;
-  --sizes-prose: 60ch;
-  --sizes-container-sm: 640px;
-  --sizes-container-md: 768px;
-  --sizes-container-lg: 1024px;
-  --sizes-container-xl: 1280px;
-
-  /* font weights */
-  --fontWeights-hairline: 100;
-  --fontWeights-thin: 200;
-  --fontWeights-light: 300;
-  --fontWeights-normal: 400;
-  --fontWeights-medium: 500;
-  --fontWeights-semibold: 600;
-  --fontWeights-bold: 700;
-  --fontWeights-extrabold: 800;
-  --fontWeights-black: 900;
-
-  --color-gray-100: #f8f9fc;
-  --color-gray-200: #f1f3f9;
-  --color-gray-300: #dee3ed;
-  --color-gray-400: #c2c9d6;
-  --color-gray-500: #8f96a3;
-  --color-gray-600: #5e636e;
-  --color-gray-700: #2f3237;
-  --color-gray-800: #1d1e20;
-  --color-gray-900: #111213;
-}
-
-/** FIXME: currently not working */
-@media (prefers-color-scheme: dark) {
-  :root {
-    background: var(--black);
-    color: var(--white);
-  }
+    background: var(--white);
+    color: var(--black);
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  gap: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    gap: 0;
 }
 
 html,
@@ -244,5 +33,35 @@ body {
 }
 
 .__root-layout {
-  @apply flex flex-col min-h-screen;
+    @apply flex flex-col min-h-screen max-w-[96em] m-auto;
+}
+
+.__button {
+    display: inline-flex;
+    padding: 11px 24px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    border-radius: 22px;
+
+    font-family: nimbus, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.54px;
+}
+
+.__button.__primary {
+    background: var(--primary-color);
+    color: var(--white);
+    fill: var(--white);
+}
+
+.__list-icon {
+    width: 16px;
+}
+
+@layer primusAero {
+
 }

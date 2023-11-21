@@ -20,6 +20,7 @@ export interface Selectable {
   filter?: string[];
   disabled?: boolean;
   context?: any;
+  children?: Selectable[];
 }
 
 export enum ENVIRONMENT_KEYS {

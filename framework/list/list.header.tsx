@@ -1,5 +1,5 @@
 "use client";
-import {Button, Flex, Input, Select, Spacer} from "@chakra-ui/react";
+import {Button, Flex, Input, Select} from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import {useEffect, useMemo, useState} from "react";
 import {
@@ -85,11 +85,11 @@ const ListHeader = (props: any) => {
   };
 
   const newFilterValue = (event: any) => {
-    setFilterValue({ ...filterValue, value: event.target.value });
+    setFilterValue({...filterValue, value: event.target.value});
   };
 
   const newFilterFieldName = (event: any) => {
-    setFilterValue({ ...filterValue, fieldName: event.target.value });
+    setFilterValue({...filterValue, fieldName: event.target.value});
   };
 
   useEffect(() => {
@@ -129,7 +129,7 @@ const ListHeader = (props: any) => {
               id
             )}
           >
-            <SearchIcon className="list-header-operation-icon" />
+            <SearchIcon className="list-header-operation-icon"/>
           </Button>
         </Flex>
       );
@@ -138,14 +138,13 @@ const ListHeader = (props: any) => {
   };
 
   return (
-    <Flex
-      className={`${definition.className ?? ""} __list-header __w-full ${id}`}
-      alignItems={"center"}
+    <div
+      className={`${definition.className} flex flex-row w-full ${id} items-center p-2`}
     >
       {definition.operations ? renderOperations(definition.operations) : null}
       {renderFilter()}
-      <Spacer />
-    </Flex>
+      <div className="flex-grow"/>
+    </div>
   );
 };
 

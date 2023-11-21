@@ -1,0 +1,13 @@
+/** background position cannot be easily specified using tailwindcss */
+
+.__cloud-467 {
+    background: url("../../../public/images/cloud-467.webp") no-repeat center;
+    background-position-x: -270px;
+    background-position-y: -120px;
+}
+
+.__cloud-748 {
+    background: url("../../../public/images/cloud-748.webp") no-repeat center;
+    background-position-x: 100px;
+    background-position-y: 50px;
+}

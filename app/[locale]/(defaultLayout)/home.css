@@ -1,5 +1,0 @@
-.__main-page {
-    @apply w-full flex flex-col items-center text-white font-bold flex-grow p-2 bg-red-500 gap-8;
-    @apply md:bg-green-500;
-    @apply lg:bg-blue-500;
-}

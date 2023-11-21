@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./share.css";
 import { getClientTranslator } from "@framework/i18n.client.utils";
-import AppShare from "@components/icons/AppShare";
+import AppShare from "@components/icons/obsolete/AppShare";
 
 const Share = (props: any) => {
   const t = getClientTranslator();
