@@ -10,6 +10,7 @@ import MESSAGES from "@app/components/data/common-messages";
 import ArrowRight from "@components/icons/ArrowRight";
 import Close from "@components/icons/Close";
 import {ignorePromise} from "@framework/utils";
+import DownArrow from "@components/icons/DownArrow";
 
 interface MenuProps {
   locale: string;
@@ -21,6 +22,7 @@ const MenuBlock = (props: MenuProps) => {
   const iconControls = useAnimation();
   const [closing, setClosing] = useState<boolean>(false);
   const [opening, setOpening] = useState<boolean>(false);
+  const [subMenuVisible, setSubMenuVisible] = useState<boolean>(false);
 
   useEffect(() => {
     if (opening) {
@@ -46,6 +48,35 @@ const MenuBlock = (props: MenuProps) => {
 
   const openMenu = () => {
     setOpening(true);
+  };
+
+  const changeMenu = () => {
+    setSubMenuVisible(prev => !prev);
+  };
+  const renderMenuItem = (item) => {
+    if (item.children) {
+      return (
+        <>
+          <div className="flex" key={item.id}>
+            <button className="text-stone-950 text-lg font-normal" onClick={changeMenu}>
+              <div className="flex gap-2 items-center">
+                <span>{t(item.name)}</span> <sup>({item.children.length})</sup> <DownArrow/>
+              </div>
+            </button>
+            <div className="flex-grow">&nbsp;</div>
+          </div>
+          {subMenuVisible && <div className="ml-12 flex flex-col gap-12">
+            {item.children.map((child) => renderMenuItem(child))}
+          </div>}
+        </>
+      );
+    } else {
+      return (
+        <a href={item.target} key={item.id} className="text-stone-950 text-lg font-normal">
+          {t(item.name)}
+        </a>
+      );
+    }
   };
 
   return (
@@ -90,11 +121,7 @@ const MenuBlock = (props: MenuProps) => {
           ><Close/></motion.div>
         </div>
         <div className="flex flex-col mt-12 ml-6 gap-12">
-          {MENU_ITEMS.map((item) => (
-            <a href={item.target} key={item.id} className="text-stone-950 text-lg font-normal">
-              {t(item.name)} {item.children && item.children.length > 0 ? <sup>({item.children.length})</sup> : null}
-            </a>
-          ))}
+          {MENU_ITEMS.map((item) => renderMenuItem(item))}
           <div className="flex">
             <a href="#"
                className="pl-6 pr-4 pt-3.5 pb-3.5 bg-stone-950 rounded-3xl justify-start items-center gap-2.5 flex flex-row">
