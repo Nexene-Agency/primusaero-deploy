@@ -2,33 +2,35 @@ import {Selectable} from "@framework/model";
 
 export const SERVICE_MENU_ITEMS: Selectable[] = [
   {
-    id: "privateAircraftOperation",
+    id: "private-aircraft-operation",
     name: "services.privateAircraftOperation",
-    target: "#",
+    target: "services/private-aircraft-operation",
     context: "/images/services-1.png"
   },
   {
-    id: "aircraftCharter", name: "services.aircraftCharter", target: "#",
+    id: "aircraft-charter", name: "services.aircraftCharter", target: "/services/aircraft-charter",
     context: "/images/services-2.png"
   },
   {
-    id: "aircraftAcquisition", name: "services.aircraftAcquisition", target: "#",
+    id: "aircraft-acquisition", name: "services.aircraftAcquisition", target: "/services/aircraft-acquisition",
     context: "/images/services-3.png"
   },
   {
-    id: "maintenance", name: "services.maintenance", target: "#",
+    id: "maintenance", name: "services.maintenance", target: "/services/maintenance",
     context: "/images/services-4.png"
   },
   {
-    id: "technicalManagement", name: "services.technicalManagement", target: "#",
+    id: "technical-management", name: "services.technicalManagement", target: "/services/technical-management",
     context: "/images/services-5.png"
   },
   {
-    id: "sparePartsAndLogistics", name: "services.sparePartsAndLogistics", target: "#",
+    id: "spare-parts-and-logistics",
+    name: "services.sparePartsAndLogistics",
+    target: "/services/spare-parts-and-logistics",
     context: "/images/services-6.png"
   },
   {
-    id: "consultingServices", name: "services.consultingServices", target: "#",
+    id: "consulting-services", name: "services.consultingServices", target: "/services/consulting-services",
     context: "/images/services-7.png"
   },
 ];

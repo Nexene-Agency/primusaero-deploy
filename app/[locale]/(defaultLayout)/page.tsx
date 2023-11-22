@@ -1,7 +1,4 @@
 import React from "react";
-import "./home.css";
-import {flatten, getMessages, translator} from "@framework/i18n.utils";
-import MESSAGES from "./home.messages";
 import BlockOne from "@app/components/home-page/block-1";
 import BlockTwo from "@app/components/home-page/block-2";
 import BlockThree from "@app/components/home-page/block-3";
@@ -15,7 +12,6 @@ interface HomeProps {
 }
 
 const Home = async ({params, searchParams}: HomeProps) => {
-  const t = translator(flatten(getMessages(params.locale, MESSAGES)));
   const testimonials: DatabaseEntry<TestimonialReference>[] | undefined = await getTestimonials();
 
   return (
