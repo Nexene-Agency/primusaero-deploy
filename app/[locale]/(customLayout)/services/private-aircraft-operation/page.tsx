@@ -28,31 +28,38 @@ const PrivateAircraftOperations = async ({params, searchParams}: PageProps) => {
   );
 
   return (
-    <div className="w-full flex flex-col">
-      <ServicePageTitle titles={[tl("titles.1"), tl("titles.2")]}/>
-      {/*<div className="flex flex-col mt-9 lg:mt-18 ml-6 lg:ml-16 mr-5 lg:mr-14 mb-16 lg:mb-36 items-start">*/}
-      {/*  <div className="text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase">{tl("titles.1")}</div>*/}
-      {/*  <div className="text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase">{tl("titles.2")}</div>*/}
-      {/*</div>*/}
-      <img src="/images/big-placeholder.png" alt="private aircraft operations image"
-           className="w-full h-[393px] lg:h-[864px] overflow-x-hidden"/>
-      <div className="flex flex-col my-36 lg:my-72 mx-6 lg:mx-16 items-center gap-16">
-        {Array.from({length: 5}).map((_, i) => renderSection(i))}
-        <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
-          <div className="hidden lg:block lg:w-[22%]">&nbsp;</div>
-          <div className="w-[56%]">
-            <div
-              className="h-11 pl-6 pr-4 pt-2.5 bg-stone-950 rounded-3xl flex-col justify-start items-start gap-2.5 inline-flex">
-              <a href="#" className="justify-start items-center gap-2 inline-flex">
-                <div className="text-right text-white text-lg font-normal">{tl("getInTouch")}</div>
-                <div className="fill-white"><ArrowRight/></div>
-              </a>
+    <>
+      <div className="w-full flex flex-col">
+        <div className="w-full relative top-0 left-0">
+          <img src="/images/black-background.webp" alt="private aircraft operations image"
+               className="relative top-0 left-0"/>
+          <div className="absolute mt-[108px] top-0 left-0">
+            <ServicePageTitle titles={[tl("titles.1"), tl("titles.2")]}/>
+          </div>
+          <img src="/images/helicopter-model.webp" alt="private aircraft operations image"
+               className="absolute top-0 left-0"/>
+        </div>
+      </div>
+
+      <div>
+        <div className="flex flex-col my-36 lg:my-72 mx-6 lg:mx-16 items-center gap-16">
+          {Array.from({length: 5}).map((_, i) => renderSection(i))}
+          <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
+            <div className="hidden lg:block lg:w-[22%]">&nbsp;</div>
+            <div className="w-[56%]">
+              <div
+                className="h-11 pl-6 pr-4 pt-2.5 bg-stone-950 rounded-3xl flex-col justify-start items-start gap-2.5 inline-flex">
+                <a href="#" className="justify-start items-center gap-2 inline-flex">
+                  <div className="text-right text-white text-lg font-normal">{tl("getInTouch")}</div>
+                  <div className="fill-white"><ArrowRight/></div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
+        <ServiceNextButton url={`/services/${acquisition.id}`} text={tc(acquisition.name)}/>
       </div>
-      <ServiceNextButton url={`/services/${acquisition.id}`} text={tc(acquisition.name)}/>
-    </div>
+    </>
   );
 };
 export default PrivateAircraftOperations;

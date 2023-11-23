@@ -2,9 +2,9 @@ import React from "react";
 import BlockOne from "@app/components/home-page/block-1";
 import BlockTwo from "@app/components/home-page/block-2";
 import BlockThree from "@app/components/home-page/block-3";
-import {DatabaseEntry} from "@framework/firebase.utils";
-import {TestimonialReference} from "@components/dashboard/testimonials/model";
 import {getTestimonials} from "@app/server-actions/testimonials";
+import {ListContent} from "@framework/list/list.definition";
+import {Testimonial} from "@components/dashboard/testimonials/model";
 
 interface HomeProps {
   params: { locale: string };
@@ -12,11 +12,11 @@ interface HomeProps {
 }
 
 const Home = async ({params, searchParams}: HomeProps) => {
-  const testimonials: DatabaseEntry<TestimonialReference>[] | undefined = await getTestimonials();
+  const testimonials: ListContent<Testimonial> = await getTestimonials();
 
   return (
     <>
-      <BlockOne locale={params.locale} testimonial={testimonials ? testimonials[0] : {} as any}/>
+      <BlockOne locale={params.locale} testimonial={testimonials ? testimonials.data[0] : {} as any}/>
       <BlockTwo locale={params.locale}/>
       <BlockThree locale={params.locale}/>
     </>

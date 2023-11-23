@@ -29,30 +29,31 @@ const Locations = (props: any) => {
 
   useEffect(() => {
     setTimeout(() => {
-      const map: HTMLObjectElement = document.querySelector("#map");
-      const circles = map.contentDocument.querySelectorAll("circle");
-      circles.forEach((item) => {
-        item.onclick = () => {
-          locationClicked(item);
-        };
-      });
-      const paths = map.contentDocument.querySelectorAll("path");
-      paths.forEach((item) => {
-        item.onmousemove = (ev: MouseEvent) => {
-          moveEvents.next(ev);
-        };
-      });
-      const theMap: SVGElement = map.contentDocument.querySelector("#the-map");
-      theMap.onclick = () => {
-        hideTooltip();
-      };
-      const theMapBackground: SVGElement = map.contentDocument.querySelector("#map-background");
-      theMapBackground.onclick = () => {
-        hideTooltip();
-      };
-      theMapBackground.onmousemove = (ev: MouseEvent) => {
-        moveEvents.next(ev);
-      };
+      const map: HTMLObjectElement | null = document.querySelector("#map");
+      // FIXME: this is not working when building
+      // const circles = map ? map!.contentDocument.querySelectorAll("circle") : [];
+      // circles.forEach((item) => {
+      //   item.onclick = () => {
+      //     locationClicked(item);
+      //   };
+      // });
+      // const paths = map ? map!.contentDocument.querySelectorAll("path") : [];
+      // paths.forEach((item) => {
+      //   item.onmousemove = (ev: MouseEvent) => {
+      //     moveEvents.next(ev);
+      //   };
+      // });
+      // const theMap: SVGElement = map ? map!.contentDocument.querySelector("#the-map") : {} as any;
+      // theMap.onclick = () => {
+      //   hideTooltip();
+      // };
+      // const theMapBackground: SVGElement = map ? map!.contentDocument.querySelector("#map-background") : {} as any;
+      // theMapBackground.onclick = () => {
+      //   hideTooltip();
+      // };
+      // theMapBackground.onmousemove = (ev: MouseEvent) => {
+      //   moveEvents.next(ev);
+      // };
     }, 2000);
 
     moveEvents.pipe(debounceTime(800)).subscribe((next) => setMouseMoved(next as MouseEvent));

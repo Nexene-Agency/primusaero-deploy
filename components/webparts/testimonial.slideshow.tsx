@@ -1,13 +1,13 @@
 "use client";
 import axios from "axios";
 import {ListContent} from "@framework/list/list.definition";
-import {TestimonialReference} from "@components/dashboard/testimonials/model";
 import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {timer} from "rxjs";
+import {Testimonial} from "@components/dashboard/testimonials/model";
 
 const TestimonialSlideshow = (props: any) => {
-  const [testimonials, setTestimonials] = useState<ListContent<TestimonialReference> | undefined>();
+  const [testimonials, setTestimonials] = useState<ListContent<Testimonial> | undefined>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const ticker = timer(props.timeout ?? 5000, props.timeout ?? 5000);
   const [ticked, setTicked] = useState<number>(0);
@@ -33,7 +33,6 @@ const TestimonialSlideshow = (props: any) => {
   }, [ticked]);
 
   return (
-
     <div
       className="px-8 lg:px-16 py-36 lg:py-72 bg-white bg-opacity-90 border-b border-stone-950 backdrop-blur-3xl flex-col justify-start items-start gap-2.5 inline-flex">
       {testimonials ? <>

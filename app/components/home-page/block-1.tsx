@@ -4,20 +4,16 @@ import MESSAGES from "@app/components/data/common-messages";
 import ArrowRight from "@components/icons/ArrowRight";
 import Marquee from "@components/webparts/marquee";
 import React, {Suspense} from "react";
-import {TestimonialReference} from "@components/dashboard/testimonials/model";
-import {DatabaseEntry} from "@framework/firebase.utils";
 import BigArrowLeft from "@components/icons/BigArrowLeft";
 import "./block1.css";
 import TestimonialSlideshow from "@components/webparts/testimonial.slideshow";
+import PropTypes from "prop-types";
 
-interface BlockProperties {
-  locale: string;
-  testimonial: DatabaseEntry<TestimonialReference>;
-}
 
-const Slogans = (locale: string) => {
-  const t = translator(flatten(getMessages(locale, MESSAGES)));
-  return (
+const BlockOne = (props: any) => {
+  const t = translator(flatten(getMessages(props.locale, MESSAGES)));
+
+  const renderSlogans = () => (
     <div className="justify-start items-center mt-6 gap-6 lg:gap-12 inline-flex">
       <div
         className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">{t("home.slogans.1")}</div>
@@ -29,15 +25,9 @@ const Slogans = (locale: string) => {
         className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">{t("home.slogans.3")}</div>
     </div>
   );
-};
-
-const BlockOne = (props: BlockProperties) => {
-  const t = translator(flatten(getMessages(props.locale, MESSAGES)));
-
-  console.log("props.testimonial", props.testimonial);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mt-[108px]">
       <img className="hidden lg:block" src="/images/first-block-1.webp"/>
 
       <div className="w-full lg:hidden h-[620px]">
@@ -82,10 +72,10 @@ const BlockOne = (props: BlockProperties) => {
           className="px-8 lg:px-16 py-36 lg:py-72 bg-white bg-opacity-90 border-b border-stone-950 backdrop-blur-3xl flex-col justify-start items-start gap-2.5 inline-flex">
           <div className="flex-col justify-start items-center gap-8 lg:gap-12 flex">
             <div
-              className="self-stretch text-stone-950 text-xl lg:text-4xl font-normal leading-normal lg:leading-10">“{props.testimonial.data?.text}”
+              className="self-stretch text-stone-950 text-xl lg:text-4xl font-normal leading-normal lg:leading-10">“{props.testimonial?.data?.text}”
             </div>
             <div
-              className="self-stretch text-zinc-500 text-lg lg:text-xl font-normal lg:leading-relaxed">({props.testimonial.data?.author})
+              className="self-stretch text-zinc-500 text-lg lg:text-xl font-normal lg:leading-relaxed">({props.testimonial?.data?.author})
             </div>
           </div>
         </div>
@@ -93,15 +83,15 @@ const BlockOne = (props: BlockProperties) => {
         <TestimonialSlideshow timeout={5000}/>
       </Suspense>
 
-      <Suspense fallback={<Slogans locale={props.locale}/>}>
+      <Suspense fallback={renderSlogans()}>
         <div className="hidden lg:block">
           <Marquee size={1536} duration={15}>
-            <Slogans locale={props.locale}/>
+            {renderSlogans()}
           </Marquee>
         </div>
         <div className="lg:hidden">
           <Marquee size={1100} duration={15}>
-            <Slogans locale={props.locale}/>
+            {renderSlogans()}
           </Marquee>
         </div>
       </Suspense>
@@ -126,4 +116,8 @@ const BlockOne = (props: BlockProperties) => {
   );
 };
 
+BlockOne.propTypes = {
+  locale: PropTypes.string.isRequired,
+  testimonial: PropTypes.object.isRequired
+};
 export default BlockOne;

@@ -9,9 +9,10 @@ interface BlockProperties {
   locale: string;
 }
 
-const Slogan = (locale: string) => {
-  const t = translator(flatten(getMessages(locale, MESSAGES)));
-  return (
+const BlockThree = (props: BlockProperties) => {
+  const t = translator(flatten(getMessages(props.locale, MESSAGES)));
+
+  const renderSlogans = () => (
     <div className="justify-start items-center mt-6 gap-6 lg:gap-12 inline-flex">
       <div
         className="text-center text-white text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">{t("footer.slogans.1")}</div>
@@ -23,10 +24,6 @@ const Slogan = (locale: string) => {
         className="text-center text-white text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">{t("footer.slogans.3")}</div>
     </div>
   );
-};
-
-const BlockThree = (props: BlockProperties) => {
-  const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   return (
     <>
@@ -41,15 +38,15 @@ const BlockThree = (props: BlockProperties) => {
         {/*</Suspense>*/}
       </div>
       <div className="bg-stone-950">
-        <Suspense fallback={<Slogan locale={props.locale}/>}>
+        <Suspense fallback={renderSlogans()}>
           <div className="hidden lg:block">
             <Marquee size={2205} duration={15}>
-              <Slogan locale={props.locale}/>
+              {renderSlogans()}
             </Marquee>
           </div>
           <div className="lg:hidden">
             <Marquee size={1250} duration={15}>
-              <Slogan locale={props.locale}/>
+              {renderSlogans()}
             </Marquee>
           </div>
         </Suspense>

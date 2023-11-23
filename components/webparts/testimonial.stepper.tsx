@@ -1,13 +1,13 @@
 "use client";
 import axios from "axios";
 import {ListContent} from "@framework/list/list.definition";
-import {TestimonialReference} from "@components/dashboard/testimonials/model";
+import {Testimonial} from "@components/dashboard/testimonials/model";
 import React, {useEffect, useState} from "react";
 import ArrowButtonLeft from "@components/icons/ArrowButtonLeft";
 import ArrowButtonRight from "@components/icons/ArrowButtonRight";
 
 const TestimonialStepper = (props: any) => {
-  const [testimonials, setTestimonials] = useState<ListContent<TestimonialReference> | undefined>();
+  const [testimonials, setTestimonials] = useState<ListContent<Testimonial> | undefined>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const TestimonialStepper = (props: any) => {
           <div className="self-stretch text-white text-xl lg:text-4xl font-normal leading-normal lg:leading-10">
             “{testimonials.data[currentIndex].data.text}”
           </div>
-          <div className="self-stretch text-neutral-100 text-xl font-normal font-['Nimbus Sans'] leading-relaxed">
+          <div className="self-stretch text-neutral-100 text-xl font-normal leading-relaxed">
             ({testimonials.data[currentIndex].data.author})
           </div>
         </div>

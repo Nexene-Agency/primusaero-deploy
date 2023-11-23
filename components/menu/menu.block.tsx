@@ -11,6 +11,7 @@ import ArrowRight from "@components/icons/ArrowRight";
 import Close from "@components/icons/Close";
 import {ignorePromise} from "@framework/utils";
 import DownArrow from "@components/icons/DownArrow";
+import {Selectable} from "@framework/model";
 
 interface MenuProps {
   locale: string;
@@ -53,11 +54,11 @@ const MenuBlock = (props: MenuProps) => {
   const changeMenu = () => {
     setSubMenuVisible(prev => !prev);
   };
-  const renderMenuItem = (item) => {
+  const renderMenuItem = (item: Selectable) => {
     if (item.children) {
       return (
-        <>
-          <div className="flex" key={item.id}>
+        <div key={item.id}>
+          <div className="flex">
             <button className="text-stone-950 text-lg font-normal" onClick={changeMenu}>
               <div className="flex gap-2 items-center">
                 <span>{t(item.name)}</span> <sup>({item.children.length})</sup> <DownArrow/>
@@ -68,7 +69,7 @@ const MenuBlock = (props: MenuProps) => {
           {subMenuVisible && <div className="ml-12 flex flex-col gap-12">
             {item.children.map((child) => renderMenuItem(child))}
           </div>}
-        </>
+        </div>
       );
     } else {
       return (

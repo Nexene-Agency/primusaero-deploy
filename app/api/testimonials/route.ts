@@ -2,7 +2,7 @@
 import {NextRequest, NextResponse} from "next/server";
 import {getFirestoreInstance, nextOkResponse} from "@app/api/utils";
 import {ListContent} from "@/framework/list/list.definition";
-import {TestimonialReference, TESTIMONIALS_COLLECTION} from "@components/dashboard/testimonials/model";
+import {Testimonial, TESTIMONIALS_COLLECTION} from "@components/dashboard/testimonials/model";
 import {asDatabaseEntries2} from "@framework/firebase.utils";
 
 // please note, this is an unsecured endpoint
@@ -22,7 +22,7 @@ const getHandler = async (
     .limit(100)
     .get()
     .then((hits) => {
-      return asDatabaseEntries2<TestimonialReference>(hits);
+      return asDatabaseEntries2<Testimonial>(hits);
     })
     .then((data) => {
       return nextOkResponse({
