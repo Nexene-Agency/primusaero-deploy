@@ -1,9 +1,9 @@
-import { NextAuthOptions } from "next-auth";
+import {NextAuthOptions} from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { FirestoreAdapter } from "@auth/firebase-adapter";
-import { cert } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
-import { Roles, ROLES_COLLECTION } from "@components/dashboard/users/model";
+import {FirestoreAdapter} from "@auth/firebase-adapter";
+import {cert} from "firebase-admin/app";
+import {getFirestore} from "firebase-admin/firestore";
+import {Roles, ROLES_COLLECTION} from "@components/dashboard/users/model";
 
 const fireStoreAdapter = FirestoreAdapter({
   // firestore database instance
@@ -14,6 +14,7 @@ const fireStoreAdapter = FirestoreAdapter({
   }),
 });
 
+// FIXME: ??? what is the problem
 export const authOptions: NextAuthOptions = {
   // @ts-ignore
   adapter: fireStoreAdapter,
@@ -50,7 +51,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({user, account, profile, email, credentials}) {
       // console.log("signIn user:", user); // this goes to the "users" collection
       // console.log("signIn account", account);
       // console.log("signIn profile", profile);
@@ -58,12 +59,12 @@ export const authOptions: NextAuthOptions = {
       // console.log("signIn credentials", credentials);
       return true;
     },
-    async redirect({ url, baseUrl }) {
+    async redirect({url, baseUrl}) {
       // console.log("redirect url:", url);
       // console.log("redirect baseUrl:", baseUrl);
       return baseUrl;
     },
-    async session({ session, token, user }) {
+    async session({session, token, user}) {
       console.log("session in adapter:", session);
       // console.log("session token:", token);
       // console.log("session user:", user);

@@ -1,5 +1,3 @@
-// noinspection TypeScriptValidateTypes
-
 import {NextRequest, NextResponse} from "next/server";
 import {AdapterSession, AdapterUser} from "next-auth/adapters";
 import {authOptions} from "@components/firebase/auth.options";
@@ -33,14 +31,9 @@ export const getSessionAndUser = async (
     return Promise.resolve({session: undefined, user: undefined});
   }
 
-  const session = await authOptions.adapter!.getSessionAndUser(sessionId);
-  if (!session) {
-    return Promise.resolve({session: undefined, user: undefined});
-  }
-
-  const result = await session!;
+  const result = await authOptions!.adapter!.getSessionAndUser(sessionId!);
   // console.log("got session and user", result?.session, result?.user);
-  if (!result) {
+  if (!result || !Reflect.has(result, "session")) {
     return Promise.resolve({session: undefined, user: undefined});
   }
 
