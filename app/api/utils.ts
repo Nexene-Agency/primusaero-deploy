@@ -1,8 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import { AdapterSession, AdapterUser } from "next-auth/adapters";
-import { authOptions } from "@components/firebase/auth.options";
-import { HttpStatusCode } from "axios";
-import { ServiceError } from "@/framework/api/service.error";
+// noinspection TypeScriptValidateTypes
+
+import {NextRequest, NextResponse} from "next/server";
+import {AdapterSession, AdapterUser} from "next-auth/adapters";
+import {authOptions} from "@components/firebase/auth.options";
+import {HttpStatusCode} from "axios";
+import {ServiceError} from "@/framework/api/service.error";
 
 import admin from "firebase-admin";
 
@@ -28,13 +30,18 @@ export const getSessionAndUser = async (
   const sessionId = getSession(req);
   // console.log("got session ID", sessionId);
   if (!sessionId) {
-    return Promise.resolve({ session: undefined, user: undefined });
+    return Promise.resolve({session: undefined, user: undefined});
   }
 
-  const result = await authOptions.adapter!.getSessionAndUser(sessionId!);
+  const session = await authOptions.adapter!.getSessionAndUser(sessionId);
+  if (!session) {
+    return Promise.resolve({session: undefined, user: undefined});
+  }
+
+  const result = await session!;
   // console.log("got session and user", result?.session, result?.user);
-  if (!result || !result.session) {
-    return Promise.resolve({ session: undefined, user: undefined });
+  if (!result) {
+    return Promise.resolve({session: undefined, user: undefined});
   }
 
   return Promise.resolve(result);
@@ -65,13 +72,13 @@ export const nextCreatedResponse = (body: any = {}) => {
 };
 
 export const serviceErrorAsNextResponse = (error: ServiceError) => {
-  return NextResponse.json(error, { status: error.code });
+  return NextResponse.json(error, {status: error.code});
 };
 
 export const nextInternalError = (error: ServiceError) => {
   console.log("internal error", error);
   return NextResponse.json(
-    { error: `${error}` },
-    { status: HttpStatusCode.InternalServerError }
+    {error: `${error}`},
+    {status: HttpStatusCode.InternalServerError}
   );
 };
