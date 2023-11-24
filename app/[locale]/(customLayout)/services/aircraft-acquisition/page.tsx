@@ -20,7 +20,8 @@ const AircraftAcquisition = async ({params, searchParams}: PageProps) => {
   const technical = SERVICE_MENU_ITEMS.find((item) => item.id === "technical-management")!;
 
   const renderSection = (i: number) => (
-    <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
+    <div key={`rs-${i}`}
+         className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
       <div
         className="w-full lg:w-[22%] text-zinc-500 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.title`)}</div>
       <div
