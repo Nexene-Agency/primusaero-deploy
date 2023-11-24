@@ -22,7 +22,7 @@ const DefaultFallback = () => {
   return <div></div>;
 };
 
-const MEASUREMENT_ID = process.env.FIREBASE_MEASUREMENT_ID;
+const MEASUREMENT_ID = process.env.FIREBASE_MEASUREMENT_ID || "";
 
 // @ts-ignore
 export default async function LocaleLayout({children, params: {locale}}) {
