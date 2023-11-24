@@ -12,18 +12,19 @@ interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const TechnicalManagement = async ({params, searchParams}: PageProps) => {
+const ConsultingServices = async ({params, searchParams}: PageProps) => {
   const tl = translator(flatten(getMessages(params.locale, LOCAL_MESSAGES))); // local translator
   const tc = translator(flatten(getMessages(params.locale, MESSAGES))); // common translator
 
-  const consulting = SERVICE_MENU_ITEMS.find((item) => item.id === "consulting-services")!;
+  const charter = SERVICE_MENU_ITEMS.find((item) => item.id === "aircraft-charter")!;
 
   const renderSection = (i: number) => (
     <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
       <div
         className="w-full lg:w-[22%] text-zinc-500 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.title`)}</div>
       <div
-        className="w-full lg:w-[56%] text-stone-950 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.text`)}</div>
+        className="w-full lg:w-[56%] text-stone-950 text-xl font-normal leading-relaxed"
+        dangerouslySetInnerHTML={{__html: tl(`sections.section${i}.text`) as any}}></div>
     </div>
   );
 
@@ -36,26 +37,14 @@ const TechnicalManagement = async ({params, searchParams}: PageProps) => {
           <div className="absolute mt-[108px] top-0 left-0">
             <ServicePageTitle titles={[tl("titles.1")]}/>
           </div>
-          <img src="/images/technical-management.webp" alt="technical management image"
+          <img src="/images/consulting-services.webp" alt="technical management image"
                className="absolute top-0 left-0"/>
         </div>
       </div>
 
       <div>
         <div className="flex flex-col my-36 lg:my-72 mx-6 lg:mx-16 items-center gap-16">
-          {renderSection(0)}
-          <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
-            <div className="hidden lg:block lg:w-[22%]">&nbsp;</div>
-            <div className="w-[56%]">
-              {Array.from({length: 9}).map((_, i) => (
-                <div key={`srv-${i}`}
-                     className="w-full h-16 py-6 border-t border-b border-neutral-400 border-opacity-40 justify-start items-center gap-2 inline-flex">
-                  <div className="w-3 h-3 bg-stone-950 rounded-full"/>
-                  <div className="text-stone-950 pt-1 text-xl font-normal leading-relaxed">{tl(`services.${i}`)}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          {Array.from({length: 3}).map((_, i) => renderSection(i))}
           <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
             <div className="hidden lg:block lg:w-[22%]">&nbsp;</div>
             <div className="w-[56%]">
@@ -69,9 +58,9 @@ const TechnicalManagement = async ({params, searchParams}: PageProps) => {
             </div>
           </div>
         </div>
-        <ServiceNextButton url={`/services/${consulting.id}`} text={tc(consulting.name)}/>
+        <ServiceNextButton url={`/services/${charter.id}`} text={tc(charter.name)}/>
       </div>
     </>
   );
 };
-export default TechnicalManagement;
+export default ConsultingServices;
