@@ -7,13 +7,13 @@ import Script from "next/script";
 import { getCookie } from "cookies-next";
 
 const CookieBanner = () => {
-  const consent = getCookie("localConsent");
-  const advertisingConsent = getCookie("asConsent");
-  const analyticsConsent = getCookie("localConsent");
+  const consent = getCookie("localConsent") === "true";
+  const advertisingConsent = getCookie("asConsent") === "true";
+  const analyticsConsent = getCookie("localConsent") === "true";
 
   return (
     <ChakraProvider theme={theme}>
-      {consent === true && (
+      {consent && (
         <Script
           id="consupd"
           strategy="afterInteractive"

@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
 
 const developerKey = "pa-881464-8b656";
-const getHandler = async (req: NextRequest, res: NextResponse) => {
+const getHandler = async (
+  req: NextRequest,
+  res: NextResponse
+): Promise<NextResponse> => {
   const url = new URL(req.url);
   const text = url.searchParams.get("key") ?? "0";
 

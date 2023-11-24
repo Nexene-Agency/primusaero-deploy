@@ -7,9 +7,9 @@ const nextConfig = {
   //   defaultLocale: "en",
   // },
   experimental: {
-    serverActions: true,
-    serverActionsBodySizeLimit: "2mb",
-    appDir: true,
+    // serverActions: true,
+    // serverActionsBodySizeLimit: "2mb",
+    // appDir: true,
   },
   images: {
     remotePatterns: [
@@ -17,7 +17,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "firebasestorage.googleapis.com",
         port: "",
-        pathname: "/v0/b/vanlifezone-dev.appspot.com/o/**",
+        pathname: "/v0/b/primusaero-dev.appspot.com/o/**",
       },
     ],
   },
