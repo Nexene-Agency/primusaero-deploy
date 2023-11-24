@@ -22,13 +22,15 @@ const DefaultFallback = () => {
   return <div></div>;
 };
 
+const MEASUREMENT_ID = process.env.FIREBASE_MEASUREMENT_ID;
+
 // @ts-ignore
 export default async function LocaleLayout({children, params: {locale}}) {
   return (
     <html lang={locale}>
     <head/>
     <Suspense fallback={<DefaultFallback/>}>
-      <GoogleAnalytics GA_MEASUREMENT_ID="G-P635B9R9WC"/>
+      <GoogleAnalytics GA_MEASUREMENT_ID={MEASUREMENT_ID}/>
     </Suspense>
     <body>
     <div className="__root-layout font-nimbus">{children}</div>

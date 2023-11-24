@@ -1,6 +1,6 @@
 # PrimusAero Website
 
-Website made with NextJS 13 and TailwindCSS, using Google Firebase [and Algolia Search] as backend.
+Website made with NextJS 14 and TailwindCSS, using Google Firebase [and Algolia Search] as backend.
 
 ## Development
 
@@ -21,4 +21,6 @@ Before committing your branch, please checht that the `npm run build` command ru
 not, then fix the problems, if you cannot fix it in a reasonable time, then contact one of the
 admins (preferably Viktor) for help. Please note that the warnings you can ignore safely.
 
+## Test deployment
 
+[https://primusaero-dev.vercel.app/](https://primusaero-dev.vercel.app/)
