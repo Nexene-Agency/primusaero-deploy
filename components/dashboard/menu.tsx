@@ -15,6 +15,7 @@ import NewspaperIcon from "@framework/icons/basic/NewspaperIcon";
 import SettingsIcon from "@framework/icons/basic/SettingsIcon";
 import CommentsIcon from "@framework/icons/basic/CommentsIcon";
 import StarIcon from "@framework/icons/basic/StarIcon";
+import BuildingIcon from "@framework/icons/basic/BuildingIcon";
 
 const links: Selectable[] = [
   {
@@ -24,9 +25,21 @@ const links: Selectable[] = [
     icon: <DashboardIcon/>,
   },
   {
+    id: "companies",
+    target: "/dashboard/companies",
+    name: "app.company.plural",
+    icon: <BuildingIcon/>
+  },
+  {
+    id: "locations",
+    target: "/dashboard/locations",
+    name: "app.location.plural",
+    icon: <MapIcon/>
+  },
+  {
     id: "testimonials",
     target: "/dashboard/testimonials",
-    name: "app.testiomonial.plural",
+    name: "app.testimonial.plural",
     icon: <StarIcon/>,
   },
   {
@@ -34,12 +47,6 @@ const links: Selectable[] = [
     target: "/dashboard/articles",
     name: "app.article.plural",
     icon: <NewspaperIcon className="__menu-icon"/>,
-  },
-  {
-    id: "locations",
-    target: "/dashboard/locations",
-    name: "app.location.plural",
-    icon: <MapIcon className="__menu-icon"/>,
   },
   {
     id: "blogs",

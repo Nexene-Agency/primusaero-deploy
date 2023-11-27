@@ -44,6 +44,11 @@
       ]
     }
   },
+  "types": [
+    "node",
+    "react",
+    "jest"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

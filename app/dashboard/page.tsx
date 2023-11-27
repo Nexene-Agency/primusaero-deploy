@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-import "./../styles/brand.css";
+
 
 const ClientComponent = dynamic(() => import("@components/dashboard/page"), {
   ssr: false,

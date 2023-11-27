@@ -1,15 +1,10 @@
-import { getClientTranslator } from "@framework/i18n.client.utils";
-import React, { useState } from "react";
-import { useFormContext, useFormState } from "react-hook-form";
-import { Flex, FormControl, FormLabel, Text, VStack } from "@chakra-ui/react";
+import {getClientTranslator} from "@framework/i18n.client.utils";
+import React, {useState} from "react";
+import {useFormContext, useFormState} from "react-hook-form";
+import {Flex, FormControl, FormLabel, Input, Text, VStack} from "@chakra-ui/react";
 import GoogleMapsDisplay from "@framework/googlemaps/google.maps.display";
 import GoogleMapsAutocomplete from "@framework/googlemaps/google.maps.autocomplete";
-import {
-  Address,
-  ADDRESS_SCHEMA,
-  CITY_OF_GRAZ,
-  MapMarker,
-} from "@framework/googlemaps/model";
+import {Address, ADDRESS_SCHEMA, CITY_OF_GRAZ, MapMarker,} from "@framework/googlemaps/model";
 
 const fields = [
   "address",
@@ -27,9 +22,9 @@ const LocationTab = (props: any) => {
   const [markers, setMarkers] = useState<MapMarker[]>([]);
   const [center, setCenter] = useState<MapMarker>(CITY_OF_GRAZ);
 
-  const { register, control, reset, watch, getValues, setValue } =
+  const {register, control, reset, watch, getValues, setValue} =
     useFormContext();
-  const { errors, isDirty, isValid } = useFormState({ control });
+  const {errors, isDirty, isValid} = useFormState({control});
 
   const renderElement = (name: string) => (
     // @ts-ignore
@@ -94,6 +89,16 @@ const LocationTab = (props: any) => {
           requiredStreetNumber={true}
           placeholder={t("app.fields.address_locator")}
           onSelected={selected}
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel>{t("app.location.addressPlus")}</FormLabel>
+        <Input
+          id="addressPlus"
+          placeholder={t("app.location.addressPlus")!}
+          {...register("addressPlus")}
+          bg="white"
+          borderColor={errors.addressPlus ? "red" : "inherit"}
         />
       </FormControl>
     </>

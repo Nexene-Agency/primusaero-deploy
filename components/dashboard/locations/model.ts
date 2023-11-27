@@ -1,20 +1,20 @@
 import Joi from "joi";
-import moment from "moment/moment";
-import { Address } from "@framework/googlemaps/model";
+import {Address} from "@framework/googlemaps/model";
 
 export const LOCATIONS_COLLECTION = "locations";
 
 export interface Location {
   name: string;
-  description: string;
-  text: string;
-  imageTag: string;
-  signaturePicture: string;
-  signaturePreview: string;
+  description?: string;
+  headline: string;
+  code: string;
+  companies: string[];
+  signaturePicture?: string;
+  signaturePreview?: string;
   address: Address;
+  addressPlus?: string;
   valid: boolean;
-  expires: string;
-  type: string[];
+  tags: string[];
 }
 
 export interface LocationReference {
@@ -22,28 +22,28 @@ export interface LocationReference {
     name: string;
     description: string;
     valid: boolean;
-    expires: string;
-    type: string[];
+    code: string;
   };
 }
 
 export const LOCATION_SCHEMA = Joi.object({
   name: Joi.string().required().min(3).max(128),
-  description: Joi.string().required().min(3).max(256),
-  text: Joi.string().optional().allow("").max(16384),
-  imageTag: Joi.string().required().min(3).max(32),
-  signaturePicture: Joi.string().required().min(10).max(1024),
-  signaturePreview: Joi.string().required().min(10).max(1024),
+  description: Joi.string().optional().allow("").max(512),
+  headline: Joi.string().required().max(128),
+  code: Joi.string().required().min(3).max(32),
+  companies: Joi.array().items(Joi.string()).optional().max(10),
+  signaturePicture: Joi.string().optional().allow("").max(1024),
+  signaturePreview: Joi.string().optional().allow("").max(1024),
+  addressPlus: Joi.string().optional().allow("").max(256),
   address: Joi.object().required(),
   valid: Joi.boolean().required(),
-  expires: Joi.string().required(),
-  type: Joi.array().items(Joi.string()).required().min(1).max(10),
+  tags: Joi.array().items(Joi.string()).required().min(1).max(10),
 });
 
 export const newLocation = (): Location => {
   return {
     name: "",
-    description: "",
+    headline: "",
     address: {
       address: "",
       postal_code: "",
@@ -54,21 +54,9 @@ export const newLocation = (): Location => {
       lat: 0,
       lng: 0,
     },
-    text: "",
-    imageTag: "",
-    signaturePicture: "",
-    signaturePreview: "",
+    code: "",
+    companies: [],
     valid: true,
-    expires: moment().add(1, "y").format("YYYY-MM-DD"),
-    type: ["other"],
+    tags: ["other"],
   };
 };
-
-export const LocationTypes = [
-  "rental",
-  "garage",
-  "shop",
-  "magazine_store",
-  "campground",
-  "other",
-];

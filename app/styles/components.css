@@ -1,0 +1,58 @@
+/** chips ------------------------------------------------------------------------------------- */
+.__chips {
+    @apply flex flex-col;
+}
+
+.__chips-input {
+}
+
+.__chips-list {
+    @apply flex flex-wrap my-1 items-center gap-1;
+}
+
+.__chips-list-item {
+    @apply flex items-center p-1 gap-1 text-xs bg-[lightgrey] rounded text-black;
+}
+
+.__chips-remove-icon {
+    height: 1rem;
+    width: 1rem;
+    cursor: pointer;
+}
+
+.__chips-popover-elevate {
+    z-index: 10000;
+    position: relative;
+}
+
+.__chips-popup {
+    background-color: var(--white) !important;
+    opacity: 1;
+}
+
+.__chips-popup-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    outline: 0;
+}
+
+.__chips-popup-item {
+    padding: .5rem;
+    text-align: left;
+    cursor: pointer;
+    outline: 0;
+}
+
+.__chips-popup-item:hover {
+    background-color: lightgray;
+}
+
+.__chips-popup-item:active {
+    background-color: blue;
+}
+
+.__chips-popup-item:focus {
+    background-color: lightgray;
+}

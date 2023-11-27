@@ -1,0 +1,39 @@
+/* google maps ------------------------------------------------------------------------------------------------------ */
+.pac-container {
+    z-index: 20000;
+}
+
+.pac-container:after {
+    /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+    background-image: none !important;
+    height: 0;
+}
+
+.pac-item {
+    padding: .5em;
+    font-size: 1em !important;
+}
+
+.pac-item-query {
+    font-size: 1em !important;
+}
+
+.pac-matched {
+    font-size: 1em !important;
+}
+
+.gmnoprint a, .gmnoprint span {
+    display: none;
+}
+
+.gmnoprint div div div button {
+    background-color: red !important;
+}
+
+.gmnoprint div {
+    background: none !important;
+}
+
+#GMapsID div div a div img {
+    display: none;
+}

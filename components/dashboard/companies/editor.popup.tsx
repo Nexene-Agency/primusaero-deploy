@@ -1,38 +1,41 @@
 "use client";
-import {Button, Tab, TabList, TabPanel, TabPanels, Tabs,} from "@chakra-ui/react";
+import {Button, Tab, TabList, TabPanel, TabPanels, Tabs, useToast,} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import {AppCommandType, asError, closePopupCommand, Command, itemEditedCommand,} from "@framework/events";
+import {AppCommandType, asError, closePopupCommand, Command, itemEditedCommand, showToast,} from "@framework/events";
 import PopupContainer from "@framework/popup.container";
 import {DatabaseEntry, saveOrCreate} from "@framework/firebase.utils";
-import {Location, LOCATION_SCHEMA, LOCATIONS_COLLECTION, newLocation,} from "@components/dashboard/locations/model";
 import {useSession} from "next-auth/react";
 import {ignorePromise, optionalFunctionWrapper, SelectableProperty} from "@framework/utils";
 
 import {getClientTranslator} from "@framework/i18n.client.utils";
-import BasicTab from "@components/dashboard/locations/basic.tab";
-import LocationTab from "@components/dashboard/locations/location.tab";
+import BasicTab from "@components/dashboard/companies/basic.tab";
 import {FormProvider, useForm, useFormState} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi/dist/joi";
 import SignaturePictureEditorTab from "@components/dashboard/pictures/singature.picture.editor";
+import {COMPANIES_COLLECTION, Company, COMPANY_SCHEMA, newCompany} from "@components/dashboard/companies/model";
+import SocialMediaTab from "@components/dashboard/socials/social.media";
 import {Selectable} from "@framework/model";
 
-const LocationEditorPopup = (props: any) => {
+const isDevelopment = process.env.NEXT_PUBLIC_DEVELOPMENT === "true";
+
+const CompaniesEditorPopup = (props: any) => {
   const t = getClientTranslator();
   const {data} = useSession();
   const [id] = useState<string>(props.id);
-  const [model, setModel] = useState<DatabaseEntry<Location>>({
-    data: newLocation(),
-  } as DatabaseEntry<Location>);
+  const toast = useToast();
+  const [model, setModel] = useState<DatabaseEntry<Company>>({
+    data: newCompany(),
+  } as DatabaseEntry<Company>);
   const [saving, setSaving] = useState<boolean>(false);
   const [command, setCommand] = useState<Command>(props.command);
-  const [companies] = useState<Selectable[]>(props.companies);
+  const [locations] = useState<Selectable[]>(props.locations);
 
   const baseForm = useForm({
     defaultValues: {
       ...model.data
     },
-    resolver: joiResolver(LOCATION_SCHEMA),
+    resolver: joiResolver(COMPANY_SCHEMA),
     mode: "onChange",
   });
 
@@ -45,7 +48,7 @@ const LocationEditorPopup = (props: any) => {
     }
     if (command.command === AppCommandType.OPEN_POPUP) {
       console.log("setting model", command.payload);
-      setModel(command.payload as DatabaseEntry<Location>);
+      setModel(command.payload as DatabaseEntry<Company>);
     }
   }, [command]);
 
@@ -55,7 +58,7 @@ const LocationEditorPopup = (props: any) => {
   }, [model]);
 
   const renderHeader = () => (
-    <>{t(model.id ? "app.location.singular" : "app.location.new")}</>
+    <>{t(model.id ? "app.company.singular" : "app.company.new")}</>
   );
 
   const debug = () => {
@@ -66,19 +69,19 @@ const LocationEditorPopup = (props: any) => {
     console.log("values", getValues());
   };
 
-  const closePopup = (saved?: DatabaseEntry<Location>) => {
+  const closePopup = (saved?: DatabaseEntry<Company>) => {
     setCommand(closePopupCommand());
     optionalFunctionWrapper(
-      "locationEditorPopup.onAction",
+      "companyEditorPopup.onAction",
       props.onAction
     )(itemEditedCommand(saved));
   };
 
   const saveModel = () => {
     setSaving(true);
-    saveOrCreate<Location>(LOCATIONS_COLLECTION, {
+    saveOrCreate<Company>(COMPANIES_COLLECTION, {
       id: model.id,
-      data: getValues() as Location,
+      data: getValues() as Company,
     })
       .then((saved) => {
         closePopup(saved);
@@ -86,9 +89,7 @@ const LocationEditorPopup = (props: any) => {
       .catch((error) => {
         console.error(error);
         // @ts-ignore
-        sendEvent(
-          asError(t("errors.item.save"), t(`errors.backend.${error.code}`))
-        );
+        showToast(toast, asError(t("errors.item.save"), t(`errors.backend.${error.code}`)));
       })
       .finally(() => setSaving(false));
   };
@@ -99,9 +100,9 @@ const LocationEditorPopup = (props: any) => {
 
   const renderFooter = () => (
     <>
-      <Button variant="outline" mr={3} onClick={debug} isDisabled={saving}>
+      {isDevelopment ? <Button variant="outline" mr={3} onClick={debug} isDisabled={saving}>
         debug
-      </Button>
+      </Button> : null}
       <Button
         variant="outline"
         mr={3}
@@ -143,16 +144,16 @@ const LocationEditorPopup = (props: any) => {
       renderFooter={renderFooter}
       command={command}
     >
-      <Tabs height="460px" maxHeight="460px">
+      <Tabs height="560px" maxHeight="560px">
         <TabList>
           <Tab>{t("app.tabs.basic")}</Tab>
           <Tab>{t("app.tabs.signaturePicture")}</Tab>
-          <Tab>{t("app.location.singular")}</Tab>
+          <Tab>{t("app.tabs.socialMedia")}</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
             <FormProvider {...baseForm}>
-              <BasicTab companies={companies}/>
+              <BasicTab locations={locations}/>
             </FormProvider>
           </TabPanel>
           <TabPanel>
@@ -163,7 +164,7 @@ const LocationEditorPopup = (props: any) => {
           </TabPanel>
           <TabPanel>
             <FormProvider {...baseForm}>
-              <LocationTab/>
+              <SocialMediaTab/>
             </FormProvider>
           </TabPanel>
         </TabPanels>
@@ -172,10 +173,10 @@ const LocationEditorPopup = (props: any) => {
   );
 };
 
-LocationEditorPopup.propTypes = {
-  companies: PropTypes.arrayOf(PropTypes.shape(SelectableProperty)).isRequired,
+CompaniesEditorPopup.propTypes = {
+  locations: PropTypes.arrayOf(PropTypes.shape(SelectableProperty)).isRequired,
   command: PropTypes.object,
   onAction: PropTypes.func,
 };
 
-export default LocationEditorPopup;
+export default CompaniesEditorPopup;

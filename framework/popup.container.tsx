@@ -8,14 +8,14 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import { AppCommandType, Command } from "@framework/events";
-import { getClientTranslator } from "@framework/i18n.client.utils";
+import {AppCommandType, Command} from "@framework/events";
+import {getClientTranslator} from "@framework/i18n.client.utils";
 
 const PopupContainer = (props: any) => {
   const t = getClientTranslator();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isOpen, onOpen, onClose} = useDisclosure();
   const [command, setCommand] = useState<Command | undefined>(props.command);
 
   useEffect(() => {
@@ -60,14 +60,14 @@ const PopupContainer = (props: any) => {
   return (
     <Modal
       isOpen={isOpen}
-      size="4xl"
+      size="6xl"
       onClose={onClose}
       closeOnOverlayClick={false}
       closeOnEsc={false}
       key={props.id}
     >
-      <ModalOverlay />
-      <ModalContent className={`__modal-content ${props.id} __w-full`}>
+      <ModalOverlay/>
+      <ModalContent className={`__modal-content ${props.id} w-full`}>
         {renderHeader()}
         <ModalBody className={`__modal-body ${props.id}`}>
           {props.children}

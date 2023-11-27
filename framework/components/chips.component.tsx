@@ -1,18 +1,10 @@
-import {
-  Input,
-  Popover,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Portal,
-  useDisclosure,
-} from "@chakra-ui/react";
+import {Input, Popover, PopoverBody, PopoverContent, PopoverTrigger, Portal, useDisclosure,} from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import { SelectableProperty } from "@framework/utils";
-import { Selectable } from "@framework/model";
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import {SelectableProperty} from "@framework/utils";
+import {Selectable} from "@framework/model";
+import {KeyboardEvent, useEffect, useRef, useState} from "react";
 import TimesIcon from "@framework/icons/basic/TimesIcon";
-import { debounce, interval, Subject } from "rxjs";
+import {debounce, interval, Subject} from "rxjs";
 
 export type SearchFunction = (search: string) => Selectable[];
 
@@ -25,7 +17,7 @@ const ChipsComponent = (props: any) => {
   const [typed] = useState<Subject<string>>(new Subject<string>());
   const [lastSearch, setLastSearch] = useState<string>("");
   const [lastInput, setLastInput] = useState<string>("");
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isOpen, onOpen, onClose} = useDisclosure();
   // the openedCount needed to keep track of the popup open/close events, otherwise see the useEffect below
   const [openedCount, setOpenedCount] = useState<number>(0);
   const initialRef = useRef<any>();
@@ -119,7 +111,7 @@ const ChipsComponent = (props: any) => {
       <div className="__chips-list-item" key={chip.id}>
         {chip.name}
         <span onClick={() => remove(chip)}>
-          <TimesIcon className="__chips-remove-icon" />
+          <TimesIcon className="__chips-remove-icon"/>
         </span>
       </div>
     );
@@ -153,7 +145,7 @@ const ChipsComponent = (props: any) => {
           return;
         }
       }
-      const element = { id: lastInput, name: lastInput } as Selectable;
+      const element = {id: lastInput, name: lastInput} as Selectable;
       const alreadyExists = values.find(
         (item: Selectable) => item.id === element.id
       );
@@ -200,6 +192,7 @@ const ChipsComponent = (props: any) => {
         placement="bottom-start"
         closeOnBlur={false}
         initialFocusRef={initialRef}
+        zIndex={3000}
       >
         <PopoverTrigger>
           <Input
@@ -213,25 +206,27 @@ const ChipsComponent = (props: any) => {
           />
         </PopoverTrigger>
         <Portal>
-          <PopoverContent className="__chips-popup">
-            <PopoverBody>
-              <div className="__chips-popup-list">
-                {actualChoices.map((item: Selectable, index: number) => (
-                  <button
-                    onClick={() => selected(item)}
-                    onKeyDown={buttonKeyDown}
-                    key={item.id}
-                    className="__chips-popup-item"
-                    tabIndex={0}
-                    data-index={index}
-                    ref={index === 0 ? initialRef : undefined}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-            </PopoverBody>
-          </PopoverContent>
+          <div className="__chips-popover-elevate">
+            <PopoverContent className="__chips-popup">
+              <PopoverBody>
+                <div className="__chips-popup-list">
+                  {actualChoices.map((item: Selectable, index: number) => (
+                    <button
+                      onClick={() => selected(item)}
+                      onKeyDown={buttonKeyDown}
+                      key={item.id}
+                      className="__chips-popup-item"
+                      tabIndex={0}
+                      data-index={index}
+                      ref={index === 0 ? initialRef : undefined}
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
+              </PopoverBody>
+            </PopoverContent>
+          </div>
         </Portal>
       </Popover>
       <div className="__chips-list">

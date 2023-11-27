@@ -1,5 +1,7 @@
 "use client";
 import "../styles/brand.css";
+import "../styles/components.css";
+import "../styles/google.maps.css";
 import React, {ReactNode} from "react";
 import Script from "next/script";
 

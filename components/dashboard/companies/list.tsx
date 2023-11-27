@@ -6,90 +6,89 @@ import {ListColumnDefinitionBuilder} from "@framework/list/list.column.definitio
 import PropTypes from "prop-types";
 import {asSelectable} from "@framework/utils";
 import {DatabaseEntry, dbUrl} from "@framework/firebase.utils";
-import {Location, LOCATIONS_COLLECTION, newLocation} from "./model";
+import {COMPANIES_COLLECTION, Company, newCompany} from "./model";
 import {checkMarkColumnGetter} from "@components/fragments";
 import {useEnvironmentContext, useEventContext,} from "@framework/context/providers";
 import {AppCommandType, asError, Command, openPopupCommand,} from "@framework/events";
 import {Selectable} from "@framework/model";
 import {getClientTranslator, getCurrentLocale,} from "@framework/i18n.client.utils";
-import LocationEditorPopup from "@components/dashboard/locations/editor.popup";
-import GoogleMapsContainer from "@framework/googlemaps/google.maps.container";
 import {queryBuilder} from "@framework/query.builder";
 import axios from "axios";
 import FullList from "@framework/list/full.list";
+import CompaniesEditorPopup from "@components/dashboard/companies/editor.popup";
 
 const LIST_HEADER: ListHeaderDefinition = {
-  operations: [asSelectable(LIST_ADD_ITEM, {name: "app.location.new"})],
+  operations: [asSelectable(LIST_ADD_ITEM, {name: "app.companies.new"})],
   filterDefinitions: [
     // asStringFilter("name", "fields.name"),
     // asStringFilter("description", "fields.description")
   ],
 };
 
-const LIST: ListDefinition<DatabaseEntry<Location>> = {
+const LIST: ListDefinition<DatabaseEntry<Company>> = {
   columns: [
-    new ListColumnDefinitionBuilder<DatabaseEntry<Location>>()
+    new ListColumnDefinitionBuilder<DatabaseEntry<Company>>()
       .withName("name")
       .withTitle("app.fields.name")
       .withGetClass((def, row?) => "w-3/10")
       .withGetValue((def, row) => row.data.name)
       .build(),
-    new ListColumnDefinitionBuilder<DatabaseEntry<Location>>()
+    new ListColumnDefinitionBuilder<DatabaseEntry<Company>>()
       .withName("code")
       .withTitle("app.fields.code")
       .withGetClass((def, row?) => "w-1/10")
       .withGetValue((def, row) => row.data.code)
       .build(),
-    new ListColumnDefinitionBuilder<DatabaseEntry<Location>>()
+    new ListColumnDefinitionBuilder<DatabaseEntry<Company>>()
       .withName("description")
       .withTitle("app.fields.description")
       .withGetClass((def, row?) => "w-5/10")
       .withGetValue((def, row) => row.data.description)
       .build(),
-    new ListColumnDefinitionBuilder<DatabaseEntry<Location>>()
+    new ListColumnDefinitionBuilder<DatabaseEntry<Company>>()
       .withName("valid")
       .withTitle("app.fields.valid")
       .withGetClass((def, row?) => "w-1/20")
       .withGetValue(checkMarkColumnGetter("valid"))
       .build(),
   ],
-  operations: [asSelectable(LIST_EDIT_ITEM, {name: "app.location.edit"})],
+  operations: [asSelectable(LIST_EDIT_ITEM, {name: "app.company.edit"})],
 };
 
-const LocationsList = (props: any) => {
+const CompaniesList = (props: any) => {
   const t = getClientTranslator();
   const locale = getCurrentLocale();
   const {environment} = useEnvironmentContext();
-  const id = "location-manager";
+  const id = "companies-list";
   const [listSize, setListSize] = useState<number>(environment.currentListSize);
-  const [content, setContent] = useState<ListContent<Location>>({
+  const [content, setContent] = useState<ListContent<Company>>({
     data: [],
     pageSize: environment.currentListSize,
   });
   const {eventBus, sendCommand, sendEvent} = useEventContext();
   const [popupCommand, setPopupCommand] = useState<Command>();
-  const [companies, setCompanies] = useState<Selectable[]>([]);
+  const [locations, setLocations] = useState<Selectable[]>([]);
 
   useEffect(() => {
     reloadList();
 
-    axios.get("/api/companies/for-popup")
+    axios.get("/api/locations/for-popup")
       .then((response) => {
-        setCompanies(response.data);
+        setLocations(response.data);
       })
       .catch((error) => {
-        console.error("cannot load companies for popup", error);
+        console.error("cannot load locations for popup", error);
       });
   }, []);
 
   useEffect(() => {
-    console.log("companies current value", companies);
-  }, [companies]);
+    console.log("locations current value", locations);
+  }, [locations]);
 
   const reloadList = (page = 0) => {
     const query = queryBuilder().limit(listSize).sortBy("name", "asc").build();
     axios
-      .post(dbUrl(LOCATIONS_COLLECTION), query)
+      .post(dbUrl(COMPANIES_COLLECTION), query)
       .then((response) => {
         setContent(response.data);
       })
@@ -106,15 +105,15 @@ const LocationsList = (props: any) => {
 
   const headerAction = (action: Command) => {
     if ((action.payload as Selectable).id === LIST_ADD_ITEM.id) {
-      setPopupCommand(openPopupCommand({data: newLocation()}));
+      setPopupCommand(openPopupCommand({data: newCompany()}));
     }
   };
 
-  const listAction = (action: Selectable, row: DatabaseEntry<Location>) => {
+  const listAction = (action: Selectable, row: DatabaseEntry<Company>) => {
     if (action.id === LIST_EDIT_ITEM.id) {
       console.log("must edit", row);
       axios
-        .get(dbUrl(LOCATIONS_COLLECTION, row.id!))
+        .get(dbUrl(COMPANIES_COLLECTION, row.id!))
         .then((response) => {
           setPopupCommand(openPopupCommand(response.data));
         })
@@ -126,36 +125,34 @@ const LocationsList = (props: any) => {
     }
   };
 
-  const hasRoles = (action: Selectable, row?: DatabaseEntry<Location>) => {
+  const hasRoles = (action: Selectable, row?: DatabaseEntry<Company>) => {
     return true;
   };
 
   return (
     <>
-      <GoogleMapsContainer locale={locale}>
-        <FullList
-          id={id}
-          content={content.data}
-          list={LIST}
-          header={LIST_HEADER}
-          headerVisible={true}
-          headerAction={headerAction}
-          listAction={listAction}
-          hasRoles={hasRoles}
-        ></FullList>
-        <LocationEditorPopup
-          key={popupCommand?.key}
-          command={popupCommand}
-          onAction={popupAction}
-          companies={companies}
-        ></LocationEditorPopup>
-      </GoogleMapsContainer>
+      <FullList
+        id={id}
+        content={content.data}
+        list={LIST}
+        header={LIST_HEADER}
+        headerVisible={true}
+        headerAction={headerAction}
+        listAction={listAction}
+        hasRoles={hasRoles}
+      ></FullList>
+      <CompaniesEditorPopup
+        key={popupCommand?.key}
+        command={popupCommand}
+        onAction={popupAction}
+        locations={locations}
+      ></CompaniesEditorPopup>
     </>
   );
 };
 
-LocationsList.propTypes = {
+CompaniesList.propTypes = {
   onAction: PropTypes.func.isRequired,
 };
 
-export default LocationsList;
+export default CompaniesList;

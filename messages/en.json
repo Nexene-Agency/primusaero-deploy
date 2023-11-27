@@ -156,7 +156,16 @@
       "bio": "Bio",
       "copyright": "Copyright",
       "image": "Image",
-      "text": "Text"
+      "text": "Text",
+      "code": "Code",
+      "vatNumber": "VAT number",
+      "registrationNumber": "Registration number",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "postalAddress": "Postal address",
+      "phone": "Phone",
+      "eoriNumber": "EORI number"
     },
     "actions": {
       "save": "Save",
@@ -176,7 +185,9 @@
       "basic": "Basic",
       "properties": "Properties",
       "text": "Text",
-      "history": "History"
+      "history": "History",
+      "signaturePicture": "Signature picture",
+      "socialMedia": "Social media"
     },
     "dashboard": {
       "singular": "Dashboard",
@@ -191,37 +202,12 @@
       "plural": "Locations",
       "new": "New location",
       "edit": "Edit location",
-      "route": "Route",
-      "leaveMap": "Leave map",
-      "addYourService": "Add your service",
-      "distributeMagazine": "Distribute magazine",
-      "shareThisMap": "Share this map",
-      "iNeedHelp": "I need help",
-      "signaturePicture": "Signature picture",
       "errors": {
         "cannotSearch": "Cannot search",
         "notFound": "Nothing found for this search query"
       },
-      "types": {
-        "singular": {
-          "text": "Location type",
-          "rental": "Rental",
-          "garage": "Garage",
-          "shop": "Shop",
-          "magazine_store": "Magazin store",
-          "campground": "Campground",
-          "other": "Other"
-        },
-        "plural": {
-          "text": "Location types",
-          "rental": "Rentals",
-          "garage": "Garages",
-          "shop": "Shops",
-          "magazine_store": "Magazin stores",
-          "campground": "Campgrounds",
-          "other": "Others"
-        }
-      }
+      "headline": "Headline",
+      "addressPlus": "Address additional data"
     },
     "picture": {
       "singular": "Picture",
@@ -240,6 +226,12 @@
       "found": "Pictures found",
       "selected": "Pictures selected",
       "add": "Add picture"
+    },
+    "company": {
+      "singular": "Company",
+      "plural": "Companies",
+      "new": "New company",
+      "edit": "Edit company"
     },
     "teamMember": {
       "singular": "Team member",

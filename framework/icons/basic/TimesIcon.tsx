@@ -8,6 +8,8 @@ const TimesIcon = (props: any) => {
         "xmlns": "http://www.w3.org/2000/svg",
         "id": "glyphicons-basic",
         "viewBox": "0 0 32 32",
+        width: "32px",
+        height: "32px",
       },
       props),
     React.createElement(
