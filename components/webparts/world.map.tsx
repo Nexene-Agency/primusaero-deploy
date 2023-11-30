@@ -4,10 +4,9 @@ import MapPointGreen from "@components/icons/MapPointGreen";
 import React, {MouseEvent, useEffect, useRef, useState} from "react";
 import {asMapMarker, MapMarker} from "@framework/googlemaps/model";
 import {ListContent} from "@framework/list/list.definition";
-import {Location, LOCATIONS_COLLECTION} from "@components/dashboard/locations/model";
+import {Location} from "@components/dashboard/locations/model";
 import {queryBuilder} from "@framework/query.builder";
 import axios from "axios";
-import {dbUrl} from "@framework/firebase.utils";
 import PropTypes from "prop-types";
 import {geoRobinson} from "d3-geo-projection";
 import {Box} from "@chakra-ui/react";
@@ -55,7 +54,6 @@ const WorldMap = (props: any) => {
 
   const moveEvents = new Subject<MouseEvent>();
   const subscription = moveEvents.pipe(debounceTime(props.debounceTime ?? 800)).subscribe((next) => {
-    console.log("moveEvents debuonced");
     setMouseMoved(next as MouseEvent);
   });
   const mapRef = useRef();
@@ -86,7 +84,7 @@ const WorldMap = (props: any) => {
   const loadMarkers = () => {
     const query = queryBuilder().limit(1000).sortBy("name", "asc").build();
     axios
-      .post(dbUrl(LOCATIONS_COLLECTION), query)
+      .get("/api/locations/for-map")
       .then((response) => {
         setLocations(response.data);
       })
@@ -151,7 +149,6 @@ const WorldMap = (props: any) => {
         markerId: ""
       });
     } else {
-      // console.log("not inside map");
       setChooseProps((current) => ({...current, visible: false}));
     }
   }, [mouseMoved]);

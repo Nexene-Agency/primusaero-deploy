@@ -4,6 +4,11 @@ import {getFirestoreInstance, getSessionAndUser, nextAccessDeniedResponse, nextO
 import {Location, LOCATIONS_COLLECTION} from "@components/dashboard/locations/model";
 import {Selectable} from "@framework/model";
 
+/**
+ * Returns the locations as selectable items for the popup in the editors.
+ * @param req The incoming request
+ * @param res The outgoing response
+ */
 const getLocationsForPopup = async (
   req: NextRequest,
   res: NextResponse
