@@ -1,7 +1,7 @@
 import Joi from "joi";
-import { ValidationMap } from "react";
+import {ValidationMap} from "react";
 import PropTypes from "prop-types";
-import { LatLngTuple } from "leaflet";
+import {LatLngTuple} from "leaflet";
 
 export interface Address {
   address: string;
@@ -29,11 +29,13 @@ export const ADDRESS_SCHEMA = Joi.object({
 
 export const asMapMarker = (
   id: string,
+  name: string,
   address: Address,
   active = true
 ): MapMarker => {
   return {
     id,
+    name,
     address: address.address,
     lat: address.lat,
     lng: address.lng,
@@ -47,6 +49,7 @@ export interface MapMarker {
   lat: number;
   lng: number;
   active: boolean;
+  name: string;
 }
 
 export const MapMarkerProperty: ValidationMap<any> = {
@@ -61,6 +64,7 @@ export const CITY_OF_GRAZ: MapMarker = {
   lat: 47.070714,
   lng: 15.439504,
   active: false,
+  name: "Graz"
 };
 
 export const asLatLong = (marker: MapMarker): LatLngTuple => {

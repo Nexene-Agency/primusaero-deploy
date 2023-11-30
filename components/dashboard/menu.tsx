@@ -78,6 +78,12 @@ const links: Selectable[] = [
     name: "app.user.plural",
     icon: <UsersIcon className="__menu-icon"/>,
   },
+  {
+    id: "map",
+    target: "/dashboard/map",
+    name: "app.map.singular",
+    icon: <MapIcon/>,
+  },
 ];
 
 const DashboardMenu = (props: any) => {

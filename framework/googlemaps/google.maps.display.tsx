@@ -1,11 +1,11 @@
 "use client";
-import { useRef, useState } from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import {useRef, useState} from "react";
+import {GoogleMap, Marker} from "@react-google-maps/api";
 import PropTypes from "prop-types";
-import { optionalFunctionWrapper } from "@framework/utils";
-import { MapMarker, MapMarkerProperty } from "@framework/googlemaps/model";
+import {optionalFunctionWrapper} from "@framework/utils";
+import {MapMarker, MapMarkerProperty} from "@framework/googlemaps/model";
 import MapMarkerIcon from "@framework/icons/basic/MapMarkerIcon";
-import { useWindowSize } from "@framework/hooks/use.window.size";
+import {useWindowSize} from "@framework/hooks/use.window.size";
 
 const options: google.maps.MapOptions = {
   mapTypeControl: false,
@@ -37,8 +37,8 @@ const GoogleMapsDisplay = (props: any) => {
   const [markers] = useState<MapMarker[]>(props.markers ?? []);
 
   const zoomChanged = () => {
-    if (map.current) {
-      // console.log(map.current.getZoom());
+    if (map.current && props.zoomChanged) {
+      props.zoomChanged(map.current.getZoom());
     }
   };
 
@@ -50,7 +50,7 @@ const GoogleMapsDisplay = (props: any) => {
         margin: 0,
         padding: 0,
       }}
-      options={options}
+      options={{...options, styles: props.styles ?? []}}
       onLoad={(actual) => {
         map.current = actual;
       }}
@@ -65,7 +65,7 @@ const GoogleMapsDisplay = (props: any) => {
           <Marker
             key={current.address}
             title={current.address}
-            position={{ lat: current.lat, lng: current.lng }}
+            position={{lat: current.lat, lng: current.lng}}
             onClick={() =>
               optionalFunctionWrapper(
                 "googleMapsDisplay.markerClicked",
@@ -87,19 +87,19 @@ const GoogleMapsDisplay = (props: any) => {
             onLoad={(marker) => {
               current.active
                 ? marker.setIcon(
-                    customIcon({
-                      fillColor: "white",
-                      strokeColor: "#e89e3c",
-                      fillOpacity: 0.5,
-                    })
-                  )
+                  customIcon({
+                    fillColor: "white",
+                    strokeColor: "#e89e3c",
+                    fillOpacity: 0.5,
+                  })
+                )
                 : marker.setIcon(
-                    customIcon({
-                      fillColor: "white",
-                      strokeColor: "#007b86",
-                      fillOpacity: 0.5,
-                    })
-                  );
+                  customIcon({
+                    fillColor: "white",
+                    strokeColor: "#007b86",
+                    fillOpacity: 0.5,
+                  })
+                );
             }}
           />
         );
@@ -117,6 +117,8 @@ GoogleMapsDisplay.propTypes = {
   markerClicked: PropTypes.func,
   markerMouseOver: PropTypes.func,
   markerMouseOut: PropTypes.func,
+  zoomChanged: PropTypes.func,
+  styles: PropTypes.any,
 };
 
 export default GoogleMapsDisplay;

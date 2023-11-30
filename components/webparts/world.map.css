@@ -1,0 +1,33 @@
+.__map {
+    z-index: 10;
+}
+
+.__marker {
+    z-index: 20;
+}
+
+.__location-tip {
+    @apply absolute inline-flex px-4 py-2 items-center gap-2 rounded-full;
+    @apply font-normal text-black text-xs lg:text-base;
+    background-color: var(--primus-green);
+    font-family: nimbus, sans-serif;
+}
+
+.__location-tip > .__primusaero {
+    @apply uppercase;
+    color: var(--color-grey-1);
+}
+
+.__location-tip > .__location {
+    @apply text-black;
+}
+
+.__tooltip-tip {
+    @apply absolute inline-flex px-4 py-2 items-center gap-2 rounded-full;
+    @apply font-normal text-white text-xs lg:text-base;
+
+    color: var(--white);
+    background: var(--black);
+
+    font-family: nimbus, sans-serif;
+}

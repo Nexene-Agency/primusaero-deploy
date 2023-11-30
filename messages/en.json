@@ -328,7 +328,9 @@
       "hotTopics": "Hot topics",
       "saved": "Settings saved"
     },
-    "locationMap": {
+    "map": {
+      "singular": "Map",
+      "plural": "Maps",
       "click": "Click on any location"
     }
   }

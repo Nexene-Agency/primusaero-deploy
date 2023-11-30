@@ -1,13 +1,14 @@
 "use client";
-import { useJsApiLoader } from "@react-google-maps/api";
+import {useJsApiLoader} from "@react-google-maps/api";
 import PropTypes from "prop-types";
+import {Library} from "@googlemaps/js-api-loader";
 
-const libraries = ["places"];
+const LIBRARIES: Library[] = ["places"];
 
 const GoogleMapsContainer = (props: any) => {
-  const { isLoaded } = useJsApiLoader({
+  const {isLoaded} = useJsApiLoader({
     // @ts-ignore
-    libraries: libraries,
+    libraries: LIBRARIES,
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!,
     language: props.locale,
   });

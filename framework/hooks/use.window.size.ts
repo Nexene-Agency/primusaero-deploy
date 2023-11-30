@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import {useLayoutEffect, useState} from "react";
 
 export enum DeviceType {
   MOBILE,
@@ -32,6 +32,7 @@ export const useWindowSize = (): WindowSize => {
 
   useLayoutEffect(() => {
     const handleResize = () => {
+      console.log("setting new size");
       setSize({
         width: window.innerWidth,
         height: window.innerHeight,
