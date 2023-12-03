@@ -192,7 +192,7 @@ const ChipsComponent = (props: any) => {
         placement="bottom-start"
         closeOnBlur={false}
         initialFocusRef={initialRef}
-        zIndex={3000}
+        // style={{zIndex: 3000}} FIXME!!!
       >
         <PopoverTrigger>
           <Input

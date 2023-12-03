@@ -39,7 +39,7 @@ export const MENU_ITEMS: Selectable[] = [
   {id: "aboutUs", name: "menu.aboutUs", target: "#"},
   // {id: "partnersCustomers", name: "menu.partnersCustomers", target: "#"},
   {id: "newsroom", name: "menu.newsroom", target: "#"},
-  {id: "contactUs", name: "menu.contactUs", target: "#"},
+  {id: "contactUs", name: "menu.contactUs", target: "/contact-us"},
 ];
 
 export const LEGAL_MENU_ITEMS: Selectable[] = [

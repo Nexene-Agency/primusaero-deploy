@@ -4,10 +4,19 @@ import {FormControl, FormLabel, Input,} from "@chakra-ui/react";
 import {getClientTranslator} from "@framework/i18n.client.utils";
 import {doNothing} from "@framework/utils";
 
+// FIXME
 const SocialMediaTab = (props: any) => {
   const t = getClientTranslator();
   const {register, control, watch, getValues, setValue} = useFormContext();
   const {errors, isDirty, isValid} = useFormState({control});
+
+  const getError = (name: string) => {
+    const root = errors["socials"] as any;
+    if (root) {
+      return root[name];
+    }
+    return undefined;
+  };
 
   return (
     <form onSubmit={doNothing}>
@@ -19,7 +28,7 @@ const SocialMediaTab = (props: any) => {
           bg="white"
           {...register("socials.facebook")}
           autoFocus={true}
-          borderColor={errors.socials?.facebook ? "red" : "inherit"}
+          borderColor={getError("facebook") ? "red" : "inherit"}
         />
       </FormControl>
 
@@ -31,7 +40,7 @@ const SocialMediaTab = (props: any) => {
           bg="white"
           {...register("socials.linkedin")}
           autoFocus={true}
-          borderColor={errors.socials?.linkedin ? "red" : "inherit"}
+          borderColor={getError("linkedin") ? "red" : "inherit"}
         />
       </FormControl>
 
@@ -43,7 +52,7 @@ const SocialMediaTab = (props: any) => {
           bg="white"
           {...register("socials.instagram")}
           autoFocus={true}
-          borderColor={errors.socials?.instagram ? "red" : "inherit"}
+          borderColor={getError("instagram") ? "red" : "inherit"}
         />
       </FormControl>
 

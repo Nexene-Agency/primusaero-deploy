@@ -1,8 +1,8 @@
-import { FormEvent, ValidationMap } from "react";
+import {FormEvent, ValidationMap} from "react";
 import PropTypes from "prop-types";
 import Joi from "joi";
-import { isBrowser } from "framer-motion";
-import { Selectable } from "@framework/model";
+import {isBrowser} from "framer-motion";
+import {Selectable} from "@framework/model";
 
 export enum SYSTEM_KEYS {
   TOKEN = "_skt",
@@ -58,6 +58,8 @@ export const SelectableProperty: ValidationMap<any> = {
   icon: PropTypes.node,
   filter: PropTypes.arrayOf(PropTypes.string),
   disabled: PropTypes.bool,
+  context: PropTypes.any,
+  children: PropTypes.arrayOf(PropTypes.object)
 };
 
 /**
@@ -185,8 +187,8 @@ export const optionalFunctionWrapper = (
   fn
     ? fn
     : () => {
-        console.warn(`Function ${name} is not defined!!!`);
-      };
+      console.warn(`Function ${name} is not defined!!!`);
+    };
 
 export const doNothing = (e: FormEvent) => {
   e.preventDefault();

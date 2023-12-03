@@ -129,6 +129,8 @@
       "valid": "Valid",
       "published": "Published",
       "title": "Title",
+      "firstName": "First name",
+      "lastName": "Last name",
       "topic": "Topic",
       "expires": "Expires",
       "address": "Address",
@@ -144,7 +146,7 @@
       "imageTag": "Image tag",
       "titleTag": "Title",
       "imageURL": "Image URL",
-      "email": "Email",
+      "email": "E-Mail",
       "web": "Website",
       "social": "Social",
       "visible": "Visible",
@@ -164,8 +166,13 @@
       "instagram": "Instagram",
       "linkedin": "LinkedIn",
       "postalAddress": "Postal address",
-      "phone": "Phone",
-      "eoriNumber": "EORI number"
+      "phone": "Phone number",
+      "eoriNumber": "EORI number",
+      "subject": "Subject",
+      "message": "Message",
+      "message_ph": "Write your message...",
+      "selectDate": "Select date",
+      "selectTime": "Select time"
     },
     "actions": {
       "save": "Save",
@@ -332,6 +339,45 @@
       "singular": "Map",
       "plural": "Maps",
       "click": "Click on any location"
+    },
+    "contactUs": {
+      "title": "Contact us",
+      "howToContact": "How would you like to be contacted?",
+      "enterYourPersonalData": "Enter your personal data",
+      "leaveUsAMessage": "Leave us a message",
+      "sendNow": "Send now",
+      "selectASubject": "Select a subject",
+      "contactMode": {
+        "phone": "Personal phone call",
+        "email": "Email",
+        "whatsapp": "WhatsApp",
+        "meeting": "Schedule a meeting"
+      },
+      "thankYou": "Thank you for reaching out.<br/>We've received your message and will be in touch shortly.",
+      "backToHome": "Back to home",
+      "subjects": {
+        "privateAircraftOperation": "Private aircraft operation",
+        "aircraftCharter": "Aircraft charter",
+        "aircraftAcquisition": "Aircraft acquisition",
+        "maintenance": "Maintenance",
+        "technicalManagement": "Technical management",
+        "sparePartsAndLogistics": "Spare Parts and logistics",
+        "consultingServices": "Consulting services",
+        "other": "Other"
+      },
+      "privacy": {
+        "header": "Privacy permission",
+        "text": "Sending this message implies acceptance of our <a class='__embedLink' href='/terms-and-conditions' target='_blank'>terms and conditions</a> and <a class='__embedLink' href='/privacy-policy' target='_blank'>privacy policy</a>."
+      },
+      "marketing": {
+        "header": "Contact permission",
+        "text": "Yes, please keep me informed about PRIMUS AERO news, events and special offers."
+      },
+      "countries": {
+        "43": "+43",
+        "49": "+49",
+        "351": "+351"
+      }
     }
   }
 }

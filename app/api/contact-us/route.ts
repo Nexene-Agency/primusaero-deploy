@@ -1,21 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
-import { safeParse } from "@framework/api/utils";
-import {
-  Article,
-  ARTICLES_COLLECTION,
-} from "@components/dashboard/article/model";
-import { getRecaptchaScore } from "@framework/api/recaptcha";
-import { ServiceError } from "@framework/api/service.error";
+import {NextRequest, NextResponse} from "next/server";
+import {safeParse} from "@framework/api/utils";
+import {getRecaptchaScore} from "@framework/api/recaptcha";
+import {ServiceError} from "@framework/api/service.error";
 import {
   getFirestoreInstance,
   nextCreatedResponse,
   nextInternalError,
   serviceErrorAsNextResponse,
 } from "@app/api/utils";
+import {Contact, CONTACT_COLLECTION} from "@components/dashboard/contacts/model";
 
 interface Payload {
   token: string;
-  article: Article;
+  contact: Contact;
 }
 
 const postHandler = async (req: NextRequest, res: NextResponse) => {
@@ -25,22 +22,22 @@ const postHandler = async (req: NextRequest, res: NextResponse) => {
 
   const db = getFirestoreInstance();
 
-  let articleId = "";
+  let contactId = "";
 
-  return getRecaptchaScore(payload.token, "ARTICLE_SUBMIT")
+  return getRecaptchaScore(payload.token, "CONTACT_US")
     .then((score) => {
       console.log(
         "recaptcha score, can submit article",
         score.riskAnalysis.score
       );
-      return db.collection(ARTICLES_COLLECTION).doc();
+      return db.collection(CONTACT_COLLECTION).doc();
     })
     .then((doc) => {
-      articleId = doc.id;
-      return doc.set(payload.article);
+      contactId = doc.id;
+      return doc.set(payload.contact as any);
     })
     .then(() => {
-      return nextCreatedResponse({ id: articleId, data: payload.article });
+      return nextCreatedResponse({id: contactId, data: payload.contact});
     })
     .catch((error) => {
       if (error instanceof ServiceError) {
@@ -51,4 +48,4 @@ const postHandler = async (req: NextRequest, res: NextResponse) => {
     });
 };
 
-export { postHandler as POST };
+export {postHandler as POST};

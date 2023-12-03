@@ -6,11 +6,11 @@ const nextConfig = {
   //   locales: ["en", "de"],
   //   defaultLocale: "en",
   // },
-  experimental: {
-    // serverActions: true,
-    // serverActionsBodySizeLimit: "2mb",
-    // appDir: true,
-  },
+  // experimental: {
+  //   // serverActions: true,
+  //   // serverActionsBodySizeLimit: "2mb",
+  //   appDir: true,
+  // },
   images: {
     remotePatterns: [
       {

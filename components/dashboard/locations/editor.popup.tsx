@@ -1,5 +1,5 @@
 "use client";
-import {Button, Tab, TabList, TabPanel, TabPanels, Tabs,} from "@chakra-ui/react";
+import {Button, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {AppCommandType, asError, closePopupCommand, Command, itemEditedCommand,} from "@framework/events";
@@ -35,7 +35,6 @@ const LocationEditorPopup = (props: any) => {
     resolver: joiResolver(LOCATION_SCHEMA),
     mode: "onChange",
   });
-
   const {control, reset, getValues, setValue, trigger, register} = baseForm;
   const {errors, isDirty, isValid} = useFormState({control});
 
@@ -123,7 +122,7 @@ const LocationEditorPopup = (props: any) => {
   );
 
   const signaturePictureSelected = (urls: string[]) => {
-    setValue("signaturePicture", urls[0], {
+    setValue("signaturePicture", urls[0] as string, {
       shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,

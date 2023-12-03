@@ -1,0 +1,18 @@
+.__checkbox {
+    /*@apply h-6 w-6 flex-shrink-0;*/
+}
+
+.__checkbox.__unchecked {
+}
+
+.__checkbox.__unchecked:hover {
+    stroke: var(--color-grey-3);
+    fill: var(--color-grey-1);
+}
+
+.__checkbox.__checked {
+}
+
+.__checkbox.__checked:hover {
+}
+

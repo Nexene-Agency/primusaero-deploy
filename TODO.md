@@ -2,4 +2,6 @@
 
 - fix service animations on first page
 - fix deployment user error problems 3rd attempt
-- fix font error on first page
+
+- add key navigation to the datepicker
+- check the contact form display time on compiled mode, create a placeholder if needed during loading

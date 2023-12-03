@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import { useTheme } from "@chakra-ui/react";
+import CheckboxUnchecked from "@components/icons/CheckboxUnchecked";
+import CheckboxChecked from "@components/icons/CheckboxChecked";
 
 export const Checkbox = (props: any) => {
-  const [checked, setChecked] = useState(props.checked);
-  const theme = useTheme();
+  const [checked, setChecked] = useState(props.checked ?? false);
 
   const clicked = (event: any) => {
     setChecked((current: boolean) => {
@@ -18,14 +18,21 @@ export const Checkbox = (props: any) => {
   }, [checked]);
 
   return (
-    <div
-      className={`__checkbox ${checked ? "__checked" : "__unchecked"}`}
-      onClick={clicked}
-    />
-  );
+    <div className="flex items-center   gap-3" onClick={clicked}>
+      <div>
+        {
+          checked ? <CheckboxChecked className="__checkbox __checked"/> :
+            <CheckboxUnchecked className="__checkbox __unchecked"/>
+        }
+      </div>
+      <div>
+        {props.children}
+      </div>
+    </div>);
 };
 
 Checkbox.propTypes = {
+  children: PropTypes.any,
   checked: PropTypes.bool,
   onChanged: PropTypes.func.isRequired,
 };

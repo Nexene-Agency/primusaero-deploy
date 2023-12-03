@@ -1,7 +1,9 @@
+// noinspection TypeScriptCheckImport
+
 "use client";
 import {ComposableMap, Geographies, Geography, Marker} from "react-simple-maps";
 import MapPointGreen from "@components/icons/MapPointGreen";
-import React, {MouseEvent, useEffect, useRef, useState} from "react";
+import React, {MouseEvent, useEffect, useState} from "react";
 import {asMapMarker, MapMarker} from "@framework/googlemaps/model";
 import {ListContent} from "@framework/list/list.definition";
 import {Location} from "@components/dashboard/locations/model";
@@ -56,7 +58,6 @@ const WorldMap = (props: any) => {
   const subscription = moveEvents.pipe(debounceTime(props.debounceTime ?? 800)).subscribe((next) => {
     setMouseMoved(next as MouseEvent);
   });
-  const mapRef = useRef();
 
   useEffect(() => {
     recalculateMapDimensions();
@@ -172,7 +173,7 @@ const WorldMap = (props: any) => {
       {(locations.data.length > 0 && mapDimensions.width > 0) ?
         <Box width={mapDimensions.width} height={mapDimensions.height}>
           <ComposableMap width={mapDimensions.width} height={mapDimensions.height} onMouseEnter={enteringMap}
-                         ref={mapRef} className="__map" onMouseMove={moveOverMap}
+                         className="__map" onMouseMove={moveOverMap}
                          onMouseLeave={leavingMap}
                          projection={geoRobinson().translate([mapDimensions.width / 2, mapDimensions.height / 2]).scale(mapDimensions.scale)}>
             <Geographies geography="/assets/world.json">

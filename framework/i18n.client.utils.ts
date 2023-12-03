@@ -1,12 +1,7 @@
 import moment from "moment/moment";
-import { getCookie } from "typescript-cookie";
-import { isBrowser } from "framer-motion";
-import {
-  flatten,
-  getMessages,
-  Translator,
-  translator,
-} from "@framework/i18n.utils";
+import {getCookie} from "typescript-cookie";
+import {isBrowser} from "framer-motion";
+import {flatten, getMessages, Translator, translator,} from "@framework/i18n.utils";
 
 const english = require("./../messages/en.json");
 const german = require("./../messages/de.json");
@@ -96,3 +91,11 @@ export const getRelativeDate = (
 //   }
 //   return value;
 // }
+
+export const getNextDay = (forbiddenDays = [0, 6], date = new Date()): Date => {
+  let nextDay = moment(date).add(1, "days");
+  while (forbiddenDays.includes(nextDay.day())) {
+    nextDay = nextDay.add(1, "days");
+  }
+  return nextDay.toDate();
+};

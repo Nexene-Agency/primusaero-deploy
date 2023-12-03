@@ -13,7 +13,7 @@
     --primary-color: #0F0F0F;
     --color-grey-1: #F7F5F5;
     --color-grey-2: #A39F9F;
-    --color-grey-3: #838080;
+    --color-grey-3: #747272;
     --color-grey-4: #595757;
     --primus-green: #86B32E;
 
@@ -60,6 +60,11 @@ body {
 
 .__list-icon {
     width: 16px;
+}
+
+.__radio-button:hover {
+    fill: var(--color-grey-1) !important;
+    stroke: var(--color-grey-3) !important;
 }
 
 @layer primusAero {

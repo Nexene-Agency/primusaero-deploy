@@ -50,7 +50,8 @@ const LocationTab = (props: any) => {
       lat: loc.lat,
       lng: loc.lng,
       active: false,
-    };
+      name: "",
+    } as MapMarker;
     setMarkers([point]);
     setCenter(point);
     const currentErrors = Reflect.get(errors, "address");
