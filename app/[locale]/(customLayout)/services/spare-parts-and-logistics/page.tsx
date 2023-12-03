@@ -51,7 +51,7 @@ const SparePartsAndLogistics = async ({params, searchParams}: PageProps) => {
             <div className="w-[56%]">
               <div
                 className="h-11 pl-6 pr-4 pt-2.5 bg-stone-950 rounded-3xl flex-col justify-start items-start gap-2.5 inline-flex">
-                <a href="#" className="justify-start items-center gap-2 inline-flex">
+                <a href="/contact-us" className="justify-start items-center gap-2 inline-flex">
                   <div className="text-right text-white text-lg font-normal">{tl("getInTouch")}</div>
                   <div className="fill-white"><ArrowRight/></div>
                 </a>
