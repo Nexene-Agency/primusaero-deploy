@@ -5,3 +5,5 @@
 
 - add key navigation to the datepicker
 - check the contact form display time on compiled mode, create a placeholder if needed during loading
+- testing redeployment
+- 
