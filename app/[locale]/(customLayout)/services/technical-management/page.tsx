@@ -6,6 +6,8 @@ import ArrowRight from "@components/icons/ArrowRight";
 import {SERVICE_MENU_ITEMS} from "@app/components/data/menus";
 import ServiceNextButton from "@app/components/webparts/service.next.button";
 import ServicePageTitle from "@app/components/webparts/service.page.title";
+import "./page.css";
+import Ellipse from "@components/icons/Ellipse";
 
 interface PageProps {
   params: { locale: string };
@@ -22,23 +24,25 @@ const TechnicalManagement = async ({params, searchParams}: PageProps) => {
     <div key={`rs-${i}`}
          className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
       <div
-        className="w-full lg:w-[22%] text-zinc-500 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.title`)}</div>
-      <div
-        className="w-full lg:w-[56%] text-stone-950 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.text`)}</div>
+        className="w-full lg:w-[24%] text-xl font-normal leading-relaxed">{tl(`sections.section${i}.title`)}</div>
+      <div className="w-full lg:w-[62%]">
+        <div
+          className="w-full text-stone-950 text-xl font-normal leading-relaxed mb-8">{tl(`sections.section${i}.block.title`)}</div>
+        <div
+          className="w-full text-color-grey-3 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.block.text`)}</div>
+      </div>
     </div>
   );
 
   return (
     <>
       <div className="w-full flex flex-col">
-        <div className="w-full relative top-0 left-0">
-          <img src="/images/black-background.webp" alt="private aircraft operations image"
-               className="relative top-0 left-0"/>
-          <div className="absolute mt-[108px] top-0 left-0">
+        <div className="w-full relative top-0 left-0 h-[520px] lg:h-[1080px]">
+          <div className="__main-background"></div>
+          <div className="absolute mt-[137px] lg:mt-[108px] top-0 left-0">
             <ServicePageTitle titles={[tl("titles.1")]}/>
           </div>
-          <img src="/images/technical-management.webp" alt="technical management image"
-               className="absolute top-0 left-0"/>
+          <div className="__main-image"></div>
         </div>
       </div>
 
@@ -46,20 +50,20 @@ const TechnicalManagement = async ({params, searchParams}: PageProps) => {
         <div className="flex flex-col my-36 lg:my-72 mx-6 lg:mx-16 items-center gap-16">
           {renderSection(0)}
           <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
-            <div className="hidden lg:block lg:w-[22%]">&nbsp;</div>
-            <div className="w-[56%]">
-              {Array.from({length: 9}).map((_, i) => (
+            <div className="hidden lg:block lg:w-[24%]">&nbsp;</div>
+            <div className="w-full lg:w-[62%]">
+              {Array.from({length: 10}).map((_, i) => (
                 <div key={`srv-${i}`}
-                     className="w-full h-16 py-6 border-t border-b border-neutral-400 border-opacity-40 justify-start items-center gap-2 inline-flex">
-                  <div className="w-3 h-3 bg-stone-950 rounded-full"/>
+                     className="w-full lg:h-16 py-6 border-t border-b border-neutral-400 border-opacity-40 justify-start items-center gap-2 inline-flex">
+                  <Ellipse className="shrink-0"/>
                   <div className="text-stone-950 pt-1 text-xl font-normal leading-relaxed">{tl(`services.${i}`)}</div>
                 </div>
               ))}
             </div>
           </div>
           <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
-            <div className="hidden lg:block lg:w-[22%]">&nbsp;</div>
-            <div className="w-[56%]">
+            <div className="hidden lg:block lg:w-[24%]">&nbsp;</div>
+            <div className="w-[62%]">
               <div
                 className="h-11 pl-6 pr-4 pt-2.5 bg-stone-950 rounded-3xl flex-col justify-start items-start gap-2.5 inline-flex">
                 <a href="/contact-us" className="justify-start items-center gap-2 inline-flex">

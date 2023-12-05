@@ -5,33 +5,33 @@ export const SERVICE_MENU_ITEMS: Selectable[] = [
     id: "private-aircraft-operation",
     name: "services.privateAircraftOperation",
     target: "services/private-aircraft-operation",
-    context: "/images/services-1.png"
+    context: "/images/private-aircraft-operation-mobile.webp"
   },
   {
     id: "aircraft-acquisition", name: "services.aircraftAcquisition", target: "/services/aircraft-acquisition",
-    context: "/images/services-3.png"
+    context: "/images/aircraft-acquisition-mobile.webp"
   },
   {
     id: "technical-management", name: "services.technicalManagement", target: "/services/technical-management",
-    context: "/images/services-5.png"
+    context: "/images/technical-management-mobile.webp"
   },
   {
     id: "consulting-services", name: "services.consultingServices", target: "/services/consulting-services",
-    context: "/images/services-7.png"
+    context: "/images/consulting-services-mobile.webp"
   },
   {
     id: "aircraft-charter", name: "services.aircraftCharter", target: "/services/aircraft-charter",
-    context: "/images/services-2.png"
+    context: "/images/aircraft-charter-mobile.webp"
   },
   {
     id: "maintenance", name: "services.maintenance", target: "/services/maintenance",
-    context: "/images/services-4.png"
+    context: "/images/maintenance-mobile.webp"
   },
   {
     id: "spare-parts-and-logistics",
     name: "services.sparePartsAndLogistics",
     target: "/services/spare-parts-and-logistics",
-    context: "/images/services-6.png"
+    context: "/images/spare-parts-and-logistics-mobile.webp"
   },
 ];
 export const MENU_ITEMS: Selectable[] = [

@@ -10,16 +10,17 @@ const BurgerMenu = (props: any) => {
         viewBox: "0 0 32 6",
         width: "32",
         height: "6",
+        fill: "#0F0F0F",
       },
       props
     ),
     React.createElement("rect", {
       id: "burgerMenu-path-1",
-      width: "32", height: "1", fill: "#0F0F0F"
+      width: "32", height: "1"
     }),
     React.createElement("rect", {
       id: "burgerMenu-path-2",
-      y: "5", width: "32", height: "1", fill: "#0F0F0F"
+      y: "5", width: "32", height: "1"
     }),
   );
 };

@@ -15,6 +15,7 @@ const ClientComponent = dynamic(
     ssr: false,
   }
 );
+
 const ContactUs = async ({params, searchParams}: HomeProps) => {
   const t = translator(flatten(getMessages(params.locale, MESSAGES)));
 

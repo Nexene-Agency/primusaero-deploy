@@ -1,4 +1,4 @@
-import React, {Suspense} from "react";
+import React from "react";
 import LOCAL_MESSAGES from "./messages";
 import MESSAGES from "@app/components/data/common-messages";
 import {flatten, getMessages, translator} from "@framework/i18n.utils";
@@ -6,7 +6,7 @@ import ArrowRight from "@components/icons/ArrowRight";
 import {SERVICE_MENU_ITEMS} from "@app/components/data/menus";
 import ServiceNextButton from "@app/components/webparts/service.next.button";
 import ServicePageTitle from "@app/components/webparts/service.page.title";
-import ScrollContentSwitch from "@components/webparts/scroll.content.switch";
+import "./page.css";
 
 interface PageProps {
   params: { locale: string };
@@ -23,32 +23,25 @@ const AircraftAcquisition = async ({params, searchParams}: PageProps) => {
     <div key={`rs-${i}`}
          className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
       <div
-        className="w-full lg:w-[22%] text-zinc-500 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.title`)}</div>
-      <div
-        className="w-full lg:w-[56%] text-stone-950 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.text`)}</div>
+        className="w-full lg:w-[24%] text-stone-950 text-xl font-normal leading-relaxed mb-8">{tl(`sections.section${i}.title`)}</div>
+      <div className="w-full lg:w-[62%] flex flex-col">
+        <div
+          className="w-full text-stone-950 text-xl font-normal leading-relaxed mb-8">{tl(`sections.section${i}.block.title`)}</div>
+        <div
+          className="w-full text-color-grey-3 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.block.text`)}</div>
+      </div>
     </div>
   );
 
   return (
     <>
       <div className="w-full flex flex-col">
-        <div className="w-full relative top-0 left-0">
-          <img src="/images/black-background.webp" alt="private aircraft operations image"
-               className="relative top-0 left-0"/>
-          <div className="absolute mt-[108px] top-0 left-0">
+        <div className="w-full relative top-0 left-0 h-[520px] lg:h-[1080px]">
+          <div className="__main-background"></div>
+          <div className="absolute mt-[137px] lg:mt-[108px] top-0 left-0">
             <ServicePageTitle titles={[tl("titles.1")]}/>
           </div>
-          <Suspense fallback={
-            <img src="/images/aircraft-acquisition.webp" alt="aircraft acquisition image"
-                 className="absolute top-0 left-0 z-[100]"/>
-          }>
-            <ScrollContentSwitch key="aircraftPicture" yPosition={10}>
-              <img src="/images/aircraft-acquisition.webp" alt="aircraft acquisition image"
-                   className="absolute top-0 left-0 z-[100]"/>
-              <img src="/images/aircraft-acquisition.webp" alt="aircraft acquisition image"
-                   className="absolute top-0 left-0"/>
-            </ScrollContentSwitch>
-          </Suspense>
+          <div className="__main-image"></div>
         </div>
       </div>
 
@@ -56,8 +49,8 @@ const AircraftAcquisition = async ({params, searchParams}: PageProps) => {
         <div className="flex flex-col my-36 lg:my-72 mx-6 lg:mx-16 items-center gap-16">
           {renderSection(0)}
           <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
-            <div className="hidden lg:block lg:w-[22%]">&nbsp;</div>
-            <div className="w-[56%]">
+            <div className="hidden lg:block lg:w-[24%]">&nbsp;</div>
+            <div className="w-[62%]">
               <div
                 className="h-11 pl-6 pr-4 pt-2.5 bg-stone-950 rounded-3xl flex-col justify-start items-start gap-2.5 inline-flex">
                 <a href="/contact-us" className="justify-start items-center gap-2 inline-flex">

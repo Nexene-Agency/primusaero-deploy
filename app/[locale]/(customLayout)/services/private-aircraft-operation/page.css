@@ -1,0 +1,33 @@
+.__main-background {
+    background: url("../../../../../public/images/black-background.webp") no-repeat center;
+    height: 1080px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.__main-image {
+    background: url("../../../../../public/images/private-aircraft-operation.webp") no-repeat center;
+    height: 1080px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+@media (width <= 1024px) {
+    .__main-background {
+        background: url("../../../../../public/images/black-background.webp") no-repeat center;
+        height: 520px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+    }
+
+    .__main-image {
+        background: url("../../../../../public/images/private-aircraft-operation-mobile.webp") no-repeat center bottom;
+        background-size: contain;
+        height: 520px;
+        position: absolute;
+        top: 0;
+    }
+}

@@ -7,15 +7,24 @@ const LOCAL_MESSAGES = {
     sections: {
       section0: {
         title: "Spare parts acquisition",
-        text: "We can acquire any aircraft component, regardless of size or type.<br/>As an independent company, we are not bound by contracts with aircraft manufacturers and can purchase parts on the open market. This allows up to 80% cost savings on certain parts compared to MROs. In addition, all parts sourced through us come with the necessary documents for a seamless installation process.",
+        block: {
+          title: "Navigating the Marketplace for Your Optimal Component Needs",
+          text: "Our capability to acquire any aircraft component, regardless of size or type, sets us apart. We aren’t restricted by manufacturer contracts, enabling us to source parts from the open market. This flexibility often results in cost savings of up to 80% on certain parts compared to MROs. Additionally, every component we procure is accompanied by all necessary documentation, ensuring a smooth and efficient installation process for our clients."
+        }
       },
       section1: {
         title: "Parts storage & transportation",
-        text: "Our facility provides storage space that is both secure and climate-controlled. Additionally, we offer a comprehensive inventory and detailed valuation of all parts in our storage. The parts are stored and available 24/7 for pickup or delivery to the aircraft location.",
+        block: {
+          title: "Safeguarding and Mobilizing Your Aircraft Components",
+          text: "Our storage facilities offer the utmost security and climate control, ensuring your aircraft parts are stored optimally. We provide a comprehensive inventory service, complete with detailed valuations of all components in our care. With around-the-clock availability, these parts are ready for immediate pickup or prompt delivery to your aircraft's location, guaranteeing efficiency and convenience."
+        }
       },
       section2: {
-        title: "Loan parts service",
-        text: "Our lease stock program allows you to earn money by utilizing your spare parts in storage. Simply contribute your spare part to our program, and it will remain available to you 24/7 when it is not leased.<br/>Once your part is leased, you will receive a fee based on the lease's length and the value of your part.",
+        title: "Loan Parts Service",
+        block: {
+          title: "Transforming Your Spare Parts into Profitable Assets",
+          text: "In our lease stock program, your spare parts become a source of revenue while in storage. Contributing your spare part to our program makes it accessible 24/7 unless it's actively being leased out. When your part is leased, you receive a fee that reflects the lease duration and the part's value. This service optimizes your resources and turns static assets into active financial gains."
+        }
       },
     },
     getInTouch: "Get in touch",

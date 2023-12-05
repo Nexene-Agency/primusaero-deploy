@@ -1,6 +1,6 @@
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-  important: true,
+  // important: true, // This will add !important to all of your utilities' declarations, but not needed anymore
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -27,6 +27,11 @@ module.exports = {
     extend: {
       colors: {
         "primary-color": "var(--primary-color)",
+        "color-grey-1": "var(--color-grey-1)",
+        "color-grey-2": "var(--color-grey-2)",
+        "color-grey-3": "var(--color-grey-3)",
+        "color-grey-4": "var(--color-grey-4)",
+        "primus-green": "var(--primus-green)",
       },
       maxWidth: {
         "1/2": "50%",

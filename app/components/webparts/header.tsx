@@ -1,14 +1,19 @@
 import React, {Suspense} from "react";
 import {flatten, getMessages, translator} from "@framework/i18n.utils";
 import MESSAGES from "../data/common-messages";
-import Logo from "@components/icons/Logo";
 import {MENU_ITEMS} from "@app/components/data/menus";
 import ArrowRight from "@components/icons/ArrowRight";
-import BurgerMenu from "@components/icons/BugerMenu";
-import MenuBlock from "@components/menu/menu.block";
 import LogoBlackAndWhite from "@components/icons/LogoBlackAndWhite";
 import ScrollSensitiveContainer from "@components/webparts/scroll.sensitive.container";
 import PrimusAero from "@components/icons/PrimusAero";
+import dynamic from "next/dynamic";
+
+const ClientComponent = dynamic(
+  () => import("@components/menu/menu.block"),
+  {
+    ssr: false,
+  }
+);
 
 interface MainPageProps {
   locale: string;
@@ -49,12 +54,9 @@ const Header = (props: MainPageProps) => {
       </div>
 
       {/* FIXME */}
-      <div className="flex w-full lg:hidden items-center pt-[80px] px-6 justify-between">
-        <Logo/>
-        <Suspense fallback={<BurgerMenu/>}>
-          <MenuBlock locale={props.locale}/>
-        </Suspense>
-      </div>
+      <Suspense fallback={<div></div>}>
+        <ClientComponent locale={props.locale}/>
+      </Suspense>
     </>
   );
 };

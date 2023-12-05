@@ -1,8 +1,7 @@
 "use client";
-import BurgerMenu from "@components/icons/BugerMenu";
+import BurgerMenu from "@components/icons/BurgerMenu";
 import React, {useEffect, useState} from "react";
 import {motion, useAnimation} from "framer-motion";
-import Logo from "@components/icons/Logo";
 import PrimusAero from "@components/icons/PrimusAero";
 import {MENU_ITEMS, SOCIALS_MENU_ITEMS} from "@app/components/data/menus";
 import {flatten, getMessages, translator} from "@framework/i18n.utils";
@@ -12,36 +11,86 @@ import Close from "@components/icons/Close";
 import {ignorePromise} from "@framework/utils";
 import DownArrow from "@components/icons/DownArrow";
 import {Selectable} from "@framework/model";
+import LogoBlackAndWhite from "@components/icons/LogoBlackAndWhite";
+import {useWindowScroll} from "@framework/hooks/use.window.scroll";
+import Logo from "@components/icons/Logo";
 
 interface MenuProps {
   locale: string;
 }
 
+interface ColorSet {
+  fill: string;
+  text: string;
+  background: string;
+  isLight?: boolean;
+}
+
+const DARK = {
+  fill: "fill-white",
+  text: "text-white",
+  background: "bg-stone-950",
+} as ColorSet;
+
+const LIGHT = {
+  fill: "fill-stone-950",
+  text: "text-stone-950",
+  background: "bg-white",
+  isLight: true,
+} as ColorSet;
+
+const colorSetAsCss = (colorSet: ColorSet, withFill = false) => {
+  const fill = withFill ? `fill-current ${colorSet.fill}` : "";
+  return `${fill} ${colorSet.text} ${colorSet.background}`;
+};
+
 const MenuBlock = (props: MenuProps) => {
+  const [position, _] = useWindowScroll();
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
   const controls = useAnimation();
   const iconControls = useAnimation();
   const [closing, setClosing] = useState<boolean>(false);
   const [opening, setOpening] = useState<boolean>(false);
   const [subMenuVisible, setSubMenuVisible] = useState<boolean>(false);
+  const [colorSet, setColorSet] = useState<ColorSet>(DARK);
+  const [opened, setOpened] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (position.y > 520 && !colorSet.isLight) {
+      setColorSet(LIGHT);
+    }
+    if (position.y <= 520 && colorSet.isLight) {
+      setColorSet(DARK);
+    }
+  }, [position]);
 
   useEffect(() => {
     if (opening) {
       ignorePromise(controls.start({height: "100vh"}));
       iconControls.start({scaleY: 1}).then(() => {
         setOpening(false);
+        setOpened(true);
       });
     }
   }, [opening]);
+
+  useEffect(() => {
+    document.body.style.overflow = opened ? "hidden" : "auto";
+  }, [opened]);
 
   useEffect(() => {
     if (closing) {
       ignorePromise(controls.start({height: 0}));
       iconControls.start({scaleY: 0}).then(() => {
         setClosing(false);
+        setOpened(false);
       });
     }
   }, [closing]);
+
+  const withColorSet = (data: string, withFill = false): string => {
+    return colorSetAsCss(colorSet, withFill) + " " + data;
+  };
 
   const closeMenu = () => {
     setClosing(true);
@@ -54,12 +103,13 @@ const MenuBlock = (props: MenuProps) => {
   const changeMenu = () => {
     setSubMenuVisible(prev => !prev);
   };
+
   const renderMenuItem = (item: Selectable) => {
     if (item.children) {
       return (
         <div key={item.id}>
-          <div className="flex">
-            <button className="text-stone-950 text-lg font-normal" onClick={changeMenu}>
+          <div className="flex text-lg font-normal">
+            <button className={colorSet.text} onClick={changeMenu}>
               <div className="flex gap-2 items-center">
                 <span>{t(item.name)}</span> <sup>({item.children.length})</sup> <DownArrow/>
               </div>
@@ -73,24 +123,35 @@ const MenuBlock = (props: MenuProps) => {
       );
     } else {
       return (
-        <a href={item.target} key={item.id} className="text-stone-950 text-lg font-normal">
+        <a href={item.target} key={item.id} className={`text-lg font-normal ${colorSet.text}`}>
           {t(item.name)}
         </a>
       );
     }
   };
 
-  return (
+  const menuScrolled = (e: any) => {
+    // FIXME: make it work ???
+    console.log("menu scrolled", e);
+    // e.stopPropagation();
+    // e.preventDefault();
+    // const event = e.nativeEvent;
+    // event.stopPropagation();
+    // event.preventDefault();
+    // return false;
+  };
+
+  const renderMenuBlock = () => (
     <>
       <div style={{cursor: "pointer"}} onClick={openMenu}>
-        <BurgerMenu/>
+        <BurgerMenu className={colorSet.fill}/>
       </div>
       <motion.div
         initial={{height: 0}}
         animate={controls}
         transition={{duration: 0.5}}
         style={{
-          background: "rgba(255, 255, 255, 0.80)",
+          backgroundColor: colorSet.isLight ? "rgba(255, 255, 255, 0.80)" : "rgba(15, 15, 15, 0.80)",
           backdropFilter: "blur(20px)",
           // background: "blue", // You can customize the background color
           width: "100%",
@@ -100,47 +161,60 @@ const MenuBlock = (props: MenuProps) => {
           right: 0,
           bottom: 0,
           zIndex: 100,
-          overflow: "hidden",
+          overflow: "scroll",
         }}
       >
-        <div className="flex w-full bg-white items-center pt-[80px] px-6 justify-between">
-          <div className="flex items-center gap-2">
-            <Logo/>
-            <PrimusAero/>
+        <div onScroll={menuScrolled}>
+          <div className={withColorSet("flex w-full items-center pt-[80px] px-6 pb-[21px] justify-between")}>
+            <div className="flex items-center gap-2">
+              {colorSet.isLight ? <Logo/> : <LogoBlackAndWhite/>}
+              <PrimusAero className={colorSet.fill}/>
+            </div>
+            <motion.div
+              initial={{scaleY: 1}}
+              animate={iconControls}
+              transition={{duration: 0.4}}
+              style={{
+                height: "25px",
+                originY: 0.5, // Set the vertical origin to the center
+                transformOrigin: "center",
+                cursor: "pointer"
+              }}
+              onClick={closeMenu}
+            ><Close className={colorSet.fill}/></motion.div>
           </div>
-          <motion.div
-            initial={{scaleY: 1}}
-            animate={iconControls}
-            transition={{duration: 0.4}}
-            style={{
-              height: "25px",
-              originY: 0.5, // Set the vertical origin to the center
-              transformOrigin: "center",
-              cursor: "pointer"
-            }}
-            onClick={closeMenu}
-          ><Close/></motion.div>
-        </div>
-        <div className="flex flex-col mt-12 ml-6 gap-12">
-          {MENU_ITEMS.map((item) => renderMenuItem(item))}
-          <div className="flex">
-            <a href="#"
-               className="pl-6 pr-4 pt-3.5 pb-3.5 bg-stone-950 rounded-3xl justify-start items-center gap-2.5 flex flex-row">
-              <div className="text-white text-lg font-normal">{t("menu.becomeOurPartner")}</div>
-              <div className="fill-white"><ArrowRight/></div>
-            </a>
-            <div className="flex-grow"/>
+          <div className={"flex flex-col mt-12 ml-6 gap-12"}>
+            {MENU_ITEMS.map((item) => renderMenuItem(item))}
+            <div className="flex">
+              <a href="#"
+                 className={`pl-6 pr-4 pt-3.5 pb-3.5 text-lg font-normal rounded-3xl justify-start items-center gap-2.5 flex flex-row`}>
+                <div>{t("menu.becomeOurPartner")}</div>
+                <div className={colorSet.fill}><ArrowRight/></div>
+              </a>
+              <div className="flex-grow"/>
+            </div>
           </div>
-        </div>
-        <div className="h-48">&nbsp;</div>
-        <div className="flex-col justify-start items-start gap-6 inline-flex ml-6">
-          <div className="text-neutral-400 text-lg font-normal mb-2">{t("footer.socials.title")}</div>
-          {SOCIALS_MENU_ITEMS.map((item) =>
-            (<a className="text-stone-950 text-lg font-normal" key={item.id} href={item.target}>{t(item.name)}</a>))
-          }
+          <div className="h-48">&nbsp;</div>
+          <div className="flex-col justify-start items-start gap-6 inline-flex ml-6 text-lg font-normal">
+            <div className="text-neutral-400 mb-2">{t("footer.socials.title")}</div>
+            {SOCIALS_MENU_ITEMS.map((item) =>
+              (<a className={colorSet.text} key={item.id} href={item.target}>{t(item.name)}</a>))
+            }
+          </div>
         </div>
       </motion.div>
     </>
+  );
+
+  return (
+    <div
+      className={withColorSet("flex w-full lg:hidden items-center pt-[80px] px-6 pb-[21px] justify-between fixed z-[100] top-0")}>
+      <div className="flex items-center gap-2">
+        {colorSet.isLight ? <Logo/> : <LogoBlackAndWhite/>}
+        <PrimusAero className={colorSet.fill}/>
+      </div>
+      {renderMenuBlock()}
+    </div>
   );
 };
 

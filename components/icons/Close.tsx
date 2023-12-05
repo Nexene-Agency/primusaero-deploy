@@ -10,16 +10,17 @@ const Close = (props: any) => {
         viewBox: "0 0 24 25",
         width: "24",
         height: "25",
+        fill: "none"
       },
       props
     ),
     React.createElement("rect", {
       id: "close-path-1",
-      x: "0.332886", y: "23.4602", width: "32", height: "1", transform: "rotate(-45 0.332886 23.4602)", fill: "#0F0F0F"
+      x: "0.332886", y: "23.4602", width: "32", height: "1", transform: "rotate(-45 0.332886 23.4602)"
     }),
     React.createElement("rect", {
       id: "close-path-2",
-      x: "1.03992", y: "0.832764", width: "32", height: "1", transform: "rotate(45 1.03992 0.832764)", fill: "#0F0F0F"
+      x: "1.03992", y: "0.832764", width: "32", height: "1", transform: "rotate(45 1.03992 0.832764)"
     }),
   );
 };
