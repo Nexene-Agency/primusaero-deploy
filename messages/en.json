@@ -172,7 +172,13 @@
       "message": "Message",
       "message_ph": "Write your message...",
       "selectDate": "Select date",
-      "selectTime": "Select time"
+      "selectTime": "Select time",
+      "publicName": "Public name",
+      "jobTitle": "Job title",
+      "linkedIn": "LinkedIn",
+      "companies": "Companies",
+      "locations": "Locations",
+      "listingOrder": "Listing order"
     },
     "actions": {
       "save": "Save",
@@ -378,6 +384,12 @@
         "49": "+49",
         "351": "+351"
       }
+    },
+    "personnel": {
+      "singular": "Personnel",
+      "plural": "Personnel",
+      "new": "New personnel",
+      "edit": "Edit personnel"
     }
   }
 }

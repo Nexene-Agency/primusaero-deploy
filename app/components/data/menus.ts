@@ -4,7 +4,7 @@ export const SERVICE_MENU_ITEMS: Selectable[] = [
   {
     id: "private-aircraft-operation",
     name: "services.privateAircraftOperation",
-    target: "services/private-aircraft-operation",
+    target: "/services/private-aircraft-operation",
     context: "/images/private-aircraft-operation-mobile.webp"
   },
   {

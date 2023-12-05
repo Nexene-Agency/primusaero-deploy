@@ -1,13 +1,10 @@
 // This is an example of how to access a session from an API route
-import { NextRequest, NextResponse } from "next/server";
-import { HttpStatusCode } from "axios";
-import {
-  Picture,
-  PICTURES_COLLECTION,
-} from "@components/dashboard/pictures/model";
-import { DatabaseEntry } from "@framework/firebase.utils";
-import { randomUUID } from "crypto";
-import { ServiceError } from "@framework/api/service.error";
+import {NextRequest, NextResponse} from "next/server";
+import {HttpStatusCode} from "axios";
+import {Picture, PICTURES_COLLECTION,} from "@components/dashboard/pictures/model";
+import {DatabaseEntry} from "@framework/firebase.utils";
+import {randomUUID} from "crypto";
+import {ServiceError} from "@framework/api/service.error";
 import {
   getFirestoreInstance,
   getSessionAndUser,
@@ -15,11 +12,12 @@ import {
   nextCreatedResponse,
   nextInternalError,
 } from "@app/api/utils";
-import { checkRole2 } from "@framework/api/utils";
+import {checkRole2} from "@framework/api/utils";
 
 const db = getFirestoreInstance();
 const storage = getStorageInstance();
 const BUCKET = process.env.FIREBASE_STORAGE_BUCKET;
+const STORAGE_URL = process.env.FIREBASE_STORAGE_URL;
 
 const deleteFromStorage = (fileName?: string): void => {
   if (fileName) {
@@ -50,26 +48,33 @@ const uploadToStorage = (
   name: string,
   kind: string,
   ref: string,
-  file: ArrayBuffer
+  file: ArrayBuffer,
+  token: string
 ): Promise<string> => {
   return new Promise((resolve, reject) => {
     storage
       .bucket(BUCKET)
       .file(ref)
       .save(Buffer.from(file), {
+        metadata: {
+          metadata: {
+            firebaseStorageDownloadTokens: token,
+          }
+        },
         onUploadProgress: (snapshot) => {
           console.log("upload snapshot", snapshot);
         },
       })
       .then(() => {
-        return storage.bucket(BUCKET).file(ref).getSignedUrl({
-          action: "read",
-          expires: "03-09-2491",
-        });
+        // return storage.bucket(BUCKET).file(ref).getSignedUrl({
+        //   action: "read",
+        //   expires: "03-09-2491",
+        // });
+        return `${STORAGE_URL}${ref.replace("/", "%2F")}?alt=media&token=${token}`;
       })
       .then((url) => {
-        console.log(`... ${name} (${kind}) available at ${url[0]}`);
-        resolve(url[0]);
+        console.log(`... ${name} (${kind}) available at ${url}`);
+        resolve(url);
       })
       .catch((error: unknown) => {
         reject(error);
@@ -128,12 +133,14 @@ const saveImages = async (
       );
     }
 
+    const token = randomUUID().toString();
     console.log("begin uploading preview");
     previewURL = await uploadToStorage(
       name!,
       "preview",
       `previews/${fileName}`,
-      await preview.arrayBuffer()
+      await preview.arrayBuffer(),
+      token
     );
 
     console.log("begin uploading image");
@@ -141,7 +148,8 @@ const saveImages = async (
       name!,
       "image",
       `images/${fileName}`,
-      await image.arrayBuffer()
+      await image.arrayBuffer(),
+      token
     );
 
     const toSave = {
@@ -150,6 +158,7 @@ const saveImages = async (
       previewURL,
       imageURL,
       fileName,
+      token,
       width: parseInt(width),
       height: parseInt(height),
       valid: formData.get("valid") === "true",
@@ -159,7 +168,7 @@ const saveImages = async (
     await Promise.resolve(db.collection(PICTURES_COLLECTION).doc()).then(
       (ref) => {
         imgId = ref.id;
-        return ref.set(toSave);
+        return ref.set(toSave as any);
       }
     );
 
@@ -183,11 +192,11 @@ const postHandler = async (req: NextRequest, res: NextResponse) => {
       return saveImages(req);
     })
     .then((saved) => {
-      return nextCreatedResponse({ ...saved });
+      return nextCreatedResponse({...saved});
     })
     .catch((error) => {
       return nextInternalError(error);
     });
 };
 
-export { postHandler as POST };
+export {postHandler as POST};

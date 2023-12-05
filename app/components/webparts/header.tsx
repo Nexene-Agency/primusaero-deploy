@@ -8,8 +8,15 @@ import ScrollSensitiveContainer from "@components/webparts/scroll.sensitive.cont
 import PrimusAero from "@components/icons/PrimusAero";
 import dynamic from "next/dynamic";
 
-const ClientComponent = dynamic(
+const MobileMenuComponent = dynamic(
   () => import("@components/menu/menu.block"),
+  {
+    ssr: false,
+  }
+);
+
+const ServiceMenuComponent = dynamic(
+  () => import("@components/menu/main.service.menu"),
   {
     ssr: false,
   }
@@ -21,6 +28,12 @@ interface MainPageProps {
 
 const Header = (props: MainPageProps) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
+
+  const renderMenuItem = (item: any) => (
+    <a href={item.target} key={item.id} className="text-white text-lg font-normal whitespace-nowrap">
+      {t(item.name)} {item.children && item.children.length > 0 ? <sup>({item.children.length})</sup> : null}
+    </a>
+  );
 
   return (
     <>
@@ -40,11 +53,10 @@ const Header = (props: MainPageProps) => {
           </div>
         </Suspense>
         <div className="flex-grow"/>
-        {MENU_ITEMS.map((item) => (
-          <a href={item.target} key={item.id} className="text-white text-lg font-normal whitespace-nowrap">
-            {t(item.name)} {item.children && item.children.length > 0 ? <sup>({item.children.length})</sup> : null}
-          </a>
-        ))}
+        <Suspense fallback={MENU_ITEMS.filter((item) => item.id === "services").map((item) => renderMenuItem(item))}>
+          <ServiceMenuComponent locale={props.locale}/>
+        </Suspense>
+        {MENU_ITEMS.filter((item) => item.id !== "services").map((item) => renderMenuItem(item))}
         <div className="flex-grow"/>
         <a href="#"
            className="pl-6 pr-4 h-11 pt-3.5 pb-3.5 bg-white rounded-3xl justify-start items-center gap-2.5 flex flex-row">
@@ -55,7 +67,7 @@ const Header = (props: MainPageProps) => {
 
       {/* FIXME */}
       <Suspense fallback={<div></div>}>
-        <ClientComponent locale={props.locale}/>
+        <MobileMenuComponent locale={props.locale}/>
       </Suspense>
     </>
   );

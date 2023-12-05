@@ -11,7 +11,6 @@ import {usePathname} from "next/navigation";
 
 import {getClientTranslator} from "@framework/i18n.client.utils";
 import MapIcon from "@framework/icons/basic/MapIcon";
-import NewspaperIcon from "@framework/icons/basic/NewspaperIcon";
 import SettingsIcon from "@framework/icons/basic/SettingsIcon";
 import CommentsIcon from "@framework/icons/basic/CommentsIcon";
 import StarIcon from "@framework/icons/basic/StarIcon";
@@ -37,16 +36,16 @@ const links: Selectable[] = [
     icon: <MapIcon/>
   },
   {
+    id: "personnel",
+    target: "/dashboard/personnel",
+    name: "app.personnel.singular",
+    icon: <UsersIcon/>
+  },
+  {
     id: "testimonials",
     target: "/dashboard/testimonials",
     name: "app.testimonial.plural",
     icon: <StarIcon/>,
-  },
-  {
-    id: "articles",
-    target: "/dashboard/articles",
-    name: "app.article.plural",
-    icon: <NewspaperIcon className="__menu-icon"/>,
   },
   {
     id: "blogs",
@@ -64,7 +63,7 @@ const links: Selectable[] = [
     id: "pictures",
     target: "/dashboard/pictures",
     name: "app.picture.plural",
-    icon: <PictureIcon className="__menu-icon"/>,
+    icon: <PictureIcon/>,
   },
   {
     id: "settings",

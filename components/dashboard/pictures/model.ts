@@ -1,6 +1,6 @@
 import Joi from "joi";
 import axios from "axios";
-import { DatabaseEntry, saveOrCreate } from "@framework/firebase.utils";
+import {DatabaseEntry, saveOrCreate} from "@framework/firebase.utils";
 
 export interface Picture {
   name: string;
@@ -10,6 +10,7 @@ export interface Picture {
   previewURL: string;
   imageURL: string;
   fileName: string;
+  token: string;
   valid: boolean;
   tags: string[];
 }
@@ -30,6 +31,7 @@ export const newPicture = (): Picture => {
     height: 0,
     description: "",
     previewURL: "",
+    token: "",
     imageURL: "",
     fileName: "",
     valid: true,
@@ -43,6 +45,7 @@ export const PICTURE_SCHEMA = Joi.object({
   height: Joi.number().required().min(0).max(9999),
   description: Joi.string().optional().allow("").max(1024),
   previewURL: Joi.string().optional().allow("").max(1024),
+  token: Joi.string().optional().allow("").max(64),
   imageURL: Joi.string().optional().allow("").max(1024),
   fileName: Joi.string().optional().allow("").max(128),
   valid: Joi.boolean().required(),
@@ -60,7 +63,7 @@ export const savePicture = (
   return new Promise((resolve, reject) => {
     if (id) {
       console.log("modified!");
-      saveOrCreate<Picture>(PICTURES_COLLECTION, { id, data: entry })
+      saveOrCreate<Picture>(PICTURES_COLLECTION, {id, data: entry})
         .then((saved) => resolve(saved))
         .catch((error: unknown) => {
           reject(error);
