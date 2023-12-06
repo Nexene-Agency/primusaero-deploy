@@ -40,17 +40,17 @@ const Header = (props: MainPageProps) => {
       <div
         className="hidden lg:flex max-w-[96em] w-full bg-stone-950 text-white z-[100] top-0 py-8 px-16 justify-start items-center gap-12 backdrop-blur-2xl fixed">
         <Suspense fallback={
-          <div className="flex gap-2 items-center">
-            <a><LogoBlackAndWhite/></a>
-          </div>
+          <a href="/" className="flex gap-2 items-center">
+            <LogoBlackAndWhite/>
+          </a>
         }>
-          <div className="flex gap-2 items-center">
-            <a><LogoBlackAndWhite/></a>
+          <a href="/" className="flex gap-2 items-center">
+            <LogoBlackAndWhite/>
             <ScrollSensitiveContainer key="textLogo" yPosition={200} belowPosition="fill-stone-950"
                                       abovePosition="fill-white">
               <PrimusAero/>
             </ScrollSensitiveContainer>
-          </div>
+          </a>
         </Suspense>
         <div className="flex-grow"/>
         <Suspense fallback={MENU_ITEMS.filter((item) => item.id === "services").map((item) => renderMenuItem(item))}>

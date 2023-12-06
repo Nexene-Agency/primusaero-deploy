@@ -21,6 +21,7 @@ import axios from "axios";
 import {asError, showToast} from "@framework/events";
 import SuccessIcon from "@components/icons/SuccessIcon";
 import {useWindowScroll} from "@framework/hooks/use.window.scroll";
+import PropTypes from "prop-types";
 
 const CONTACT_MODES = ["phone", "email", "whatsapp", "meeting"];
 const SUBJECTS: Selectable[] = [
@@ -50,7 +51,7 @@ enum Mode {
   SAVED
 }
 
-const ContactForm = () => {
+const ContactForm = (props: any) => {
   const [_, scrollTo] = useWindowScroll();
   const t = getClientTranslator();
   const tomorrow = getNextDay([0]);
@@ -74,7 +75,7 @@ const ContactForm = () => {
     mode: "onChange",
     resolver: joiResolver(CONTACT_SCHEMA),
     defaultValues: {
-      ...newContact()
+      ...newContact(props.company ?? "")
     },
   });
 
@@ -142,7 +143,7 @@ const ContactForm = () => {
 
   const send = () => {
     const values = getValues();
-    console.log("sending", values);
+    setSaving(false);
     getRecaptchaToken("CONTACT_US")
       .then((token) => {
         return axios.post("/api/contact-us", {
@@ -152,7 +153,7 @@ const ContactForm = () => {
       })
       .then((response) => {
         if (response.status === 201) {
-          setSaving(true);
+          setSaving(false);
           scrollTo({x: 0, y: 0, behavior: "instant"});
           setMode(Mode.SAVED);
         } else {
@@ -214,7 +215,7 @@ const ContactForm = () => {
             <input className={`__input ${errors.title ? "__error" : ""}`}
                    placeholder="Ms."
                    {...register("title")}
-                   autoFocus={true}
+                   autoFocus={!props.embedded}
             />
           </div>
           <div className="flex gap-16 flex-col lg:flex-row lg:gap-4">
@@ -252,7 +253,6 @@ const ContactForm = () => {
             <input className={`__input ${errors.email ? "__error" : ""}`}
                    placeholder="maria.doe@primus.aero"
                    {...register("email")}
-                   autoFocus={true}
             />
           </div>
         </div>
@@ -324,10 +324,13 @@ const ContactForm = () => {
       <div className="flex-col justify-start items-center gap-16 flex">
         <div className="w-full lg:w-8/10 text-center text-black text-3xl lg:text-4xl font-normal leading-10"
              dangerouslySetInnerHTML={{__html: t("app.contactUs.thankYou") as any}}></div>
-        <PrimaryButton asLink={true} target="/" class="text-stone-950 bg-white">
-          <ArrowRight className="rotate-180"/>
-          {t("app.contactUs.backToHome")}
-        </PrimaryButton>
+        {props.embedded ?
+          null :
+          <PrimaryButton asLink={true} target="/" class="text-stone-950 bg-white">
+            <ArrowRight className="rotate-180"/>
+            {t("app.contactUs.backToHome")}
+          </PrimaryButton>
+        }
       </div>
     </div>
   );
@@ -335,18 +338,24 @@ const ContactForm = () => {
   return (
     <ChakraProvider theme={theme}>
       {mode === Mode.EDITING ?
-        <div className="px-6 lg:px-16 pt-16 w-full">
+        <div className={props.embedded ? "" : "px-6 lg:px-16 pt-16 w-full"}>
           <div
             className="text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10 mb-16 lg:mb-32">
             {t("app.contactUs.title")}
           </div>
           {renderForm()}
         </div> :
-        <div className="px-6 lg:px-16 pt-16 w-full">
+        <div className={props.embedded ? "" : "px-6 lg:px-16 pt-16 w-full"}>
           {renderSaved()}
         </div>
       }
     </ChakraProvider>
   );
 };
+
+ContactForm.propTypes = {
+  embedded: PropTypes.bool,
+  company: PropTypes.string
+};
+
 export default ContactForm;

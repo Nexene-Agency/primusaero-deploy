@@ -130,17 +130,6 @@ const MenuBlock = (props: MenuProps) => {
     }
   };
 
-  const menuScrolled = (e: any) => {
-    // FIXME: make it work ???
-    console.log("menu scrolled", e);
-    // e.stopPropagation();
-    // e.preventDefault();
-    // const event = e.nativeEvent;
-    // event.stopPropagation();
-    // event.preventDefault();
-    // return false;
-  };
-
   const renderMenuBlock = () => (
     <>
       <div style={{cursor: "pointer"}} onClick={openMenu}>
@@ -164,12 +153,12 @@ const MenuBlock = (props: MenuProps) => {
           overflow: "scroll",
         }}
       >
-        <div onScroll={menuScrolled}>
+        <div>
           <div className={withColorSet("flex w-full items-center pt-[80px] px-6 pb-[21px] justify-between")}>
-            <div className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               {colorSet.isLight ? <Logo/> : <LogoBlackAndWhite/>}
               <PrimusAero className={colorSet.fill}/>
-            </div>
+            </a>
             <motion.div
               initial={{scaleY: 1}}
               animate={iconControls}
@@ -209,10 +198,10 @@ const MenuBlock = (props: MenuProps) => {
   return (
     <div
       className={withColorSet("flex w-full lg:hidden items-center pt-[80px] px-6 pb-[21px] justify-between fixed z-[100] top-0")}>
-      <div className="flex items-center gap-2">
+      <a href="/" className="flex items-center gap-2">
         {colorSet.isLight ? <Logo/> : <LogoBlackAndWhite/>}
         <PrimusAero className={colorSet.fill}/>
-      </div>
+      </a>
       {renderMenuBlock()}
     </div>
   );

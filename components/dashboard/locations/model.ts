@@ -15,6 +15,7 @@ export interface Location {
   addressPlus?: string;
   valid: boolean;
   tags: string[];
+  listingOrder?: number;
 }
 
 export interface LocationReference {
@@ -38,6 +39,7 @@ export const LOCATION_SCHEMA = Joi.object({
   address: Joi.object().required(),
   valid: Joi.boolean().required(),
   tags: Joi.array().items(Joi.string()).required().min(1).max(10),
+  listingOrder: Joi.number().required(),
 });
 
 export const newLocation = (): Location => {
@@ -58,5 +60,6 @@ export const newLocation = (): Location => {
     companies: [],
     valid: true,
     tags: ["other"],
+    listingOrder: 10,
   };
 };

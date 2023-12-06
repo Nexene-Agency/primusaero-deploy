@@ -99,7 +99,7 @@ const WorldMap = (props: any) => {
       return;
     }
     const markers = locations.data
-      .map((location) => asMapMarker(location.id!, location.data.name, location.data.address, false))
+      .map((location) => asMapMarker(location.data.code, location.data.name, location.data.address, false))
       .map((marker) => {
         const x = marker.lat + xCorrection;
         const y = marker.lng - yCorrection;
@@ -190,13 +190,14 @@ const WorldMap = (props: any) => {
               </Marker>
             ))}
           </ComposableMap>
-          {tooltipProps.visible ? <div className="__location-tip"
-                                       onMouseLeave={() => setMarkerInactive(tooltipProps.markerId)}
-                                       style={{top: tooltipProps.y - 26, left: tooltipProps.x - 26}}>
-            <MapPointWhite/>
-            <div className="__primusaero">PRIMUS AERO</div>
-            <div className="__location">{tooltipProps.name}</div>
-          </div> : null}
+          {tooltipProps.visible ?
+            <a className="__location-tip cursor-pointer" href={`/company/${tooltipProps.markerId}`}
+               onMouseLeave={() => setMarkerInactive(tooltipProps.markerId)}
+               style={{top: tooltipProps.y - 26, left: tooltipProps.x - 26}}>
+              <MapPointWhite/>
+              <div className="__primusaero">PRIMUS AERO</div>
+              <div className="__location">{tooltipProps.name}</div>
+            </a> : null}
           {chooseProps.visible ? <div className="__tooltip-tip"
                                       style={{top: chooseProps.y, left: chooseProps.x}}>
             <MapPointWhite/>
