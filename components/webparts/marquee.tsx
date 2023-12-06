@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import "./marquee.css";
 import PropTypes from "prop-types";
 
 const Marquee = (props: any) => {
   const variants = {
     animate: {
-      x: [0, (props.size) * -1],
+      x: ["0%", "-100%"],
       transition: {
         x: {
           repeat: Infinity,
@@ -19,7 +19,6 @@ const Marquee = (props: any) => {
     },
   };
 
-
   return (
     <div>
       <div className="__marquee">
@@ -28,6 +27,7 @@ const Marquee = (props: any) => {
           variants={variants}
           animate="animate"
         >
+          {props.children}
           {props.children}
         </motion.div>
       </div>

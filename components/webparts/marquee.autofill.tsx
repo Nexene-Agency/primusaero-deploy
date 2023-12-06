@@ -30,6 +30,13 @@ const MarqueeAutofill = (props: any) => {
         >
           {props.children}
         </motion.div>
+        <motion.div
+            className="__marquee-track"
+            variants={variants}
+            animate="animate"
+        >
+          {props.children}
+        </motion.div>
       </div>
     </div>
   );
