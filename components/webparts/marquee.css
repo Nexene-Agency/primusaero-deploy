@@ -1,11 +1,12 @@
 .__marquee {
     position: relative;
     width: 100vw;
-    max-width: 96em;
+    max-width: 100%;
     overflow-x: hidden;
+    white-space: nowrap;
 }
 
 .__marquee_track {
     position: absolute;
-    white-space: nowrap;
+    display: inline-block;
 }
