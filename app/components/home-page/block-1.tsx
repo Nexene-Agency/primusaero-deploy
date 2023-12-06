@@ -3,6 +3,7 @@ import {flatten, getMessages, translator} from "@framework/i18n.utils";
 import MESSAGES from "@app/components/data/common-messages";
 import ArrowRight from "@components/icons/ArrowRight";
 import Marquee from "@components/webparts/marquee";
+// import Marquee from "react-fast-marquee";
 import React, {Suspense} from "react";
 import BigArrowLeft from "@components/icons/BigArrowLeft";
 import "./block1.css";
@@ -14,15 +15,16 @@ const BlockOne = (props: any) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   const renderSlogans = () => (
-    <div className="justify-start items-center mt-6 gap-6 lg:gap-12 inline-flex">
+    <div className="justify-start items-center mx-auto pt-6 gap-6 lg:gap-12 inline-flex">
       <div
-        className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">{t("home.slogans.1")}</div>
-      <BigArrowLeft className="h-[34px] lg:h-[76px]"/>
+        className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10 m-auto">{t("home.slogans.1")}</div>
+      <BigArrowLeft className="h-[34px] lg:h-[76px] my-auto"/>
       <div
-        className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">{t("home.slogans.2")}</div>
-      <BigArrowLeft className="h-[34px] lg:h-[76px]"/>
+        className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10 m-auto">{t("home.slogans.2")}</div>
+      <BigArrowLeft className="h-[34px] lg:h-[76px] my-auto"/>
       <div
-        className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">{t("home.slogans.3")}</div>
+        className="text-center text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10 m-auto">{t("home.slogans.3")}</div>
+        <BigArrowLeft className="h-[34px] lg:h-[76px] my-auto"/>
     </div>
   );
 
