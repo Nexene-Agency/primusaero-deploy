@@ -1,0 +1,5 @@
+.__video-placeholder {
+    background-image: url("../../../../public/images/play_video_button.webp"), url("../../../../public/images/smaller_placeholder_image.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+}
