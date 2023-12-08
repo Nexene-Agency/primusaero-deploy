@@ -1,6 +1,6 @@
-import { flatten, getMessages, translator } from "@framework/i18n.utils";
+import {flatten, getMessages, translator} from "@framework/i18n.utils";
 import MESSAGES from "@app/components/data/common-messages";
-import React, { Suspense } from "react";
+import React, {Suspense} from "react";
 import Marquee from "@components/webparts/marquee";
 import TestimonialStepper from "@components/webparts/testimonial.stepper";
 import BigArrowLeft from "@components/icons/BigArrowLeft";
@@ -8,6 +8,7 @@ import WorldMap from "@components/webparts/world.map";
 
 interface BlockProperties {
   locale: string;
+  withoutMap?: boolean;
 }
 
 const BlockThree = (props: BlockProperties) => {
@@ -18,22 +19,23 @@ const BlockThree = (props: BlockProperties) => {
       <div className="text-white text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
         {t("footer.slogans.1")}
       </div>
-      <BigArrowLeft className="h-[34px] lg:h-[76px]" />
+      <BigArrowLeft className="h-[34px] lg:h-[76px]"/>
       <div className="text-white text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
         {t("footer.slogans.2")}
       </div>
-      <BigArrowLeft className="h-[34px] lg:h-[76px]" />
+      <BigArrowLeft className="h-[34px] lg:h-[76px]"/>
       <div className="text-white text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
         {t("footer.slogans.3")}
       </div>
-      <BigArrowLeft className="h-[34px] lg:h-[76px]" />
+      <BigArrowLeft className="h-[34px] lg:h-[76px]"/>
     </div>
   );
 
   return (
     <>
-      <div className="flex flex-col items-center">
-        <div className="w-full ml-6 lg:ml-0 mb-8 lg:mb-0 lg:text-center text-stone-950 mt-36 lg:mt-0 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
+      {props.withoutMap ? null : <div className="flex flex-col __restricted-width items-center">
+        <div
+          className="w-full ml-6 lg:ml-0 mb-8 lg:mb-0 lg:text-center text-stone-950 mt-36 lg:mt-0 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
           {t("home.locations.ourLocations")}
         </div>
         {/*<img className="mb-36 lg:mb-72 px-2 lg:px-0" src="/assets/map-placeholder.svg" alt="map-placeholder"/>*/}
@@ -47,11 +49,11 @@ const BlockThree = (props: BlockProperties) => {
           }
         >
           <div>
-            <WorldMap widthPercent={100} xCorrection={1.5} yCorrection={1.5} />
+            <WorldMap widthPercent={100} xCorrection={1.5} yCorrection={1.5}/>
           </div>
         </Suspense>
-      </div>
-      <div className="bg-stone-950">
+      </div>}
+      <div className="__restricted-width bg-stone-950">
         <Suspense fallback={renderSlogans()}>
           <div className="hidden lg:block">
             <Marquee size={2205} duration={15}>
@@ -65,7 +67,7 @@ const BlockThree = (props: BlockProperties) => {
           </div>
         </Suspense>
         <Suspense fallback={<div></div>}>
-          <TestimonialStepper />
+          <TestimonialStepper/>
         </Suspense>
       </div>
     </>

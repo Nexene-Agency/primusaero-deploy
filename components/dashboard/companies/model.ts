@@ -3,6 +3,7 @@ import {SOCIAL_MEDIA_SCHEMA, SocialMedia} from "@components/dashboard/socials/mo
 
 export const COMPANIES_COLLECTION = "companies";
 
+export type PartnerType = "full" | "affiliate" | "main";
 
 // office.de@primus.aero
 // MSJ AeroSolution Hamburg GmbH
@@ -31,6 +32,7 @@ export interface Company {
   socials: SocialMedia;
   valid: boolean;
   tags: string[];
+  partner: PartnerType;
 }
 
 export interface CompanyReference {
@@ -39,6 +41,7 @@ export interface CompanyReference {
     description: string;
     valid: boolean;
     code: string;
+    partner: PartnerType;
   };
 }
 
@@ -58,6 +61,7 @@ export const COMPANY_SCHEMA = Joi.object({
   socials: SOCIAL_MEDIA_SCHEMA.required(),
   valid: Joi.boolean().required(),
   tags: Joi.array().items(Joi.string()).required().min(1).max(10),
+  partner: Joi.string().required().allow("full", "affiliate", "main"),
 });
 
 export const newCompany = (): Company => {
@@ -70,5 +74,6 @@ export const newCompany = (): Company => {
     socials: {},
     valid: true,
     tags: ["other"],
+    partner: "affiliate",
   };
 };

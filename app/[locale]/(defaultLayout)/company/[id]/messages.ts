@@ -5,6 +5,11 @@ const LOCAL_MESSAGES = {
     commercialNumber: "Commercial Register No.: {{data}}",
     vat: "VAT: {{data}}",
     linkedIn: "LinkedIn",
+    type: {
+      full: "Full Partnership",
+      affiliate: "Affiliate partner",
+      main: "Flagship company",
+    },
   }
 };
 

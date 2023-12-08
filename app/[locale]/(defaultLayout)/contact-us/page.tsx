@@ -25,9 +25,9 @@ const ContactUs = async ({params, searchParams}: HomeProps) => {
         strategy="afterInteractive"
         src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
       />
-      <div className="flex flex-col w-full items-center lg:mt-[108px]">
+      <div className="flex flex-col w-full __restricted-width items-center mt-[137px] lg:mt-[108px]">
         <Suspense fallback={<div className="p-8 mx-auto my-8 uppercase">{t("menu.contactUs")}</div>}>
-          <ClientComponent/>
+          <ClientComponent company={searchParams.company} topic={searchParams.topic}/>
         </Suspense>
       </div>
     </>

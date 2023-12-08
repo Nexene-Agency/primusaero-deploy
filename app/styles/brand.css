@@ -33,7 +33,11 @@ body {
 }
 
 .__root-layout {
-    @apply flex flex-col min-h-screen max-w-[96em] m-auto;
+    @apply flex flex-col min-h-screen w-full;
+}
+
+.__restricted-width {
+    @apply max-w-[96em] mx-auto w-full;
 }
 
 .__button {

@@ -36,7 +36,7 @@ const TechnicalManagement = async ({params, searchParams}: PageProps) => {
 
   return (
     <>
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col __restricted-width">
         <div className="w-full relative top-0 left-0 h-[520px] lg:h-[1080px]">
           <div className="__main-background"></div>
           <div className="absolute mt-[137px] lg:mt-[108px] top-0 left-0">
@@ -46,7 +46,7 @@ const TechnicalManagement = async ({params, searchParams}: PageProps) => {
         </div>
       </div>
 
-      <div>
+      <div className="__restricted-width">
         <div className="flex flex-col my-36 lg:my-72 mx-6 lg:mx-16 items-center gap-16">
           {renderSection(0)}
           <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">

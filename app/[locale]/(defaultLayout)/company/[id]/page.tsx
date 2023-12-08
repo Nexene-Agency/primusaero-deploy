@@ -38,7 +38,7 @@ const CompanyPage = async ({params, searchParams}: PageProps) => {
       </div>
       <div className="flex flex-col lg:flex-row w-full justify-between items-start">
         <div className="flex flex-col w-full lg:w-3/10 text-stone text-xl font-normal">
-          <div className="text-neutral-500 text-lg pb-6">{tl("fullPartnerShip")}</div>
+          <div className="text-neutral-500 text-lg pb-6">{tl(`type.${companyReference.company?.data.partner}`)}</div>
           <div className="flex gap-2">
             <div>{getLocationAddress(0).street}</div>
             <div>{getLocationAddress(0).street_number}</div>
@@ -100,7 +100,7 @@ const CompanyPage = async ({params, searchParams}: PageProps) => {
         strategy="afterInteractive"
         src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
       />
-      <div className="flex flex-col mt-[137px] lg:mt-[108px] pt-6 lg:pt-[72px] px-6 lg:px-16">
+      <div className="flex flex-col __restricted-width mt-[137px] lg:mt-[108px] pt-6 lg:pt-[72px] px-6 lg:px-16">
         {companyReference.company ? renderCompany() : null}
       </div>
     </>

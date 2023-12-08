@@ -1,6 +1,6 @@
 import {useFormContext, useFormState} from "react-hook-form";
-import React, {useState} from "react";
-import {FormControl, FormLabel, Input, Switch, Text, Textarea,} from "@chakra-ui/react";
+import React, {ChangeEvent, useState} from "react";
+import {FormControl, FormLabel, Input, Select, Switch, Text, Textarea,} from "@chakra-ui/react";
 import {getClientTranslator} from "@framework/i18n.client.utils";
 import {doNothing, SelectableProperty} from "@framework/utils";
 import ChipsComponent from "@framework/components/chips.component";
@@ -43,6 +43,15 @@ const BasicTab = (props: any) => {
     return locations.filter((value: Selectable) =>
       `${value.name} ${value.id}`.toLowerCase().includes(search.toLowerCase())
     );
+  };
+
+  const typeChanged = (event: ChangeEvent<HTMLSelectElement>) => {
+    console.log("type changed", event.target.value);
+    setValue("partner", event.target.value, {
+      shouldTouch: true,
+      shouldDirty: true,
+      shouldValidate: true,
+    });
   };
 
   return (
@@ -164,12 +173,22 @@ const BasicTab = (props: any) => {
         ></ChipsComponent>
       </FormControl>
 
-      <FormControl>
-        <div className="__hstack __gap-16px">
-          <Switch id="valid" {...register("valid")} />
-          <Text>{t("app.fields.valid")}</Text>
-        </div>
-      </FormControl>
+      <div className="flex gap-4 items-center">
+        <FormControl>
+          <div className="flex gap-4 items-center">
+            <Switch id="valid" {...register("valid")} />
+            <Text>{t("app.fields.valid")}</Text>
+          </div>
+        </FormControl>
+
+        <FormControl>
+          <FormLabel>{t("app.fields.type")}</FormLabel>
+          <Select defaultValue={getValues("partner")} onChange={typeChanged} rounded="md">
+            {["full", "affiliate", "main"].map((item) => (
+              <option value={item} key={item}>{t(`app.company.types.${item}`)}</option>))}
+          </Select>
+        </FormControl>
+      </div>
     </form>
   );
 };

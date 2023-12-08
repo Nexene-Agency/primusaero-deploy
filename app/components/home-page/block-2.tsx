@@ -11,7 +11,7 @@ const BlockTwo = (props: BlockProperties) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center __restricted-width">
       <div className="hidden lg:block w-full mb-6 h-px opacity-40 bg-neutral-400"/>
       <div className="hidden lg:flex self-stretch justify-start items-center gap-16">
         {SERVICE_MENU_ITEMS.map((item) => (

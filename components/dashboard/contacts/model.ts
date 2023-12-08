@@ -18,12 +18,14 @@ export interface Contact {
   meetingDate?: string;
   meetingTime?: string;
   company?: string;
+  topic?: string;
 }
 
 export const CONTACT_SCHEMA = Joi.object({
   preferred: Joi.string().required().allow("email", "phone", "whatsapp", "meeting"),
   title: Joi.string().optional().allow("").max(32),
   company: Joi.string().optional().allow("").max(32),
+  topic: Joi.string().optional().allow("").max(32),
   firstName: Joi.string().required().max(32),
   lastName: Joi.string().required().max(32),
   email: Joi.string().email({tlds: {allow: false}}).required().max(128),
@@ -54,7 +56,7 @@ export const CONTACT_SCHEMA = Joi.object({
   }),
 });
 
-export const newContact = (company: string): Contact => {
+export const newContact = (company: string, topic: string): Contact => {
   return ({
     preferred: "email",
     title: "",
@@ -71,5 +73,6 @@ export const newContact = (company: string): Contact => {
     meetingDate: "",
     meetingTime: "",
     company,
+    topic,
   }) as Contact;
 };

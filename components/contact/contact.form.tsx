@@ -75,7 +75,7 @@ const ContactForm = (props: any) => {
     mode: "onChange",
     resolver: joiResolver(CONTACT_SCHEMA),
     defaultValues: {
-      ...newContact(props.company ?? "")
+      ...newContact(props.company ?? "", props.topic ?? "")
     },
   });
 
@@ -326,8 +326,8 @@ const ContactForm = (props: any) => {
              dangerouslySetInnerHTML={{__html: t("app.contactUs.thankYou") as any}}></div>
         {props.embedded ?
           null :
-          <PrimaryButton asLink={true} target="/" class="text-stone-950 bg-white">
-            <ArrowRight className="rotate-180"/>
+          <PrimaryButton asLink={true} target="/">
+            <ArrowRight className="rotate-180 fill-white"/>
             {t("app.contactUs.backToHome")}
           </PrimaryButton>
         }
@@ -355,7 +355,8 @@ const ContactForm = (props: any) => {
 
 ContactForm.propTypes = {
   embedded: PropTypes.bool,
-  company: PropTypes.string
+  company: PropTypes.string,
+  topic: PropTypes.string,
 };
 
 export default ContactForm;

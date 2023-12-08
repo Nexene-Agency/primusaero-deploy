@@ -244,7 +244,12 @@
       "singular": "Company",
       "plural": "Companies",
       "new": "New company",
-      "edit": "Edit company"
+      "edit": "Edit company",
+      "types": {
+        "full": "Full partnership",
+        "affiliate": "Affiliate partner",
+        "main": "Flagship company"
+      }
     },
     "teamMember": {
       "singular": "Team member",
