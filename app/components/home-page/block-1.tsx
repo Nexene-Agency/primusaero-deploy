@@ -50,7 +50,8 @@ const BlockOne = (props: any) => {
             </span>
           </div>
         </div>
-        <div className="bg-[url('/images/plane-top-mobile.webp')] bg-no-repeat bg-center w-full h-[620px] absolute" />
+
+        <div className="bg-[url('/images/hero_plane_top.webp')] bg-no-repeat bg-center w-full h-[620px] bg-top-8 absolute" />
         <div className="w-full h-[620px] absolute __cloud-748" />
       </div>
 
