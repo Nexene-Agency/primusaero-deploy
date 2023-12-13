@@ -29,6 +29,7 @@ const Marquee = (props: any) => {
         >
           {props.children}
           {props.children}
+<<<<<<< HEAD
         </motion.div>*/}
         <div
             className="__marquee-track"
@@ -36,6 +37,9 @@ const Marquee = (props: any) => {
           {props.children}
           {props.children}
         </div>
+=======
+        </motion.div>
+>>>>>>> landingpage_animations
       </div>
     </div>
   );

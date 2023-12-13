@@ -9,24 +9,26 @@ import BigArrowLeft from "@components/icons/BigArrowLeft";
 import "./block1.css";
 import TestimonialSlideshow from "@components/webparts/testimonial.slideshow";
 import PropTypes from "prop-types";
+import MarqueeText from "react-marquee-text";
+import "./styles.css";
 
 const BlockOne = (props: any) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   const renderSlogans = () => (
-    <div className="justify-start pt-6 gap-6 lg:gap-12 inline-flex mx-6">
+    <div className="justify-start items-center lg:items-start pt-3 lg:pt-6 gap-2 lg:gap-12 inline-flex mx-1 lg:mx-6">
       <span className="text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
         {t("home.slogans.1")}
       </span>
-      <BigArrowLeft className="h-[34px] lg:h-[76px] " />
+      <BigArrowLeft className="h-12 lg:h-[76px] rotate-180 mb-3 lg:mb-0" />
       <span className="text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
         {t("home.slogans.2")}
       </span>
-      <BigArrowLeft className="h-[34px] lg:h-[76px] " />
+      <BigArrowLeft className="h-12 lg:h-[76px] rotate-180 mb-3 lg:mb-0" />
       <span className="text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
         {t("home.slogans.3")}
       </span>
-      <BigArrowLeft className="h-[34px] lg:h-[76px] " />
+      <BigArrowLeft className="h-12 lg:h-[76px] rotate-180 mb-3 lg:mb-0" />
     </div>
   );
 
@@ -105,15 +107,11 @@ const BlockOne = (props: any) => {
       </Suspense>
 
       <Suspense fallback={renderSlogans()}>
-        <div className="hidden lg:block">
-          <Marquee size={1536} duration={10}>
+        <div className="block w-full">
+          <MarqueeText duration={10} direction="right">
             {renderSlogans()}
-          </Marquee>
-        </div>
-        <div className="lg:hidden">
-          <Marquee size={1100} duration={10}>
             {renderSlogans()}
-          </Marquee>
+          </MarqueeText>
         </div>
       </Suspense>
 
