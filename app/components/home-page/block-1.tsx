@@ -31,30 +31,52 @@ const BlockOne = (props: any) => {
   );
 
   return (
-    <div className="flex flex-col items-center mt-[108px]">
-      <img
+    <div className="flex flex-col items-center mt-[108px] bg-stone-950">
+      {/*<img
         className="hidden lg:block"
         src="/images/first-block-1.webp"
         alt={"Gulfstream G700"}
-      />
-
-      <div className="w-full lg:hidden h-[620px]">
-        <div className="w-full h-[620px] absolute __cloud-467" />
+      />*/}
+      {/*--- Hero Section ---*/}
+      <div className="w-[1536px] h-[764px] flex flex-col items-center justify-between z-101">
+        {/*<div className="w-full h-[620px] absolute __cloud-467" />*/}
+        {/*--- Headline ---*/}
         <div className="w-full h-[620px] absolute">
           <div className="w-full text-center mt-12">
-            <span className="text-stone-950 text-5xl font-bold font-muller uppercase">
+            <span className="text-white text-5xl sm:text-7xl lg:text-9xl xl:text-[13.5rem] font-bold font-muller uppercase">
               PRIMUS
             </span>
-            <span className="text-stone-950 text-5xl font-light font-muller uppercase">
+            <span className="text-white text-5xl sm:text-7xl lg:text-9xl xl:text-[13.5rem] font-light font-muller uppercase">
               AERO
             </span>
           </div>
         </div>
-
-        <div className="bg-[url('/images/hero_plane_top.webp')] bg-no-repeat bg-center w-full h-[620px] bg-top-8 absolute" />
-        <div className="w-full h-[620px] absolute __cloud-748" />
+        {/*--- Testimonials ---*/}
+        <Suspense
+          fallback={
+            <div className="px-8 lg:px-16 py-36 lg:py-72 bg-white bg-opacity-90 border-b border-stone-950 backdrop-blur-3xl flex-col justify-start items-start gap-2.5 inline-flex">
+              <div className="flex-col justify-start items-center gap-8 lg:gap-12 flex">
+                <div className="self-stretch text-stone-950 text-xl lg:text-4xl font-normal leading-normal lg:leading-10">
+                  “{props.testimonial?.data?.text}”
+                </div>
+                <div className="self-stretch text-zinc-500 text-lg lg:text-xl font-normal lg:leading-relaxed">
+                  ({props.testimonial?.data?.author})
+                </div>
+              </div>
+            </div>
+          }
+        >
+          <TestimonialSlideshow timeout={5000} />
+        </Suspense>
+        {/*<img
+          src={"/images/hero_plane_top.webp"}
+          alt={"Gulfstream G700"}
+          className="w-[76.875rem] xl:w-[93.75rem] h-[840px] absolute top-26 xl:top-32 object-none"
+        />
+        <div className="bg-[url('/images/hero_plane_top.webp')] bg-no-repeat bg-center w-full h-[620px] [background-position-y:-120px] absolute" />
+        <div className="w-full h-[620px] absolute __cloud-748" />*/}
       </div>
-
+      {/*--- Services ---*/}
       <div className="w-full h-14 px-16 bg-white bg-opacity-90 border-t border-b border-stone-950 backdrop-blur-2xl justify-center items-center inline-flex">
         <div className="hidden 2xl:inline-flex self-stretch justify-start items-center gap-16">
           {SERVICE_MENU_ITEMS.map((item) => (
@@ -88,7 +110,7 @@ const BlockOne = (props: any) => {
 
       <hr />
 
-      <Suspense
+      {/*<Suspense
         fallback={
           <div className="px-8 lg:px-16 py-36 lg:py-72 bg-white bg-opacity-90 border-b border-stone-950 backdrop-blur-3xl flex-col justify-start items-start gap-2.5 inline-flex">
             <div className="flex-col justify-start items-center gap-8 lg:gap-12 flex">
@@ -103,8 +125,8 @@ const BlockOne = (props: any) => {
         }
       >
         <TestimonialSlideshow timeout={5000} />
-      </Suspense>
-
+      </Suspense>*/}
+      {/*--- Marquee ---*/}
       <Suspense fallback={renderSlogans()}>
         <div className="hidden lg:block">
           <Marquee size={1536} duration={10}>
