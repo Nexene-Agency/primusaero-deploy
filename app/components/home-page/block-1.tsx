@@ -1,7 +1,6 @@
 import { SERVICE_MENU_ITEMS } from "@app/components/data/menus";
 import { flatten, getMessages, translator } from "@framework/i18n.utils";
 import MESSAGES from "@app/components/data/common-messages";
-import ArrowRight from "@components/icons/ArrowRight";
 import Marquee from "@components/webparts/marquee";
 // import Marquee from "react-fast-marquee";
 import React, { Suspense } from "react";
@@ -79,7 +78,7 @@ const BlockOne = (props: any) => {
         <div className="w-full h-[620px] absolute __cloud-748" />*/}
       </div>
       {/*--- Services ---*/}
-      <div className="w-full h-14 px-16 bg-white bg-opacity-90 border-t border-b border-stone-950 backdrop-blur-2xl justify-center items-center inline-flex">
+      <div className="w-full h-14 px-16 bg-white  border-t border-b border-stone-950 backdrop-blur-2xl justify-center items-center inline-flex">
         <div className="hidden 2xl:inline-flex self-stretch justify-start items-center gap-16">
           {SERVICE_MENU_ITEMS.map((item) => (
             <a
@@ -130,15 +129,14 @@ const BlockOne = (props: any) => {
       </Suspense>*/}
       {/*--- Marquee ---*/}
       <Suspense fallback={renderSlogans()}>
-        <div className="block w-full">
+        <div className="block w-full bg-white">
           <MarqueeText duration={10} direction="right">
             {renderSlogans()}
             {renderSlogans()}
           </MarqueeText>
         </div>
       </Suspense>
-
-      <div className="w-full px-8 lg:px-16 py-36 lg:py-72 justify-start items-start flex flex-col lg:flex-row">
+      {/* <div className="w-full px-8 lg:px-16 py-36 lg:py-72 justify-start items-start flex flex-col lg:flex-row bg-white">
         <div className="lg:w-[24%] mb-6 lg:mb-0 text-zinc-500 text-lg lg:text-xl font-normal leading-relaxed">
           {t("home.whatWeDo.title")}
         </div>
@@ -157,7 +155,7 @@ const BlockOne = (props: any) => {
             </div>
           </a>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 };

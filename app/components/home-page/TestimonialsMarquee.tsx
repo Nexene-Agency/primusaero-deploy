@@ -1,18 +1,14 @@
-import { flatten, getMessages, translator } from "@framework/i18n.utils";
-import MESSAGES from "@app/components/data/common-messages";
 import React, { Suspense } from "react";
+import MarqueeText from "react-marquee-text";
 import TestimonialStepper from "@components/webparts/testimonial.stepper";
 import BigArrowLeft from "@components/icons/BigArrowLeft";
-import WorldMap from "@components/webparts/world.map";
-import MarqueeText from "react-marquee-text";
-import "./styles.css";
+import { flatten, getMessages, translator } from "@framework/i18n.utils";
+import MESSAGES from "@app/components/data/common-messages";
 
 interface BlockProperties {
   locale: string;
-  withoutMap?: boolean;
 }
-
-const BlockThree = (props: BlockProperties) => {
+const TestimonialsMarquee = (props: BlockProperties) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   const renderSlogans = () => (
@@ -32,33 +28,8 @@ const BlockThree = (props: BlockProperties) => {
     </div>
   );
   return (
-    <>
-      {props.withoutMap ? null : (
-        <div className="flex flex-col __restricted-width items-center">
-          <div className="w-full ml-6 lg:ml-0 mb-8 lg:mb-0 lg:text-center text-stone-950 mt-36 lg:mt-0 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
-            {t("home.locations.ourLocations")}
-          </div>
-          {/*<img className="mb-36 lg:mb-72 px-2 lg:px-0" src="/assets/map-placeholder.svg" alt="map-placeholder"/>*/}
-          <Suspense
-            fallback={
-              <img
-                className="mb-36 lg:mb-72 px-2 lg:px-0"
-                src="/assets/map-placeholder.svg"
-                alt="map-placeholder"
-              />
-            }
-          >
-            <div>
-              <WorldMap
-                widthPercent={100}
-                xCorrection={1.5}
-                yCorrection={1.5}
-              />
-            </div>
-          </Suspense>
-        </div>
-      )}
-      <div className="__restricted-width bg-stone-950">
+    <div className="w-screen bg-stone-950 flex justify-center">
+      <div className="__restricted-width ">
         <Suspense fallback={renderSlogans()}>
           <div className="block w-full">
             <MarqueeText duration={10} direction="right">
@@ -71,8 +42,8 @@ const BlockThree = (props: BlockProperties) => {
           <TestimonialStepper />
         </Suspense>
       </div>
-    </>
+    </div>
   );
 };
 
-export default BlockThree;
+export default TestimonialsMarquee;

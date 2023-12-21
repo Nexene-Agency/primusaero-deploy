@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import "./marquee.css";
 import PropTypes from "prop-types";
 
@@ -29,17 +28,11 @@ const Marquee = (props: any) => {
         >
           {props.children}
           {props.children}
-<<<<<<< HEAD
         </motion.div>*/}
-        <div
-            className="__marquee-track"
-        >
+        <div className="__marquee-track">
           {props.children}
           {props.children}
         </div>
-=======
-        </motion.div>
->>>>>>> landingpage_animations
       </div>
     </div>
   );
