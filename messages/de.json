@@ -11,6 +11,9 @@
     "en": "English",
     "de": "German"
   },
+  "list": {
+    "values": "{{firstRow}} ... {{lastRow}} of {{totalRows}}"
+  },
   "fields": {
     "firstName": "First Name",
     "lastName": "Last Name",
@@ -21,13 +24,13 @@
   "actions": {
     "login": "Login",
     "logout": "Logout",
-    "firstPage": "Erste Seite",
-    "previousPage": "Vorherige Seite",
-    "nextPage": "Nächste Seite",
-    "lastPage": "Letzte Seite",
-    "next": "Weiter",
-    "previous": "Zurück",
-    "search": "Suche"
+    "firstPage": "First page",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "lastPage": "Last page",
+    "next": "Next",
+    "previous": "Back",
+    "search": "Search"
   },
   "errors": {
     "auth": {
@@ -39,7 +42,12 @@
     },
     "item": {
       "save": "Cannot save item",
-      "load": "Cannot load item"
+      "load": "Cannot load item",
+      "process": "Cannot process item",
+      "delete": "Cannot delete item"
+    },
+    "address": {
+      "incomplete": "Address is incomplete"
     },
     "backend": {
       "ERR_BAD_REQUEST": "Bad request",
@@ -55,14 +63,65 @@
     }
   },
   "app": {
-    "name": "VanLifeZone (de)",
+    "name": "VanLifeZone",
+    "comment": {
+      "singular": "Comment",
+      "plural": "Comments",
+      "add": "Share your thoughts",
+      "saved": "Comment saved",
+      "moderation": "Your comment will be visible after moderation",
+      "cannotSave": "Cannot save comment",
+      "tryAgain": "Please try again later",
+      "send": "Send",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "yourName": "Your name",
+      "when": "When",
+      "parentName": "Blog entry",
+      "text": "Comment text",
+      "approved": "Approved",
+      "edit": "Edit comment",
+      "content": "Content",
+      "postedBy": "Posted by",
+      "likes": "Number of likes",
+      "delete": "Delete",
+      "deleted": "Comment deleted",
+      "approve": "Approve",
+      "wasApproved": "Comment approved",
+      "cannotApprove": "Cannot approve comment",
+      "deleteQuestion": "Do you really want to delete this comment?",
+      "approveQuestion": "Do you really want to approve this comment?",
+      "block": "Block",
+      "blocked": "Comment blocked",
+      "cannotBlock": "Cannot block comment",
+      "blockQuestion": "Do you really want to block (remove approval) this comment?"
+    },
     "blog": {
-      "blog_post": "Blog post",
-      "content_tab": "Content",
+      "blogPost": "Blog post",
+      "contentTab": "Content",
+      "styleTab": "Style",
       "new": "Create blog post",
       "edit": "Edit blog post",
       "plural": "Blogs",
-      "singular": "Blog"
+      "singular": "Blog",
+      "published": "Published",
+      "publishedAt": "Published at",
+      "editContent": "Edit content",
+      "addBlock": "Add block",
+      "blockManager": "Block manager",
+      "saveBlock": "Save block",
+      "savePost": "Save blog post",
+      "saved": "Blog post saved",
+      "publishedBy": "by {{by}} @ {{at}}",
+      "coverPicture": "Cover picture",
+      "authorTab": "Original author",
+      "exit": "Exit",
+      "blockEditor": "Block editor: {{title}}",
+      "columns": "Columns",
+      "aboutAuthor": "About the author",
+      "publish": "Publish",
+      "publishedNow": "The blogpost is published now",
+      "publishQuestion": "Do you really want to publish the blogpost '{{title}}'?"
     },
     "fields": {
       "name": "Name",
@@ -70,7 +129,56 @@
       "valid": "Valid",
       "published": "Published",
       "title": "Title",
-      "topic": "Topic"
+      "firstName": "First name",
+      "lastName": "Last name",
+      "topic": "Topic",
+      "expires": "Expires",
+      "address": "Address",
+      "postal_code": "Postal code",
+      "street": "Street",
+      "street_number": "Street number",
+      "city": "City",
+      "country": "Country",
+      "lat": "Latitude",
+      "lng": "Longitude",
+      "address_locator": "Search for address",
+      "location": "Location",
+      "imageTag": "Image tag",
+      "titleTag": "Title",
+      "imageURL": "Image URL",
+      "email": "E-Mail",
+      "web": "Website",
+      "social": "Social",
+      "visible": "Visible",
+      "order": "Order",
+      "author": "Author",
+      "lastModifiedAt": "Last modified at",
+      "tags": "Tags",
+      "exit": "Exit",
+      "bio": "Bio",
+      "copyright": "Copyright",
+      "image": "Image",
+      "text": "Text",
+      "code": "Code",
+      "vatNumber": "VAT number",
+      "registrationNumber": "Registration number",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "postalAddress": "Postal address",
+      "phone": "Phone number",
+      "eoriNumber": "EORI number",
+      "subject": "Subject",
+      "message": "Message",
+      "message_ph": "Write your message...",
+      "selectDate": "Select date",
+      "selectTime": "Select time",
+      "publicName": "Public name",
+      "jobTitle": "Job title",
+      "linkedIn": "LinkedIn",
+      "companies": "Companies",
+      "locations": "Locations",
+      "listingOrder": "Listing order"
     },
     "actions": {
       "save": "Save",
@@ -81,15 +189,38 @@
       "show": "Show",
       "back": "Back",
       "upload": "Upload",
-      "close": "Close"
+      "close": "Close",
+      "yes": "Yes",
+      "no": "No",
+      "share": "Share"
     },
     "tabs": {
       "basic": "Basic",
-      "properties": "Properties"
+      "properties": "Properties",
+      "text": "Text",
+      "history": "History",
+      "signaturePicture": "Signature picture",
+      "socialMedia": "Social media"
     },
     "dashboard": {
       "singular": "Dashboard",
       "plural": "Dashboards"
+    },
+    "text": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "location": {
+      "singular": "Location",
+      "plural": "Locations",
+      "new": "New location",
+      "edit": "Edit location",
+      "errors": {
+        "cannotSearch": "Cannot search",
+        "notFound": "Nothing found for this search query"
+      },
+      "headline": "Headline",
+      "addressPlus": "Address additional data"
     },
     "picture": {
       "singular": "Picture",
@@ -101,7 +232,30 @@
       "must_select": "You must select a picture",
       "preview": "Preview",
       "copy_reference": "Copy reference",
-      "reference_copied": "Reference copied"
+      "reference_copied": "Reference copied",
+      "selectOne": "Select one picture",
+      "selectMultiple": "Select one or more pictures",
+      "selectCount": "Select {{count}} pictures",
+      "found": "Pictures found",
+      "selected": "Pictures selected",
+      "add": "Add picture"
+    },
+    "company": {
+      "singular": "Company",
+      "plural": "Companies",
+      "new": "New company",
+      "edit": "Edit company",
+      "types": {
+        "full": "Full partnership",
+        "affiliate": "Affiliate partner",
+        "main": "Flagship company"
+      }
+    },
+    "teamMember": {
+      "singular": "Team member",
+      "plural": "Team members",
+      "new": "New team member",
+      "edit": "Edit team member"
     },
     "page": {
       "singular": "Page",
@@ -109,64 +263,138 @@
     },
     "user": {
       "singular": "User",
-      "plural": "Users"
+      "plural": "Users",
+      "edit": "Edit user",
+      "role": {
+        "singular": "Role",
+        "plural": "Roles",
+        "valid": "Valid",
+        "emailVerified": "Email verified",
+        "types": {
+          "admin": "Administrator",
+          "editor": "Editor",
+          "user": "User"
+        }
+      }
     },
     "article": {
-      "singular": "Artikel",
-      "plural": "Artikel",
-      "new": "Neuer Artikel",
-      "edit": "Artikel bearbeiten",
-      "basic": "Grundinformationen",
-      "vehicle": "Fahrzeug",
-      "hotTopics": "Top-Themen:",
-      "hotDesc": "Top-Themen sind Themen oder Bereiche, die für unsere kommenden Magazine besonders interessant sind.",
-      "title": "Titel des Artikels",
-      "max60": "Max. 60 Zeichen",
-      "subTitle": "Untertitel",
-      "location": "Ort/Route",
-      "location-ph": "Beschreibt in Stichworten, wo die Geschichte stattfindet.",
-      "article": "Artikel",
-      "article-ph": "Wer seid ihr? Wie reist ihr? Was war euer schönster Moment unterwegs?\nErzählt uns etwas Einzigartiges! Ihr habt völlige kreative Freiheit!\nMax. 1200 Wörter",
-      "images": "Link zu 15-20 hochwertigen Bildern",
-      "images-ph": "Nur WeTransfer, Google Drive oder Dropbox links",
-      "firstName": "Vorname",
+      "singular": "Article",
+      "plural": "Articles",
+      "new": "New article",
+      "edit": "Edit article",
+      "basic": "Basic information",
+      "vehicle": "Vehicle",
+      "hotTopics": "Hot topics:",
+      "hotDesc": "Hot topics are topics or areas we are particularly interested in for our upcoming magazines",
+      "title": "Title of Article",
+      "max60": "60 characters max.",
+      "subTitle": "Subtitle",
+      "location": "Location/Route",
+      "location-ph": "Describe in keywords where the story takes place",
+      "article": "Article",
+      "article-ph": "Who are you? How do you travel? What has been your favorite moment on the road?\nTell us something unique! You have total creative freedom!\n1200 words max.",
+      "images": "Link to 15-20 high quality images",
+      "images-ph": "WeTransfer, Google Drive or Dropbox only",
+      "firstName": "First name",
       "firstName-ph": "Jane",
-      "lastName": "Nachname",
+      "lastName": "First name",
       "lastName-ph": "Doe",
-      "social": "Benutzername in sozialen Medien",
-      "social-ph": "Nur ein Benutzername",
+      "social": "Username on social media",
+      "social-ph": "Only one username",
       "web": "Website",
-      "web-ph": "Nur eine Webseite",
+      "web-ph": "Only one website",
       "email": "E-Mail",
       "email-ph": "Jane.doe@gmail.com",
-      "vehicleBrand": "Marke und Typ des Fahrzeugs",
-      "vehicleBrand-ph": "z.B. VW T2",
-      "vehicleName": "Name eures Fahrzeugs",
-      "vehicleName-ph": "z.B. Bob",
-      "vehicleYear": "Baujahr",
-      "vehicleYear-ph": "z.B. 1960",
-      "disclaimerShort":  "Eure Geschichte im Vanlifezone Magazin einzureichen, ist eine wunderbare Gelegenheit, eure Abenteuer mit der Welt zu teilen. Wenn ihr das tut, gebt ihr uns das Recht, sowohl eure Geschichte als auch eure Bilder zu verwenden und alle notwendigen Änderungen vorzunehmen, um die bestmögliche Qualität zu gewährleisten. Wir versichern euch, dass es hierbei nicht um Zensur geht, sondern darum, sicherzustellen, dass eure Geschichte im besten Licht präsentiert und die höchstmögliche Qualität garantiert ist.",
-      "disclaimerLong": "Eure Geschichte im Vanlifezone Magazin einzureichen, ist eine wunderbare Gelegenheit, eure Abenteuer mit der Welt zu teilen. Wenn ihr das tut, gebt ihr uns das Recht, sowohl eure Geschichte als auch eure Bilder zu verwenden und alle notwendigen Änderungen vorzunehmen, um die bestmögliche Qualität zu gewährleisten. Wir versichern euch, dass es hierbei nicht um Zensur geht, sondern darum, sicherzustellen, dass eure Geschichte im besten Licht präsentiert und die höchstmögliche Qualität garantiert ist. Wir werden so wenig Änderungen an eurem Artikel vornehmen wie möglich, und keine Sorge, ihr erhaltet immer noch die volle Anerkennung für eure erstaunliche Erzählung! Indem ihr eure Geschichte einreicht, gebt ihr uns die Erlaubnis, euren Artikel und eure Bilder auf all unseren Plattformen zu drucken und zu veröffentlichen. Ihr bestätigt, dass ihr die Genehmigungen jeder erkennbaren Person auf euren bereitgestellten Bildern habt, diese Bilder von ihnen in jeder notwendigen Weise zu verwenden, zu verändern und zu verteilen und übertragt uns hiermit die Genehmigungen.",
-      "showMore": "Mehr anzeigen",
-      "acceptance": "Ich habe die Nutzungsbedingungen und die",
-      "privacy": " Datenschutzrichtlinie",
-      "acceptance2": " gelesen und stimme ihnen zu.",
-      "submit": "Artikel einreichen",
+      "vehicleBrand": "Brand and type of vehicle",
+      "vehicleBrand-ph": "e.g. VW T2",
+      "vehicleName": "Name of your vehicle",
+      "vehicleName-ph": "e.g. Bob",
+      "vehicleYear": "Year of manufacture",
+      "vehicleYear-ph": "e.g. 1960",
+      "recommendVanlifeAcc": "Recommend your favorite vanlife accounts",
+      "recommendVanlifeAcc-ph": "@vanlifezone, @...",
+      "disclaimerShort": "Submitting your story to Vanlifezone Magazine is a wonderful opportunity to share your adventures with the world. By doing so, you grant us the right to use and make any necessary modifications to both your story and images to ensure the highest quality possible. We assure you, this is not about censorship, but rather about making sure your story shines in its best light and to guarantee the highest possible quality…",
+      "showMore": "show more",
+      "disclaimerLong": "Submitting your story to Vanlifezone Magazine is a wonderful opportunity to share your adventures with the world. By doing so, you grant us the right to use and make any necessary modifications to both your story and images to ensure the highest quality possible. We assure you, this is not about censorship, but rather about making sure your story shines in its best light and to guarantee the highest possible quality. We'll make as little changes to your article as possible, and don't worry, you'll still get the full credit for your amazing tale! By submitting your story, you are giving us permission to print and publish your article and images on all of our platforms. You confirm that you have the permissions of every recognisable person in your provided images to use, alter and distribute these images of them in any way necessary and hereby pass the permissions on to us.",
+      "acceptance": "I have read and agree to the Terms and Conditions and the ",
+      "privacy": "Privacy Policy",
+      "submit": "Submit article",
       "errors": {
-        "errorInForm": "Es gibt einen Fehler im Formular",
-        "notAccepted": "Sie müssen die Nutzungsbedingungen und die Datenschutzrichtlinie akzeptieren",
-        "cannotSubmit": "Artikel kann nicht abgesendet werden"
+        "errorInForm": "There is an error in the form",
+        "notAccepted": "You must accept the terms and conditions and the privacy policy",
+        "cannotSubmit": "Cannot submit article"
       },
-      "submitted": "Artikel eingereicht",
-      "contactSoon": "Wir werden uns bald bei Ihnen melden",
-      "moreInfo": "Weitere Informationen",
-      "author": "Autor",
-      "processed": "Verarbeitet",
-      "processedBy": "Verarbeitet von",
-      "markAsProcessed": "Als verarbeitet markieren",
-      "markAsProcessedQuestion": "Möchten Sie diesen Artikel wirklich als verarbeitet markieren?<br/><br/><b style=\"margin-left: 2em;\">{{title}}</b>",
-      "processedSet": "Artikel als verarbeitet markiert"
+      "submitted": "Article submitted",
+      "contactSoon": "We will contact you soon",
+      "moreInfo": "More information",
+      "author": "Author",
+      "processed": "Processed",
+      "processedBy": "Processed by",
+      "markAsProcessed": "Mark as processed",
+      "markAsProcessedQuestion": "Do you really want to mark this article as processed?<br/><br/><b style=\"margin-left: 2em;\">{{title}}</b>",
+      "processedSet": "Article marked as processed"
+    },
+    "testimonial": {
+      "singular": "Testimonial",
+      "plural": "Testimonials",
+      "new": "New testimonial",
+      "edit": "Edit testimonial"
+    },
+    "setting": {
+      "singular": "Setting",
+      "plural": "Settings",
+      "hotTopics": "Hot topics",
+      "saved": "Settings saved"
+    },
+    "map": {
+      "singular": "Map",
+      "plural": "Maps",
+      "click": "Click on any location"
+    },
+    "contactUs": {
+      "title": "Contact us",
+      "howToContact": "How would you like to be contacted?",
+      "enterYourPersonalData": "Enter your personal data",
+      "leaveUsAMessage": "Leave us a message",
+      "sendNow": "Send now",
+      "selectASubject": "Select a subject",
+      "contactMode": {
+        "phone": "Personal phone call",
+        "email": "Email",
+        "whatsapp": "WhatsApp",
+        "meeting": "Schedule a meeting"
+      },
+      "thankYou": "Thank you for reaching out.<br/>We've received your message and will be in touch shortly.",
+      "backToHome": "Back to home",
+      "subjects": {
+        "privateAircraftOperation": "Private aircraft operation",
+        "aircraftCharter": "Aircraft charter",
+        "aircraftAcquisition": "Aircraft acquisition",
+        "maintenance": "Maintenance",
+        "technicalManagement": "Technical management",
+        "sparePartsAndLogistics": "Spare Parts and logistics",
+        "consultingServices": "Consulting services",
+        "other": "Other"
+      },
+      "privacy": {
+        "header": "Privacy permission",
+        "text": "Sending this message implies acceptance of our <a class='__embedLink' href='/terms-and-conditions' target='_blank'>terms and conditions</a> and <a class='__embedLink' href='/privacy-policy' target='_blank'>privacy policy</a>."
+      },
+      "marketing": {
+        "header": "Contact permission",
+        "text": "Yes, please keep me informed about PRIMUS AERO news, events and special offers."
+      },
+      "countries": {
+        "43": "+43",
+        "49": "+49",
+        "351": "+351"
+      }
+    },
+    "personnel": {
+      "singular": "Personnel",
+      "plural": "Personnel",
+      "new": "New personnel",
+      "edit": "Edit personnel"
     }
-
   }
 }

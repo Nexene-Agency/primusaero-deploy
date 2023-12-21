@@ -1,10 +1,10 @@
 "use client";
 import axios from "axios";
-import { ListContent } from "@framework/list/list.definition";
-import React, { useEffect, useState } from "react";
+import {ListContent} from "@framework/list/list.definition";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import { timer } from "rxjs";
-import { Testimonial } from "@components/dashboard/testimonials/model";
+import {timer} from "rxjs";
+import {Testimonial} from "@components/dashboard/testimonials/model";
 
 const TestimonialSlideshow = (props: any) => {
   const [testimonials, setTestimonials] = useState<
@@ -32,26 +32,23 @@ const TestimonialSlideshow = (props: any) => {
     }
   }, [ticked]);
 
-  return (
-    <div className="w-full h-[142px] px-8 lg:px-16 py-36 lg:py-72 flex-col justify-between items-start gap-2.5 inline-flex mt-auto">
-      {testimonials ? (
-        <>
-          <div className="flex-col justify-start items-center gap-8 lg:gap-12 flex">
-            <div className="self-stretch text-white text-xl lg:text-4xl font-medium uppercase leading-normal lg:leading-10">
-              “{testimonials.data[currentIndex].data.text}”
-            </div>
-            <div className="self-stretch text-zinc-500 text-lg lg:text-xl font-medium uppercase lg:leading-relaxed">
-              ({testimonials.data[currentIndex].data.author})
-            </div>
-          </div>
-        </>
-      ) : null}
-    </div>
-  );
+  return testimonials ? (
+    <>
+      <div
+        className={props.textCss}>
+        “{testimonials.data[currentIndex].data.text}”
+      </div>
+      <div className={props.authorCss}>
+        ({testimonials.data[currentIndex].data.author})
+      </div>
+    </>
+  ) : null;
 };
 
 TestimonialSlideshow.propTypes = {
   timeout: PropTypes.number.isRequired,
+  textCss: PropTypes.string.isRequired,
+  authorCss: PropTypes.string.isRequired,
 };
 
 export default TestimonialSlideshow;

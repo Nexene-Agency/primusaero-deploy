@@ -31,10 +31,11 @@ const TestimonialStepper = (props: any) => {
     <div className="px-6 lg:px-16 py-36 lg:py-72 flex-col justify-start items-start gap-2.5 inline-flex">
       {testimonials ? <>
         <div className="w-full flex-col justify-start items-center gap-8 lg:gap-12 inline-flex">
-          <div className="self-stretch text-white text-xl lg:text-4xl font-normal leading-normal lg:leading-10">
+          <div
+            className="self-stretch text-white text-xl lg:text-4xl font-normal uppercase font-muller leading-normal lg:leading-10">
             “{testimonials.data[currentIndex].data.text}”
           </div>
-          <div className="self-stretch text-neutral-100 text-xl font-normal leading-relaxed">
+          <div className="self-stretch text-neutral-500 text-xl font-normal leading-relaxed">
             ({testimonials.data[currentIndex].data.author})
           </div>
         </div>
