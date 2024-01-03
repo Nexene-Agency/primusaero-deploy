@@ -1,0 +1,9 @@
+.__newsroom-image {
+    cursor: url("/assets/arrow-icon.svg"), auto;
+    aspect-ratio: 1/1.25;
+}
+
+.__social-media-block {
+    aspect-ratio: 1/1.25;
+    @apply bg-neutral-200
+}

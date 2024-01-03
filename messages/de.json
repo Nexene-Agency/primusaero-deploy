@@ -178,7 +178,13 @@
       "linkedIn": "LinkedIn",
       "companies": "Companies",
       "locations": "Locations",
-      "listingOrder": "Listing order"
+      "listingOrder": "Listing order",
+      "version": "Version",
+      "publishedVersion": "Published version",
+      "publishedAt": "Published at",
+      "publishedBy": "Published by",
+      "topics": "Topics",
+      "similars": "Similar contents"
     },
     "actions": {
       "save": "Save",
@@ -192,7 +198,9 @@
       "close": "Close",
       "yes": "Yes",
       "no": "No",
-      "share": "Share"
+      "share": "Share",
+      "revert": "Revert",
+      "apply": "Apply"
     },
     "tabs": {
       "basic": "Basic",
@@ -200,7 +208,8 @@
       "text": "Text",
       "history": "History",
       "signaturePicture": "Signature picture",
-      "socialMedia": "Social media"
+      "socialMedia": "Social media",
+      "template": "Template"
     },
     "dashboard": {
       "singular": "Dashboard",
@@ -395,6 +404,57 @@
       "plural": "Personnel",
       "new": "New personnel",
       "edit": "Edit personnel"
+    },
+    "content": {
+      "singular": "Content",
+      "plural": "Content",
+      "files": "Files",
+      "blocks": "Blocks",
+      "save": "Save file",
+      "exitEditor": "Close editor",
+      "block": {
+        "singular": "Block",
+        "new": "New block",
+        "edit": "Edit block",
+        "editor": "Block editor: {{title}}",
+        "allowChildren": "Children allowed",
+        "cssParts": "CSS parts",
+        "add": "Add block",
+        "select": "Select block",
+        "notSelected": "No block selected",
+        "selectOne": "Select a block...",
+        "container": "Container block:",
+        "containerClass": "Container class",
+        "addChild": "Add child block",
+        "delete": "Delete block",
+        "clearSelection": "Clear selection",
+        "cssClasses": "CSS classes",
+        "content": "Content"
+      },
+      "file": {
+        "singular": "File",
+        "new": "New file",
+        "edit": "Edit file",
+        "saved": "File saved",
+        "standardHeader": "Standard header",
+        "standardFooter": "Standard footer",
+        "editContent": "Edit content",
+        "publish": "Publish file",
+        "publishQuestion": "Do you really want to publish this file: '{{title}}'?",
+        "published": "File published",
+        "recall": "Recall file",
+        "recallQuestion": "Do you really want to recall this file: '{{title}}'?",
+        "recalled": "File recalled"
+      },
+      "contentParts": "Content parts",
+      "mdContentParts": "Markdown content parts",
+      "cssParts": "CSS parts",
+      "renderAs": {
+        "caption": "Render as",
+        "builtIn": "Container",
+        "html": "HTML",
+        "md": "Markdown"
+      }
     }
   }
 }

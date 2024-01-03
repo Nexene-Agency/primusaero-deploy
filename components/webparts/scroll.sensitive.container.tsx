@@ -7,7 +7,7 @@ export const ScrollSensitiveContainer = (props: any) => {
   const [scroll, setScroll] = useWindowScroll();
 
   return (
-    <div key={props.key}
+    <div key={props.id}
          className={`${props.defaultClassName ?? ""} ${scroll.y < props.yPosition ? (props.belowPosition ?? "") : (props.abovePosition ?? "")}`}>
       {props.children}
     </div>
@@ -15,7 +15,7 @@ export const ScrollSensitiveContainer = (props: any) => {
 };
 
 ScrollSensitiveContainer.protoTypes = {
-  key: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   defaultClassName: PropTypes.string,
   children: PropTypes.any.isRequired,
   yPosition: PropTypes.number.isRequired,

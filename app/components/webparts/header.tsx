@@ -22,11 +22,12 @@ const ServiceMenuComponent = dynamic(
   }
 );
 
-interface MainPageProps {
+interface HeaderBlockProps {
   locale: string;
+  inactive?: boolean;
 }
 
-const Header = (props: MainPageProps) => {
+const Header = (props: HeaderBlockProps) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   const renderMenuItem = (item: any) => (
@@ -40,6 +41,7 @@ const Header = (props: MainPageProps) => {
       <div
         className="hidden lg:flex w-full bg-stone-950 text-white z-[100] top-0 fixed">
         <div className="__restricted-width flex py-8 px-16 justify-start items-center gap-12 backdrop-blur-2xl">
+          {props.inactive ? <div className="w-full h-full fixed top-0 bg-opacity-50 z-[200]"></div> : null}
           <Suspense fallback={
             <a href="/" className="flex gap-2 items-center">
               <LogoBlackAndWhite/>
@@ -47,7 +49,7 @@ const Header = (props: MainPageProps) => {
           }>
             <a href="/" className="flex gap-2 items-center">
               <LogoBlackAndWhite/>
-              <ScrollSensitiveContainer key="textLogo" yPosition={200} belowPosition="fill-stone-950"
+              <ScrollSensitiveContainer id="textLogo" yPosition={200} belowPosition="fill-stone-950"
                                         abovePosition="fill-white">
                 <PrimusAero/>
               </ScrollSensitiveContainer>
@@ -69,7 +71,7 @@ const Header = (props: MainPageProps) => {
 
       {/* FIXME */}
       <Suspense fallback={<div></div>}>
-        <MobileMenuComponent locale={props.locale}/>
+        <MobileMenuComponent locale={props.locale} inactive={props.inactive}/>
       </Suspense>
     </>
   );

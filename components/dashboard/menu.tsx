@@ -15,6 +15,7 @@ import SettingsIcon from "@framework/icons/basic/SettingsIcon";
 import CommentsIcon from "@framework/icons/basic/CommentsIcon";
 import StarIcon from "@framework/icons/basic/StarIcon";
 import BuildingIcon from "@framework/icons/basic/BuildingIcon";
+import PackageIcon from "@framework/icons/basic/PackageIcon";
 
 const links: Selectable[] = [
   {
@@ -64,6 +65,12 @@ const links: Selectable[] = [
     target: "/dashboard/pictures",
     name: "app.picture.plural",
     icon: <PictureIcon/>,
+  },
+  {
+    id: "contents",
+    target: "/dashboard/content",
+    name: "app.content.plural",
+    icon: <PackageIcon/>,
   },
   {
     id: "settings",

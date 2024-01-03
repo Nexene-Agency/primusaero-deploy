@@ -27,6 +27,7 @@ const LOCAL_MESSAGES = {
         block: {
           title: "",
           text: "As an independent company, we can handle various aircraft types with the utmost care and efficiency. Our autonomy allows us to negotiate fair prices, giving our customers greater control over their aircraft expenses. Additionally, we prioritize the highest integrity for our clients.",
+          topic: "about-us"
         }
       },
       section3: {
@@ -49,6 +50,8 @@ const LOCAL_MESSAGES = {
     storyYear: "2010",
     linkedIn: "LinkedIn",
     careers: "Careers at PRIMUS AERO",
+    getInTouch: "Get in touch",
+    joinUs: "Join us",
   }
 };
 

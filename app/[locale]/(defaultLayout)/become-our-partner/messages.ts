@@ -41,7 +41,6 @@ const LOCAL_MESSAGES = {
           text: "Our affiliate partners are integral to our network, undergoing a thorough vetting process akin to our full partners to ensure excellence and compatibility. Unlike full partners, affiliate partners enjoy the flexibility of not requiring their own office spaces." +
             "<br/><br/>" +
             "Their evaluation hinges on their seasoned experience and the depth of their connections within the aviation industry, ensuring a network rich in expertise and influence. To empower our affiliate partners in effectively presenting our services to prospective clients, we offer a suite of marketing materials and extensive information about our company and services. This support is delivered through a dedicated platform designed to facilitate success and growth within our expansive network.",
-          topic: "affiliate-partner"
         }
       },
       section4: {

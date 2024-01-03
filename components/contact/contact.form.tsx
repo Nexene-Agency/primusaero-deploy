@@ -23,6 +23,48 @@ import SuccessIcon from "@components/icons/SuccessIcon";
 import {useWindowScroll} from "@framework/hooks/use.window.scroll";
 import PropTypes from "prop-types";
 
+const TITLES: Selectable[] = [
+  {id: "", name: ""},
+  {id: "Mr.", name: "Mr."},
+  {id: "Mrs.", name: "Mrs."},
+  {id: "Ms.", name: "Ms."},
+  {id: "Captain", name: "Captain"},
+  {id: "Chief", name: "Chief"},
+  {id: "Darin Sri", name: "Darin Sri"},
+  {id: "Datin", name: "Datin"},
+  {id: "Dato", name: "Dato"},
+  {id: "Dato Sri", name: "Dato Sri"},
+  {id: "Dr.", name: "Dr."},
+  {id: "Engineer", name: "Engineer"},
+  {id: "Esq.", name: "Esq."},
+  {id: "Frau", name: "Frau"},
+  {id: "H.E.", name: "H.E."},
+  {id: "H. E. Dr.", name: "H. E. Dr."},
+  {id: "H.E. Mr.", name: "H.E. Mr."},
+  {id: "H.E. Mrs.", name: "H.E. Mrs."},
+  {id: "H.E. Sheikh", name: "H.E. Sheikh"},
+  {id: "H.E. Sheikha", name: "H.E. Sheikha"},
+  {id: "H.H.", name: "H.H."},
+  {id: "H.H. Prince", name: "H.H. Prince"},
+  {id: "H.H. Sheikh", name: "H.H. Sheikh"},
+  {id: "H.H. Sheikha", name: "H.H. Sheikha"},
+  {id: "H.M.", name: "H.M."},
+  {id: "H.R.H.", name: "H.R.H."},
+  {id: "H.R.H. Prince", name: "H.R.H. Prince"},
+  {id: "Herr", name: "Herr"},
+  {id: "Lord", name: "Lord"},
+  {id: "Messrs.", name: "Messrs."},
+  {id: "Princess", name: "Princess"},
+  {id: "Puan Sri", name: "Puan Sri"},
+  {id: "Reverend", name: "Reverend"},
+  {id: "Sheikh", name: "Sheikh"},
+  {id: "Sheikha", name: "Sheikha"},
+  {id: "Sir.", name: "Sir."},
+  {id: "Tan Sri", name: "Tan Sri"},
+  {id: "先生", name: "先生"},
+  {id: "女士", name: "女士"},
+  {id: "Mdm.", name: "Mdm."},
+];
 const CONTACT_MODES = ["phone", "email", "whatsapp", "meeting"];
 const SUBJECTS: Selectable[] = [
   {id: "privateAircraftOperation", name: "app.contactUs.subjects.privateAircraftOperation"},
@@ -61,6 +103,7 @@ const ContactForm = (props: any) => {
   const [privacy, setPrivacy] = useState<boolean>(false);
   const [marketing, setMarketing] = useState<boolean>(false);
   const [subject, setSubject] = useState<Selectable | undefined>();
+  const [title, setTitle] = useState<Selectable>(TITLES[0]);
   const [phonePrefix, setPhonePrefix] = useState<Selectable>(PHONE_PREFIXES[0]);
   const [selectedDate, setSelectedDate] = useState<Date>(tomorrow);
   const [selectedTime, setSelectedTime] = useState<Selectable>(TIMES[0]);
@@ -141,6 +184,14 @@ const ContactForm = (props: any) => {
     });
   }, [phonePrefix]);
 
+  useEffect(() => {
+    setValue("title", title?.id, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  }, [title]);
+
   const send = () => {
     const values = getValues();
     setSaving(false);
@@ -211,12 +262,19 @@ const ContactForm = (props: any) => {
         </div>
         <div className="flex flex-col gap-16 w-full lg:w-6/10">
           <div className="__control">
-            <div className="__label">{t("app.fields.title")}</div>
-            <input className={`__input ${errors.title ? "__error" : ""}`}
-                   placeholder="Ms."
-                   {...register("title")}
-                   autoFocus={!props.embedded}
-            />
+            {/*<div className="__label">{t("app.fields.title")}</div>*/}
+            <CustomSelect options={TITLES} selected={TITLES} placeholder="" icon={<DownArrow/>}
+                          select={setTitle}
+                          noTranslate={true}
+                          dropDownClass="h-96 overflow-y-scroll"
+                          containerClass="text-neutral-500 text-lg font-normal"
+                          buttonClass="h-8 py-2 pr-4 border-b border-neutral-500 w-full justify-between items-center gap-2.5 inline-flex focus:text-black focus:outline-none"
+                          optionClass="w-full bg-neutral-100 hover:bg-white focus:outline-none focus:bg-white h-12 pl-3 border-b border-neutral-400 border-opacity-40 justify-start items-center inline-flex text-black"/>
+            {/*<input className={`__input ${errors.title ? "__error" : ""}`}*/}
+            {/*       placeholder="Ms."*/}
+            {/*       {...register("title")}*/}
+            {/*       autoFocus={!props.embedded}*/}
+            {/*/>*/}
           </div>
           <div className="flex gap-16 flex-col lg:flex-row lg:gap-4">
             <div className="__control">

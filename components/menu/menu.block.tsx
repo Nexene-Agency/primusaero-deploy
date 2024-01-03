@@ -17,6 +17,7 @@ import Logo from "@components/icons/Logo";
 
 interface MenuProps {
   locale: string;
+  inactive?: boolean;
 }
 
 interface ColorSet {
@@ -198,6 +199,7 @@ const MenuBlock = (props: MenuProps) => {
   return (
     <div
       className={withColorSet("flex w-full lg:hidden items-center pt-[80px] px-6 pb-[21px] justify-between fixed z-[100] top-0")}>
+      {props.inactive ? <div className="w-full h-[129px] fixed top-0 bg-opacity-50 z-[200]"></div> : null}
       <a href="/" className="flex items-center gap-2">
         {colorSet.isLight ? <Logo/> : <LogoBlackAndWhite/>}
         <PrimusAero className={colorSet.fill}/>

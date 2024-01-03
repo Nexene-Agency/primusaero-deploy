@@ -4,7 +4,13 @@
 
 - add key navigation to the datepicker
 - add "listingOrder" field to location editor
--
+- split the picture selector into two column: one for the search, one for the already selected
+- "load more" for the lists
+- working "Print" icon
+- working "Share" icon
+- podcast episodes
+- social media links
+- blog post related articles
 
 # DONE
 

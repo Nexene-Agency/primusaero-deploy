@@ -5,6 +5,7 @@ import {LEGAL_MENU_ITEMS, SOCIALS_MENU_ITEMS, TESTIMONIALS_MENU_ITEMS} from "@ap
 
 type FooterProps = {
   locale: string;
+  inactive?: boolean;
 };
 
 const Footer = (props: FooterProps) => {
@@ -12,7 +13,10 @@ const Footer = (props: FooterProps) => {
 
   return (
     <div className="w-full bg-stone-950">
-      <div className="__restricted-width flex flex-col lg:flex-row gap-12 lg:gap-32 bg-stone-950 py-16 px-6 lg:p-16">
+      <div
+        className="__restricted-width flex flex-col lg:flex-row gap-12 lg:gap-32 bg-stone-950 py-16 px-6 lg:p-16 relative">
+        {props.inactive ?
+          <div className="w-full h-full absolute top-0 bg-opacity-50 z-[200]"></div> : null}
         <div className="flex-col justify-start items-start gap-6 inline-flex">
           <div className="text-neutral-400 text-lg font-normal mb-2">{t("footer.contact.title")}</div>
           <div className="text-white text-lg font-normal">{t("footer.contact.name")}</div>
@@ -41,7 +45,8 @@ const Footer = (props: FooterProps) => {
           <div className="text-neutral-400 text-lg font-normal mb-2">{t("footer.socials.title")}</div>
           <div className="flex flex-row lg:flex-col gap-6">
             {SOCIALS_MENU_ITEMS.map((item) =>
-              (<a className="text-white text-lg font-normal" key={item.id} href={item.target}>{t(item.name)}</a>))
+              (<a className="text-white text-lg font-normal" key={item.id} href={item.target}
+                  target="_blank">{t(item.name)}</a>))
             }
           </div>
         </div>

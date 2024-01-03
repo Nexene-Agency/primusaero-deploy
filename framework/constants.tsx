@@ -15,7 +15,7 @@ export const ROLES = {
 export const LIST_ADD_ITEM: Selectable = {
   id: "add_item",
   name: "operations.add_item",
-  icon: <PlusIcon className="__list-icon"/>,
+  icon: <PlusIcon/>,
   filter: ["*"],
 };
 
@@ -36,7 +36,7 @@ export const LIST_DUPLICATE_ITEM: Selectable = {
 export const LIST_EDIT_ITEM: Selectable = {
   id: "edit_item",
   name: "operations.edit_item",
-  icon: <SquareEditIcon className="__list-icon"/>,
+  icon: <SquareEditIcon/>,
   filter: ["*"],
 };
 export const LIST_EDIT_ITEM_CONTENT: Selectable = {

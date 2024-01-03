@@ -37,9 +37,6 @@ export default async function LocaleLayout({children, params: {locale}}) {
     <Suspense fallback={<DefaultFallback/>}>
       <CookieBanner/>
     </Suspense>
-    <div id="overlay-1"></div>
-    <div id="overlay-2"></div>
-    <div id="overlay-3"></div>
     </body>
     </html>
   );

@@ -1,7 +1,7 @@
-import { ListStatistics } from "@/framework/list/list.definition";
-import { filter, Subject } from "rxjs";
-import { Selectable } from "@framework/model";
-import { CreateToastFnReturn } from "@chakra-ui/react";
+import {ListStatistics} from "@/framework/list/list.definition";
+import {filter, Subject} from "rxjs";
+import {Selectable} from "@framework/model";
+import {CreateToastFnReturn} from "@chakra-ui/react";
 
 export const showToast = (toast: CreateToastFnReturn, event: AppEvent) => {
   if (event.type !== AppEventType.TOAST) {
@@ -23,7 +23,14 @@ export enum AppEventType {
   LANGUAGE,
   COMMAND,
   LOGGED_OUT,
-  LOGGED_IN,
+
+  CONTENT_FILE_CHANGED,
+  BLOCK_SELECTED,
+  BLOCK_SELECTION_CLEARED,
+  REQUEST_CONTENT_FILE_CHANGED,
+  SAVE_BLOCK,
+  ADD_CHILD,
+  DELETE_BLOCK,
 }
 
 export interface AppEvent {
@@ -104,6 +111,13 @@ export const asSuccess = (
       payload: details,
       closable: true,
     } as MessagePayload,
+  };
+};
+
+export const asEvent = (type: AppEventType, payload?: unknown): AppEvent => {
+  return {
+    type,
+    payload,
   };
 };
 
@@ -191,7 +205,7 @@ export const openPopupCommand = (payload?: unknown): Command => {
 };
 
 export const listRowActionCommand = (action: Selectable, row: any): Command => {
-  return asCommand(AppCommandType.LIST_ROW_ACTION, { action, row });
+  return asCommand(AppCommandType.LIST_ROW_ACTION, {action, row});
 };
 
 export const listReloadedCommand = (
@@ -204,7 +218,7 @@ export const listReloadedCommand = (
   command: AppCommandType.LIST_RELOADED,
   sender,
   target,
-  payload: { offset, totalItems, pageSize } as ListStatistics,
+  payload: {offset, totalItems, pageSize} as ListStatistics,
 });
 
 export const disableOperationsCommand = (
@@ -227,7 +241,7 @@ export const reloadListCommand = (
   command: AppCommandType.RELOAD_LIST,
   sender,
   target,
-  payload: page !== undefined ? { page, pageSize } : undefined,
+  payload: page !== undefined ? {page, pageSize} : undefined,
 });
 
 export const closePopupCommand = (): Command => {

@@ -1,15 +1,11 @@
 /* eslint-disable react/no-children-prop */
 "use client";
 import PropTypes from "prop-types";
-import React, { createRef, KeyboardEvent, MouseEvent, useState } from "react";
+import React, {createRef, KeyboardEvent, MouseEvent, useState} from "react";
 import MenuCloseIcon from "@framework/icons/basic/MenuCloseIcon";
-import { Button } from "@chakra-ui/react";
-import {
-  asDialogResponse,
-  DialogData,
-  DialogResult,
-} from "@framework/interaction/dialog";
-import { getClientTranslator } from "@framework/i18n.client.utils";
+import {Button} from "@chakra-ui/react";
+import {asDialogResponse, DialogData, DialogResult,} from "@framework/interaction/dialog";
+import {getClientTranslator} from "@framework/i18n.client.utils";
 
 const DialogComponent = (props: any) => {
   const t = getClientTranslator();
@@ -87,7 +83,7 @@ const DialogComponent = (props: any) => {
 
   const renderYesButton = () => {
     return data!.yesCaption ? (
-      <Button colorScheme="primary" className="w-32" onClick={yesAnswered}>
+      <Button colorScheme="green" className="w-32" onClick={yesAnswered}>
         {t(data!.yesCaption)}
       </Button>
     ) : null;
@@ -96,7 +92,7 @@ const DialogComponent = (props: any) => {
   const renderPopup = () => (
     <div
       className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 outline-0"
-      style={{ zIndex: data!.zIndex }}
+      style={{zIndex: data!.zIndex}}
       id="backdrop"
       onClick={closeDialog}
     >
@@ -117,7 +113,7 @@ const DialogComponent = (props: any) => {
               tabIndex={0}
             />
           </div>
-          <div dangerouslySetInnerHTML={{ __html: data!.message }}></div>
+          <div dangerouslySetInnerHTML={{__html: data!.message}}></div>
           <div className="flex justify-end gap-6">
             {renderCancelButton()}
             {renderNoButton()}

@@ -212,3 +212,33 @@ export const getRecaptchaToken = (action: string): Promise<string> => {
     });
   });
 };
+
+export const DANGEROUS_HTML_ELEMENTS = ["iframe", "script", "a", "button", "input", "select", "base", "form",
+  "head", "embed", "fieldset", "frame", "frameset", "img", "object", "style"];
+
+export const DANGEROUS_HTML_ATTRIBUTES = ["src", "href"];
+
+export const neutralizeHtml = (html: string, elementsToRemove: string[] = DANGEROUS_HTML_ELEMENTS,
+                               attributesToRemove: string[] = DANGEROUS_HTML_ATTRIBUTES): string => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const elements = doc.querySelectorAll("*");
+  for (const element of elements) {
+    // remove the element if it is in the list
+    if (elementsToRemove.includes(element.tagName.toLowerCase())) {
+      element.remove();
+      continue;
+    }
+    // remove the attributes if they are in the list
+    for (const attribute of attributesToRemove) {
+      element.removeAttribute(attribute);
+    }
+    // remove all the event handlers
+    for (const attribute of element.attributes) {
+      if (attribute.name.startsWith("on")) {
+        element.removeAttribute(attribute.name);
+      }
+    }
+  }
+  return doc.body.innerHTML;
+};

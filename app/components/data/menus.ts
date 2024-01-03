@@ -38,23 +38,27 @@ export const MENU_ITEMS: Selectable[] = [
   {id: "services", name: "menu.services", target: "#", children: SERVICE_MENU_ITEMS},
   {id: "aboutUs", name: "menu.aboutUs", target: "/about-us"},
   // {id: "partnersCustomers", name: "menu.partnersCustomers", target: "#"},
-  {id: "newsroom", name: "menu.newsroom", target: "#"},
+  {id: "newsroom", name: "menu.newsroom", target: "/newsroom"},
   {id: "contactUs", name: "menu.contactUs", target: "/contact-us"},
 ];
 
 export const LEGAL_MENU_ITEMS: Selectable[] = [
-  {id: "notice", name: "footer.legal.notice", target: "#"},
+  {id: "notice", name: "footer.legal.notice", target: "/content/legal-notice"},
   {id: "terms", name: "footer.legal.terms", target: "#"},
   {id: "privacy", name: "footer.legal.privacy", target: "#"},
   {id: "cookie", name: "footer.legal.cookie", target: "#"},
 ];
 
 export const TESTIMONIALS_MENU_ITEMS: Selectable[] = [
-  {id: "testimonials", name: "footer.testimonials.customers", target: "#"},
+  {id: "testimonials", name: "footer.testimonials.customers", target: "/testimonials"},
 ];
 
 export const SOCIALS_MENU_ITEMS: Selectable[] = [
-  {id: "facebook", name: "socials.facebook", target: "#"},
-  {id: "linkedin", name: "socials.linkedin", target: "#"},
-  {id: "instagram", name: "socials.instagram", target: "#"},
+  {id: "facebook", name: "socials.facebook", target: "https://www.facebook.com/primusaero"},
+  {
+    id: "linkedin",
+    name: "socials.linkedin",
+    target: "https://www.linkedin.com/company/primus-aero"
+  },
+  {id: "instagram", name: "socials.instagram", target: "https://www.instagram.com/primusaero/"},
 ];
