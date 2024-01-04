@@ -12,3 +12,22 @@
     @apply mb-4;
     font-family: 'nimbus', sans-serif;
 }
+
+.__similar-image {
+    cursor: url("/assets/arrow-icon.svg"), auto;
+    aspect-ratio: 1/1.25;
+}
+
+div[role="menu"] {
+    @apply border border-stone-950 rounded-md p-2 m-0;
+    width: 50px !important;
+    min-width: 50px !important;
+}
+
+button[role="menuitem"] {
+    border: none !important;
+    gap: 0 !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    @apply w-8;
+}

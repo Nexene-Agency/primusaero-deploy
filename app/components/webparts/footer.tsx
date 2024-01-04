@@ -12,7 +12,7 @@ const Footer = (props: FooterProps) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   return (
-    <div className="w-full bg-stone-950">
+    <div className="no-print w-full bg-stone-950">
       <div
         className="__restricted-width flex flex-col lg:flex-row gap-12 lg:gap-32 bg-stone-950 py-16 px-6 lg:p-16 relative">
         {props.inactive ?

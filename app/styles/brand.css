@@ -74,3 +74,9 @@ body {
 @layer primusAero {
 
 }
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

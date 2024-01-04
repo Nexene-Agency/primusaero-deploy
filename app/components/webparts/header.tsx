@@ -39,7 +39,7 @@ const Header = (props: HeaderBlockProps) => {
   return (
     <>
       <div
-        className="hidden lg:flex w-full bg-stone-950 text-white z-[100] top-0 fixed">
+        className="no-print hidden lg:flex w-full bg-stone-950 text-white z-[100] top-0 fixed">
         <div className="__restricted-width flex py-8 px-16 justify-start items-center gap-12 backdrop-blur-2xl">
           {props.inactive ? <div className="w-full h-full fixed top-0 bg-opacity-50 z-[200]"></div> : null}
           <Suspense fallback={

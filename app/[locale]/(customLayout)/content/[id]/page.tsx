@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import LOCAL_MESSAGES from "./messages";
 import MESSAGES from "@app/components/data/common-messages";
 import {flatten, getMessages, getServerFormattedDate, translator} from "@framework/i18n.utils";
@@ -16,11 +16,16 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import {neutralizeHtml} from "@framework/utils";
+import {DatabaseEntry} from "@framework/firebase.utils";
+import PrintIcon from "@components/webparts/print.icon";
+import ShareIcon from "@components/webparts/share.icon";
 
 interface PageProps {
   params: { locale: string, id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
+
+const postsInPage = 4;
 
 const ContentPage = async ({params, searchParams}: PageProps) => {
   const tl = translator(flatten(getMessages(params.locale, LOCAL_MESSAGES))); // local translator
@@ -34,16 +39,12 @@ const ContentPage = async ({params, searchParams}: PageProps) => {
     return localeFile ?? defaultFile ?? content.contentFiles[0];
   };
 
-  const print = () => {
-    window?.print();
-  };
-
   const renderHeader = (file: ContentFile, version: ContentFileVersion) => (
-    <div className="w-full flex flex-col gap-12 mb-12">
-      <div className="text-stone-950 text-6xl font-bold font-muller uppercase">{file.name}</div>
-      <div className="flex text-neutral-500 text-lg font-normal gap-2">
+    <div className="w-full flex flex-col gap-8 lg:gap-12 mb-12">
+      <div className="text-stone-950 text-3xl lg:text-6xl font-bold font-muller uppercase">{file.name}</div>
+      <div className="hidden lg:flex text-neutral-500 text-lg font-normal gap-2">
         <span>{getServerFormattedDate(params.locale, file.publishedAt, "LL")}</span>
-        <span>-</span>
+        <span>•</span>
         <span>
         {tl("postedAt",
           {
@@ -52,7 +53,31 @@ const ContentPage = async ({params, searchParams}: PageProps) => {
           })}
           </span>
         <span className="grow"></span>
-        <Print className="text-black cursor-pointer"/>
+        <Suspense fallback={<Print className="text-black cursor-pointer"/>}>
+          <PrintIcon/>
+        </Suspense>
+        <Suspense fallback={<Share className="text-black cursor-pointer"/>}>
+          <ShareIcon description={file.description} title={file.name}/>
+        </Suspense>
+      </div>
+      <div className="lg:hidden flex text-neutral-500 text-lg font-normal">
+        <div className="flex flex-col">
+          <div className="flex">
+            <span>{getServerFormattedDate(params.locale, file.publishedAt, "LL")}</span>
+            <span>•</span>
+            {tl("postedAtOnlyTime",
+              {
+                time: getServerFormattedDate(params.locale, file.publishedAt, "HH:mm"),
+              })}
+          </div>
+          <span>
+            {tl("postedAtOnlyBy",
+              {
+                author: file.publishedBy
+              })}
+          </span>
+        </div>
+        <span className="grow"></span>
         <Share className="text-black cursor-pointer"/>
       </div>
     </div>
@@ -85,7 +110,6 @@ const ContentPage = async ({params, searchParams}: PageProps) => {
   const renderHtmlBlock = (block: ContentFileBlock) => {
     const buildingBlock = content.blockDefinitions.find((b) => b.data.code === block.code);
     let payload = buildingBlock?.data.template ?? `<div>${tl("noTemplate")}</div>`;
-    console.log("template", payload);
     Object.entries(block.cssParts).forEach(([key, value]) => {
       payload = payload.replaceAll("\$\{" + key + "\}", value);
     });
@@ -113,6 +137,30 @@ const ContentPage = async ({params, searchParams}: PageProps) => {
     }
   };
 
+  const renderSimilar = (file: DatabaseEntry<ContentFile>) => (
+    <a key={file.id!} className="flex flex-col gap-4 mb-16" href={`/content/${file.data.code}`}>
+      <img className="__similar-image object-cover object-center" src={file.data.signaturePicture}/>
+      <div className="mt-4 text-neutral-500 text-lg font-normal">
+        {getServerFormattedDate(params.locale, file.data.publishedAt, "LL")}
+      </div>
+      <div className="text-stone-950 text-xl font-normal">{file.data.name}</div>
+    </a>
+  );
+
+  const fallbackPosts = () => (
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+      {content.similarFiles.slice(0, postsInPage).map((file) => renderSimilar(file))}
+    </div>
+  );
+
+  const renderRelatedArticles = () => (
+    <div className="no-print mt-36 lg:mt-72 flex flex-col gap-8 lg:gap-12">
+      <div
+        className="w-full text-stone-950 text-3xl lg:text-6xl font-bold font-muller uppercase">{tl("relatedArticles")}</div>
+      {fallbackPosts()}
+    </div>
+  );
+
   const renderContent = () => {
     const file = selectFile();
     const fileIndex = content.contentFiles.indexOf(file);
@@ -120,9 +168,10 @@ const ContentPage = async ({params, searchParams}: PageProps) => {
 
     return (
       <>
-        <div className="flex flex-col mt-20 mx-60 mb-72">
+        <div className="flex flex-col mt-8 lg:mt-20 mx-4 lg:mx-60 mb-36 lg:mb-72 print:mb-0">
           {renderHeader(file.data, version.data)}
           {version.data.blocks.map((block) => renderBlock(block))}
+          {content.similarFiles.length > 0 ? renderRelatedArticles() : null}
         </div>
       </>
     );

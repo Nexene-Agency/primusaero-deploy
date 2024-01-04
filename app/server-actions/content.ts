@@ -13,6 +13,7 @@ export interface ContentResponse {
   contentFiles: DatabaseEntry<ContentFile>[]; // the content files
   contentFileVersions: DatabaseEntry<ContentFileVersion>[]; // the versions for the content files
   blockDefinitions: DatabaseEntry<ContentBlock>[]; // the block definitions
+  similarFiles: DatabaseEntry<ContentFile>[]; // the similar files
 }
 
 async function loadCurrentContentFileVersion(file: DatabaseEntry<ContentFile>): Promise<DatabaseEntry<ContentFileVersion>> {
@@ -48,6 +49,7 @@ export async function getPublishedContent(code: string): Promise<ContentResponse
       contentFiles: [] as DatabaseEntry<ContentFile>[],
       contentFileVersions: [] as DatabaseEntry<ContentFileVersion>[],
       blockDefinitions: [] as DatabaseEntry<ContentBlock>[],
+      similarFiles: [] as DatabaseEntry<ContentFile>[],
     } as ContentResponse;
 
     db.collection(CONTENT_BLOCKS_COLLECTION)
@@ -68,13 +70,34 @@ export async function getPublishedContent(code: string): Promise<ContentResponse
         return asDatabaseEntries2<ContentFile>(hits);
       })
       .then((files) => {
-        result.contentFiles = files;
+        result.contentFiles = files; // the content files
         const versions: Promise<DatabaseEntry<ContentFileVersion>>[] = [];
         files.forEach((file) => versions.push(loadCurrentContentFileVersion(file)));
         return Promise.all(versions);
       })
       .then((hits) => {
         result.contentFileVersions = hits;
+        // now everything loaded regarding the current code, now we need to load the similar files:
+
+        const similarCodes: string[] = [];
+        result.contentFiles.forEach((file) => {
+          file.data.similars.forEach((similar) => {
+            if (!similarCodes.includes(similar)) {
+              similarCodes.push(similar);
+            }
+          });
+        });
+
+        return db.collection(PUBLISHED_FILES_COLLECTION)
+          .where("topics", "array-contains-any", similarCodes.slice(0, 30))
+          .orderBy("publishedAt", "desc")
+          .get();
+      })
+      .then((hits) => {
+        return asDatabaseEntries2<ContentFile>(hits);
+      })
+      .then((files) => {
+        result.similarFiles = files;
         console.log("returning content", result);
         resolve(result);
       })
@@ -97,6 +120,7 @@ export async function getPublishedFiles(codes: string[]): Promise<ContentRespons
       contentFiles: [] as DatabaseEntry<ContentFile>[],
       contentFileVersions: [] as DatabaseEntry<ContentFileVersion>[],
       blockDefinitions: [] as DatabaseEntry<ContentBlock>[],
+      similarFiles: [] as DatabaseEntry<ContentFile>[],
     } as ContentResponse;
 
     db.collection(PUBLISHED_FILES_COLLECTION)
