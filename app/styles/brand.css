@@ -9,13 +9,13 @@
 :root {
     /* colors */
     --white: #ffffff;
-    --black: #0F0F0F;
-    --primary-color: #0F0F0F;
-    --color-grey-1: #F7F5F5;
-    --color-grey-2: #A39F9F;
+    --black: #0f0f0f;
+    --primary-color: #0f0f0f;
+    --color-grey-1: #f7f5f5;
+    --color-grey-2: #a39f9f;
     --color-grey-3: #747272;
     --color-grey-4: #595757;
-    --primus-green: #86B32E;
+    --primus-green: #86b32e;
 
     background: var(--white);
     color: var(--black);
@@ -28,8 +28,8 @@
     gap: 0;
 }
 
-html,
-body {
+html {
+    scroll-behavior: smooth;
 }
 
 .__root-layout {

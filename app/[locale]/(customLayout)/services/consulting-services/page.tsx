@@ -1,67 +1,117 @@
-import React from "react";
+import React, { Suspense } from "react";
 import LOCAL_MESSAGES from "./messages";
 import MESSAGES from "@app/components/data/common-messages";
-import {flatten, getMessages, translator} from "@framework/i18n.utils";
+import { flatten, getMessages, translator } from "@framework/i18n.utils";
 import ArrowRight from "@components/icons/ArrowRight";
-import {SERVICE_MENU_ITEMS} from "@app/components/data/menus";
+import { SERVICE_MENU_ITEMS } from "@app/components/data/menus";
 import ServiceNextButton from "@app/components/webparts/service.next.button";
 import ServicePageTitle from "@app/components/webparts/service.page.title";
 import "./page.css";
+import dynamic from "next/dynamic";
+import NexeneH2 from "@components/heading/NexeneH2";
+import NexeneText from "@components/text/NexeneText";
+import NexeneH1 from "@components/heading/NexeneH1";
+import NexeneImg from "@components/image/NexeneImg";
 
 interface PageProps {
   params: { locale: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const ConsultingServices = async ({params, searchParams}: PageProps) => {
+const ClientComponent = dynamic(
+  () => import("@components/contact/contact.form"),
+  {
+    ssr: false,
+  }
+);
+
+const ConsultingServices = async ({ params, searchParams }: PageProps) => {
   const tl = translator(flatten(getMessages(params.locale, LOCAL_MESSAGES))); // local translator
   const tc = translator(flatten(getMessages(params.locale, MESSAGES))); // common translator
 
-  const charter = SERVICE_MENU_ITEMS.find((item) => item.id === "aircraft-charter")!;
+  const charter = SERVICE_MENU_ITEMS.find(
+    (item) => item.id === "aircraft-charter"
+  )!;
 
   const renderSection = (i: number) => (
-    <div key={`rs-${i}`}
-         className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
+    <Suspense
+      fallback={
+        <div
+          key={`rs-${i}`}
+          className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex"
+        >
+          <div className="w-full lg:w-[24%] text-xl font-normal leading-relaxed">
+            {tl(`sections.section${i}.title`)}
+          </div>
+          <div className="w-full lg:w-[62%]">
+            <div className="w-full text-stone-950 text-xl font-normal leading-relaxed mb-8">
+              {tl(`sections.section${i}.block.title`)}
+            </div>
+            <div>{tl(`sections.section${i}.block.text`)}</div>
+          </div>
+        </div>
+      }
+    >
       <div
-        className="w-full lg:w-[24%] text-xl font-normal leading-relaxed">{tl(`sections.section${i}.title`)}</div>
-      <div className="w-full lg:w-[62%]">
-        <div
-          className="w-full text-stone-950 text-xl font-normal leading-relaxed mb-8">{tl(`sections.section${i}.block.title`)}</div>
-        <div
-          className="w-full text-color-grey-3 text-xl font-normal leading-relaxed">{tl(`sections.section${i}.block.text`)}</div>
+        key={`rs-${i}`}
+        className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex"
+      >
+        <NexeneH2 text={tl(`sections.section${i}.title`)} />
+
+        <div className="w-full lg:w-[62%]">
+          <NexeneH2 text={tl(`sections.section${i}.block.title`)} />
+
+          <NexeneText text={tl(`sections.section${i}.block.text`)} />
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 
   return (
     <>
-      <div className="w-full flex flex-col __restricted-width">
-        <div className="w-full relative top-0 left-0 h-[520px] lg:h-[1080px]">
-          <div className="__main-background"></div>
+      <div className="w-screen flex flex-col bg-stone-950 h-screen lg:px-16">
+        <div className="__restricted-width relative top-0 left-0 h-[520px] lg:h-[1080px]">
           <div className="absolute mt-[137px] lg:mt-[108px] top-0 left-0">
-            <ServicePageTitle titles={[tl("titles.1")]}/>
+            <Suspense fallback={<ServicePageTitle titles={[tl("titles.1")]} />}>
+              <NexeneH1 text={tl("titles.1")} />
+            </Suspense>
           </div>
-          <div className="__main-image"></div>
+
+          <NexeneImg
+            src={"/images/consulting-services.webp"}
+            className="block max-h-screen object-center mx-auto mt-64 lg:mt-0"
+          />
         </div>
       </div>
 
-      <div className="__restricted-width">
-        <div className="flex flex-col my-36 lg:my-72 mx-6 lg:mx-16 items-center gap-16">
-          {Array.from({length: 3}).map((_, i) => renderSection(i))}
+      <div className="__restricted-width lg:px-16">
+        <div className="flex flex-col my-36 lg:my-72 items-center gap-16">
+          {/* <NexeneText textInput={tl(`sections.section1.block.text`)} />*/}
+          {Array.from({ length: 3 }).map((_, i) => renderSection(i))}
           <div className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
             <div className="hidden lg:block lg:w-[24%]">&nbsp;</div>
             <div className="w-[62%]">
-              <div
-                className="h-11 pl-6 pr-4 pt-2.5 bg-stone-950 rounded-3xl flex-col justify-start items-start gap-2.5 inline-flex">
-                <a href="/contact-us" className="justify-start items-center gap-2 inline-flex">
-                  <div className="text-right text-white text-lg font-normal">{tl("getInTouch")}</div>
-                  <div className="fill-white"><ArrowRight/></div>
+              {/*Get in touch button*/}
+              <div className="h-11 pl-6 pr-4 pt-2.5 ml-6 lg:ml-0 bg-stone-950 rounded-3xl flex-col justify-start items-start gap-2.5 inline-flex">
+                <a
+                  href="/contact-us"
+                  className="justify-start items-center gap-2 inline-flex mt-1"
+                >
+                  <div className="text-right text-white text-lg leading-none font-normal my-auto">
+                    {tl("getInTouch")}
+                  </div>
+                  <div className="fill-white my-auto">
+                    <ArrowRight />
+                  </div>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <ServiceNextButton url={`/services/${charter.id}`} text={tc(charter.name)}/>
+        <ServiceNextButton
+          url={`/services/${charter.id}`}
+          text={tc(charter.name)}
+        />
       </div>
     </>
   );

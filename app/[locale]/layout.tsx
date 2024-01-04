@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import "../styles/brand.css";
+import "../styles/animations.css";
 import React, {Suspense} from "react";
 import GoogleAnalytics from "@components/analytics/google.analytics";
 import CookieBanner from "@components/analytics/cookie.banner";

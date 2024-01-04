@@ -1,0 +1,33 @@
+/*reveal text animation used in the headings*/
+
+.revealTextAnimation {
+  display: inline-block;
+  animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translate(0, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.revealTextAnimation-start {
+  opacity: 0;
+}
+
+/*ease out animation used on the texts*/
+
+.easeOut {
+  /*This timing applies on the way IN */
+  transition-timing-function: ease-out;
+
+  /* time the animation takes on the way in */
+  transition: 0.6s;
+
+  /* Move into place */
+  transform: translateY(0);
+}

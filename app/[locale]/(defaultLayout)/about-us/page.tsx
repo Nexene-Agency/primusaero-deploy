@@ -7,6 +7,8 @@ import PrimaryButton from "@app/components/webparts/primary.button";
 import {getImageByName} from "@app/server-actions/images";
 import BigArrowLeft from "@components/icons/BigArrowLeft";
 import {CompanyResponse, getCompanyData} from "@app/server-actions/company";
+import NexeneH2 from "@components/heading/NexeneH2";
+import NexeneText from "@components/text/NexeneText";
 import MarqueeText from "react-marquee-text";
 import {Personnel} from "@components/dashboard/personnel/model";
 import {DatabaseEntry} from "@framework/firebase.utils";
@@ -19,7 +21,8 @@ interface HomeProps {
 const AboutUs = async ({params, searchParams}: HomeProps) => {
   const tl = translator(flatten(getMessages(params.locale, MESSAGES)));
   const images = await getImageByName("about-us-team-photo");
-  const companyReference: CompanyResponse = await getCompanyData("primusaero-graz");
+  const companyReference: CompanyResponse =
+    await getCompanyData("primusaero-graz");
 
   const renderSlogansMarquee = () => (
     <div className="justify-start pt-6 gap-6 lg:gap-12 inline-flex mx-6">
@@ -39,23 +42,34 @@ const AboutUs = async ({params, searchParams}: HomeProps) => {
   );
 
   const renderSection = (i: number) => (
-    <div key={`rs-${i}`}
-         className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex">
-      <div
-        className="w-full lg:w-[24%] text-lg lg:text-xl font-normal leading-relaxed">{tl(`sections.section${i}.title`)}</div>
+    <div
+      key={`rs-${i}`}
+      className="w-full lg:justify-between items-start flex-col lg:flex-row gap-6 lg:gap-0 inline-flex"
+    >
+      <NexeneH2 text={tl(`sections.section${i}.title`)}/>
+
       <div className="w-full lg:w-[62%]">
-        {tl(`sections.section${i}.block.title`) && tl(`sections.section${i}.block.title`) !== "" ? <div
-          className="w-full text-stone-950 text-lg lg:text-xl font-normal leading-relaxed mb-8">{tl(`sections.section${i}.block.title`)}</div> : null}
-        <div
-          className="w-full text-color-grey-3 text-xl font-normal leading-relaxed"
-          dangerouslySetInnerHTML={{__html: tl(`sections.section${i}.block.text`) ?? "" as string}}></div>
-        {tl(`sections.section${i}.block.topic`) && tl(`sections.section${i}.block.topic`) !== "" ? (
+        {tl(`sections.section${i}.block.title`) &&
+        tl(`sections.section${i}.block.title`) !== "" ? (
+          <NexeneH2 text={tl(`sections.section${i}.block.title`)}/>
+        ) : null}
+        <NexeneText text={tl(`sections.section${i}.block.text`)}/>
+
+        {tl(`sections.section${i}.block.topic`) &&
+        tl(`sections.section${i}.block.topic`) !== "" ? (
           <div className="mt-12 lg:mt-16 flex">
-            <PrimaryButton asLink={true} target={`/contact-us?topic=${tl(`sections.section${i}.block.topic`)}`}>
-              {tl("getInTouch")}<ArrowRight className="fill-white"/>
+            <PrimaryButton
+              asLink={true}
+              target={`/contact-us?topic=${tl(
+                `sections.section${i}.block.topic`
+              )}`}
+            >
+              {tl("getInTouch")}
+              <ArrowRight className="fill-white"/>
             </PrimaryButton>
             <div className="flex-grow">&nbsp;</div>
-          </div>) : null}
+          </div>
+        ) : null}
       </div>
     </div>
   );
@@ -81,8 +95,9 @@ const AboutUs = async ({params, searchParams}: HomeProps) => {
     <>
       <div
         className="flex flex-col __restricted-width px-6 lg:px-16 pt-6 lg:pt-20 text-stone-950 mt-[137px] lg:mt-[108px]">
-        <div
-          className="text-5xl lg:text-8xl font-bold font-muller uppercase leading-10 mb-16 lg:mb-36">{tl("title")}</div>
+        <div className="text-5xl lg:text-8xl font-bold font-muller uppercase leading-10 mb-16 lg:mb-36">
+          {tl("title")}
+        </div>
       </div>
       <div className="__restricted-width">
         <img src={images[0].data.imageURL} alt="team photo"/>

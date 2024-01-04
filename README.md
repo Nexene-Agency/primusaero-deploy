@@ -1,4 +1,4 @@
-# PrimusAero Website
+# PrimusAeroIcon Website
 
 Website made with NextJS 14 and TailwindCSS, using Google Firebase [and Algolia Search] as backend.
 
