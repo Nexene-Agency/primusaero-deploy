@@ -28,7 +28,7 @@ const TestimonialsMarquee = (props: BlockProperties) => {
     </div>
   );
   return (
-    <div className="w-screen bg-stone-950 flex justify-center">
+    <div className="w-full bg-stone-950 flex justify-center">
       <div className="__restricted-width ">
         <Suspense fallback={renderSlogans()}>
           <div className="block w-full">

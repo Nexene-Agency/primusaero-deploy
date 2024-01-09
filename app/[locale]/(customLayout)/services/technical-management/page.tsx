@@ -62,7 +62,7 @@ const TechnicalManagement = async ({ params, searchParams }: PageProps) => {
 
   return (
     <>
-      <div className="w-screen flex flex-col bg-stone-950 h-screen lg:px-16">
+      <div className="w-full flex flex-col bg-stone-950 h-screen lg:px-16">
         <div className="__restricted-width relative top-0 left-0 h-[520px] lg:h-[1080px]">
           <div className="absolute mt-[137px] lg:mt-[108px] top-0 left-0">
             <Suspense fallback={<ServicePageTitle titles={[tl("titles.1")]} />}>
@@ -86,7 +86,7 @@ const TechnicalManagement = async ({ params, searchParams }: PageProps) => {
               {Array.from({ length: 10 }).map((_, i) => (
                 <div
                   key={`srv-${i}`}
-                  className="w-full lg:h-16 py-6 border-t border-b border-neutral-400 border-opacity-20 justify-start items-center gap-2 inline-flex max-w-screen mx-6 lg:mx-0 font-normal leading-relaxed"
+                  className="w-full lg:h-16 py-6 border-t border-b border-neutral-400 border-opacity-20 justify-start items-center gap-2 inline-flex max-w-full mx-6 lg:mx-0 font-normal leading-relaxed"
                 >
                   <Ellipse className="shrink-0" />
                   <div className="text-stone-950 text-[calc(22/4)rem] pt-1 font-normal leading-relaxed">
