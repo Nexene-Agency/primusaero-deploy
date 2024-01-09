@@ -37,7 +37,7 @@ html {
 }
 
 .__restricted-width {
-    @apply max-w-[96em] mx-auto w-full;
+    @apply max-w-[96rem] mx-auto w-full;
 }
 
 .__button {

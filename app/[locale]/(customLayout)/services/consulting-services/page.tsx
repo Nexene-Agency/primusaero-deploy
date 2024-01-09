@@ -69,7 +69,7 @@ const ConsultingServices = async ({ params, searchParams }: PageProps) => {
 
   return (
     <>
-      <div className="w-screen flex flex-col bg-stone-950 h-screen lg:px-16">
+      <div className="w-full flex flex-col bg-stone-950 h-screen lg:px-16">
         <div className="__restricted-width relative top-0 left-0 h-[520px] lg:h-[1080px]">
           <div className="absolute mt-[137px] lg:mt-[108px] top-0 left-0">
             <Suspense fallback={<ServicePageTitle titles={[tl("titles.1")]} />}>

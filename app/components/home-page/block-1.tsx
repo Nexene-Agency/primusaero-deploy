@@ -26,7 +26,7 @@ const BlockOne = (props: any) => {
   const t = translator(flatten(getMessages(props.locale, MESSAGES)));
 
   const renderSlogans = () => (
-    <div className="justify-start items-center lg:items-start pt-3 lg:pt-6 gap-2 lg:gap-12 inline-flex mx-1 lg:mx-6">
+    <div className="justify-start items-center lg:items-start pt-3 lg:pt-6 gap-2 lg:gap-12 inline-flex px-1 lg:px-6">
       <span className="text-stone-950 text-5xl lg:text-8xl font-bold font-muller uppercase leading-10">
         {t("home.slogans.1")}
       </span>
@@ -47,11 +47,11 @@ const BlockOne = (props: any) => {
       {/*--- Hero Section ---*/}
       <div
         id="hero-section"
-        className="w-[1536px] h-[calc(100vh-108px-56px)] flex flex-col items-center z-101"
+        className="h-[calc(100vh-108px-56px)] flex flex-col items-center z-101"
       >
         {/*--- Headline ---*/}
-        <div className="w-screen h-[620px] absolute">
-          <div className="w-screen text-center mt-16 lg:mt-0">
+        <div className=" __restricted-width h-[620px] absolute">
+          <div className="w-full text-center mt-16 lg:mt-0">
             <span className="text-white text-5xl sm:text-7xl lg:text-9xl xl:text-[11.5rem] 2xl:text-[13.5rem] font-bold font-muller uppercase">
               PRIMUS
             </span>
@@ -62,7 +62,7 @@ const BlockOne = (props: any) => {
         </div>
         <div className="grow" />
         {/* testiomonials in the header, only lg and above*/}
-        <div className={`hidden lg:flex flex-col py-16 gap-6 max-w-screen`}>
+        <div className={`hidden lg:flex __restricted-width flex-col py-16 gap-6 max-w-full`}>
           <Suspense
             fallback={testimonialFallback(
               " text-stone-950 leading-7 text-white self-stretch font-medium font-muller text-3xl",
@@ -73,14 +73,14 @@ const BlockOne = (props: any) => {
           >
             <TestimonialSlideshow
               timeout={5000}
-              textCss="text-stone-950 max-w-screen mx-16 leading-7 uppercase text-white font-medium font-muller text-3xl"
-              authorCss="text-neutral-500 text-xl max-w-screen mx-16"
+              textCss="text-stone-950 max-w-full mx-16 leading-7 uppercase text-white font-medium font-muller text-3xl"
+              authorCss="text-neutral-500 text-xl max-w-full mx-16"
             />
           </Suspense>
         </div>
       </div>
       {/*--- Services ---*/}
-      <div className="w-full h-14 px-16 bg-white  border-t border-b border-stone-950 backdrop-blur-2xl justify-center items-center inline-flex">
+      <div className="w-screen h-14 px-16 bg-white  border-t border-b border-stone-950 backdrop-blur-2xl justify-center items-center inline-flex">
         <div className="hidden 2xl:inline-flex self-stretch justify-start items-center gap-16">
           {SERVICE_MENU_ITEMS.map((item) => (
             <a

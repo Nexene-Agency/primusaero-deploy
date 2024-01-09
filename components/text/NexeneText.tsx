@@ -15,7 +15,7 @@ const NexeneText = (props: NexeneTextProps) => {
       ref={ref}
       className={
         inView
-          ? "easeOut max-w-screen text-color-grey-3 text-xl mx-6 lg:mx-0 font-normal leading-relaxed"
+          ? "easeOut max-w-full text-color-grey-3 text-xl mx-6 lg:mx-0 font-normal leading-relaxed"
           : "opacity-0 w-full text-color-grey-3 text-xl mx-6 lg:mx-0 font-normal leading-relaxed"
       }
     >
